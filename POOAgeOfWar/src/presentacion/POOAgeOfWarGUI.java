@@ -19,7 +19,7 @@ public class POOAgeOfWarGUI extends JFrame{
 	
 	private void prepareElementosVentanaPrincipal() {
 		pantallaInicio = new JDialog();
-		
+		pantallaInicion.setlayout(new GridLayout(4,1));
 	}
 	
 	public void prepareAcciones(){
