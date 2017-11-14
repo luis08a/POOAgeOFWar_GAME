@@ -1,5 +1,5 @@
 package aplicacion;
 
-public class Arena {
+public class Melee {
 
 }
