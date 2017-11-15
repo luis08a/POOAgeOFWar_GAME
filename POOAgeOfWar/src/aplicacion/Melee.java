@@ -8,6 +8,7 @@ public class Melee extends Soldado {
 		this.setDefensa(0);
 		this.setRangoAtaque(1);
 		this.setTipo("@");
+		this.setDirec(dir);
 	}
 	
 	

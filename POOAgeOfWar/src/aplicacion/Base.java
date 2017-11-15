@@ -14,15 +14,17 @@ public class Base extends Unidad {
 	private int i;
 	private  Unidad[] unidadesVivas=new Unidad[20];
 	
-	public Base(int base,int dir){
+	public Base(int dir,int base){
 		super(dir,0);
 		numero =base;
 		//direccion a la derecha
-		if (base==1){dir=1;spawn=1;}
+		System.out.println("base antes de la condicion "+base);
+		if (base==1){spawn=1;}
 		//direccion a la izquierda
-		else if (base==2) {dir=-1;i=Arena.getLong();spawn=i-2;}
+		else if (base==2) {spawn=18;}
 		this.setIsBase(true);
 		oro=100;
+		System.out.println(dir+"dir base instanciada, spawn "+spawn);
 		
 	}
 	public int getBase(){
@@ -35,7 +37,11 @@ public class Base extends Unidad {
 	public  int getSpawn(){
 		return spawn;
 	}
+	public int getDirb(){
+		return this.getDirec();
+	}
 	public  Unidad crearUnidad(String tipo){
+		int dir = this.getDirec();
 		Soldado s=new Melee(dir,spawn);
 		if (tipo=="@"){
 			s= new Melee(dir,spawn);

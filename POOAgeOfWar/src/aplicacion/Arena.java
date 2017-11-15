@@ -8,8 +8,8 @@ public class Arena {
 	private Unidad v;
 	public Arena(){
 		 v= new VacioUnidades(0);
-		 b1= new Base(1,0);
-		 b2=new Base(2,0);
+		 b1= new Base(1,1);
+		 b2=new Base(-1,2);
 		arena=new Unidad[] {b1,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,b2};
 		//arena=new Unidad[20];
 		//arena[0]=new Base(1,0);
@@ -19,7 +19,7 @@ public class Arena {
 		}
 		System.out.println();
 		//vector temporal para guardar la actualizacion
-		
+		System.out.println(b1.getDirb()+"b1.getdirt");
 	}
 	/*
 	 * esta funcion actualiza el tablero y hace que los soldados se muevan
@@ -33,12 +33,14 @@ public class Arena {
 		for (int i=1;i<arena.length-2;i++){
 			 Unidad elemento=arena[i];
 			 if (elemento.getTipo()!="vacio"){
+				 //System.out.println(elemento.getPosx()+"antes");
 				 elemento.moverse(1);
+				 //System.out.println(elemento.getPosx()+"Despues");
 				 int p= elemento.getPosx();
 				 temp[p]=elemento;
 				 
-				 System.out.println(temp[p].getTipo());
-				 System.out.println(p+" ppp");
+				 //System.out.println(temp[p].getTipo());
+				 //System.out.println(p+" ppp");
 			 }
 			 
 		}
@@ -49,7 +51,7 @@ public class Arena {
 		System.out.println(arena[0]);
 		for(int i=0;i<=17;i++){
 			arena[i+1]=temp[i];
-			System.out.print(arena[i].getTipo()+",");
+			//System.out.print(arena[i].getTipo()+",");
 			//System.out.println(temp[i].getTipo() + ",");
 		}
 		for(int i=0;i<20;i++){
@@ -72,9 +74,11 @@ public class Arena {
 	}
 	
 	public void ponerUnidad(Base base,String tipo){
-		
+		//System.out.println("instancia de unidad en la arena");
+		//System.out.println(base.getDirb()+"dir base con get dir");
 		Unidad uni=base.crearUnidad(tipo);
 		int spawn=base.getSpawn();
+		System.out.println(spawn);
 		arena[spawn]=uni;
 		for(int i=0;i<20;i++){
 			System.out.print(arena[i].getTipo()+",");
