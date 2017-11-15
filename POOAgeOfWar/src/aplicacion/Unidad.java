@@ -4,16 +4,26 @@ public abstract class Unidad {
 	private int vida;	
 	private int ataque;
 	private int ancho;
-	private int posx=0;
+	private int posx;
 	private int posy;
 	private int costo;
 	private int defensa;
 	private int base;
 	private int direc;
 	private String tipo;
-	public Unidad(int dir){
+	private boolean isBase;
+	
+	
+	public Unidad(int dir,int Spawn){
 		direc=dir;
+		posx =Spawn;
 	 }
+	public boolean getIsBase(boolean isBase) {
+		return isBase;
+	}
+	public void setIsBase(boolean isbase) {
+		isBase=isbase;
+	}
 	public int getVida() {
 		return vida;
 	}
@@ -36,7 +46,8 @@ public abstract class Unidad {
 		return posx;
 	}
 	public void setPosx(int posx) {
-		this.posx =+ posx*direc;
+		this.posx =+ direc;
+		System.out.println(posx+"posxxxx");
 	}
 	public int getPosy() {
 		return posy;
@@ -65,10 +76,21 @@ public abstract class Unidad {
 	public void setTipo(String tip){
 		tipo=tip;
 	}
+	public String getTipo(){
+		return tipo;
+	}
 	
 	public void recibirDano(int dano){
 		vida-=dano;
 	}
-	
+	public void moverse(int distancia){
+		this.setPosx(distancia);
+		
+		
+	}
+	public void isBase(){
+		
+	}
 	
 }
+

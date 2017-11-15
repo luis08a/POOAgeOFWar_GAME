@@ -9,18 +9,19 @@ public class Base extends Unidad {
 	//si la base es la numero 1 la direccion es
 	//hacia la derecha, si no, la direccion es
 	//hacia la izquierda(multiplicando -1)
-	private static int dir;
-	private static int spawn;
-	private static Unidad[] unidadesVivas;
+	private   int dir;
+	private  int spawn;
+	private int i;
+	private  Unidad[] unidadesVivas=new Unidad[20];
 	
 	public Base(int base,int dir){
-		super(dir);
+		super(dir,0);
 		numero =base;
 		//direccion a la derecha
 		if (base==1){dir=1;spawn=1;}
 		//direccion a la izquierda
-		else {dir=-1;spawn=-2;}
-		
+		else if (base==2) {dir=-1;i=Arena.getLong();spawn=i-2;}
+		this.setIsBase(true);
 		oro=100;
 		
 	}
@@ -30,18 +31,15 @@ public class Base extends Unidad {
 	public String getTipo(){
 		return tipo;
 	}
-	public int mover(){
-		
-		return 1;
-	}
-	public static int getSpawn(){
+	
+	public  int getSpawn(){
 		return spawn;
 	}
-	public static Unidad crearUnidad(String tipo){
-		Soldado s=new Melee(dir);
+	public  Unidad crearUnidad(String tipo){
+		Soldado s=new Melee(dir,spawn);
 		if (tipo=="@"){
-			s= new Melee(dir);
-			unidadesVivas[-1]=s;
+			s= new Melee(dir,spawn);
+			unidadesVivas[unidadesVivas.length -1]=s;
 		}
 		return s;
 		
