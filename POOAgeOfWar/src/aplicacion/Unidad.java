@@ -4,7 +4,7 @@ public abstract class Unidad {
 	private int vida;	
 	private int ataque;
 	private int ancho;
-	private int posx;
+	private int posx=0;
 	private int posy;
 	private int costo;
 	private int defensa;
