@@ -18,13 +18,13 @@ public class Base extends Unidad {
 		super(dir,0);
 		numero =base;
 		//direccion a la derecha
-		System.out.println("base antes de la condicion "+base);
+		//System.out.println("base antes de la condicion "+base);
 		if (base==1){spawn=1;}
 		//direccion a la izquierda
 		else if (base==2) {spawn=18;}
 		this.setIsBase(true);
 		oro=100;
-		System.out.println(dir+"dir base instanciada, spawn "+spawn);
+		//System.out.println(dir+"dir base instanciada, spawn "+spawn);
 		
 	}
 	public int getBase(){

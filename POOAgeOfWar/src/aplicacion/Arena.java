@@ -30,14 +30,18 @@ public class Arena {
 		//temp[19]=new Base(2,0);
 		System.out.println(temp.length);
 		int cont=0;
-		for (int i=1;i<arena.length-2;i++){
+		for (int i=1;i<arena.length-1;i++){
 			 Unidad elemento=arena[i];
 			 if (elemento.getTipo()!="vacio"){
-				 //System.out.println(elemento.getPosx()+"antes");
+				 
+				 System.out.println(elemento.getTipo()+" y cont "+cont);
+				 cont+=1;
+				 System.out.println(elemento.getPosx()+"antes");
 				 elemento.moverse(1);
-				 //System.out.println(elemento.getPosx()+"Despues");
+				 System.out.println(elemento.getBase()+"base a la que pert");
+				 System.out.println(elemento.getPosx()+"Despues");
 				 int p= elemento.getPosx();
-				 temp[p]=elemento;
+				 temp[p-1]=elemento;
 				 
 				 //System.out.println(temp[p].getTipo());
 				 //System.out.println(p+" ppp");
@@ -57,7 +61,8 @@ public class Arena {
 		for(int i=0;i<20;i++){
 			System.out.print(arena[i].getTipo()+",");
 		}
-		
+		System.out.println(" ");
+		System.out.println(" ");
 	}
 	public static int getLong(){
 		int long1= 20;

@@ -18,8 +18,12 @@ public abstract class Unidad {
 		System.out.println(direc+"direc en unidad antesA");
 		direc=dir;
 		System.out.println(direc+"direc en unidad");
-		posx =Spawn;
+		//System.out.println(posx+" spawn antes");
+		this.setPosx(Spawn);
+		//posx =Spawn;
 		System.out.println(posx+" spawn p x");
+		if (dir==1){base=1;}
+		else{base=2;}
 	 }
 	public int getDirec(){
 		return direc;
@@ -55,8 +59,9 @@ public abstract class Unidad {
 		return posx;
 	}
 	public void setPosx(int dis) {
-		System.out.println(posx+"posxxxx antes"+"direc"+dis);
-		this.posx =+ dis;
+		System.out.println(posx+"posxxxx antes "+"direc "+dis);
+		posx =posx + dis;
+		//System.out.println("despues"+ (posx+dis));
 		System.out.println(posx+"posxxxx");
 	}
 	public int getPosy() {
@@ -94,7 +99,7 @@ public abstract class Unidad {
 		vida-=dano;
 	}
 	public void moverse(int distancia){
-		System.out.print(this.getDirec()+"direc antesd de funcion");
+		//System.out.println(this.getDirec()+"direc antesd de funcion");
 		this.setPosx(direc);
 		
 		

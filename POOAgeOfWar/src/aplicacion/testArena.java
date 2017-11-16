@@ -23,6 +23,19 @@ public class testArena {
 		System.out.println(bas2.getDirb()+"dir base en test pepe");
 		r.ponerUnidad(bas2, "@");
 		r.actualizar();
+		/*
+		r.actualizar();
+		r.ponerUnidad(bas, "@");
+		System.out.println("bas act");
+		r.actualizar();
+		r.actualizar();
+		*/
+		/*
+		Base bas2=r.getBases(2);
+		System.out.println(bas2.getDirb()+"dir base en test pepe");
+		r.ponerUnidad(bas2, "@");
+		r.actualizar();
+		*/
 		
 	}
 	
