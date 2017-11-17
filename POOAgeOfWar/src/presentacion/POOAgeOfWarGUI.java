@@ -6,15 +6,19 @@ import java.awt.event.*;
 import java.io.*;
 
 public class POOAgeOfWarGUI extends JFrame{
-	
+	//Pantalla inicial
 	private JDialog pantallaInicio;
-	
+	//Componentes de la pantalla inicial
 	private JPanel panelLogo;
 	private JPanel panelOpciones;
 	private Button jugar;
 	private Button salir;
+	//componentes de la pabtalla de juego
+	private JPanel panelOpcionesJugador;
+	//componentes del panel panel opciones jugador
+	private JButton botonSpawn; 
 	
-	public POOAgeOfWarGUI() {
+	private POOAgeOfWarGUI() {
 		prepareElementosVentanaPrincipal();
 		prepareAcciones();
 	}
@@ -23,7 +27,26 @@ public class POOAgeOfWarGUI extends JFrame{
 		setSize(600,400);
 		setVisible(true);
 		centre(this);
-		setLayout(new BorderLayout());
+		setLayout(null);
+		preparePanelOpcionesJugador();
+		
+		this.add(panelOpcionesJugador);
+	}
+	
+	private void preparePanelOpcionesJugador(){
+		panelOpcionesJugador = new JPanel();
+		Dimension screen = this.getSize();
+		int xEsquina = (screen.width = getSize().width );
+		int yEsquina = (screen.height = getSize().height ) /4;
+		panelOpcionesJugador.setBounds(0, 0, xEsquina, yEsquina);
+		panelOpcionesJugador.setLayout(null);
+		
+		botonSpawn = new JButton("a");
+		botonSpawn.setBounds(10, 10,30,30);
+		
+		panelOpcionesJugador.add(botonSpawn);
+		
+		
 	}
 	
 	private void prepareElementosVentanaPrincipal() {
@@ -33,7 +56,7 @@ public class POOAgeOfWarGUI extends JFrame{
 		pantallaInicio.setVisible(true);
 		centre(pantallaInicio);
 		
-		pantallaInicio.setLayout(new BorderLayout());
+		pantallaInicio.setLayout(null);
 		
 		preparePanelInicioOpciones();
 		preparePanelInicioLogo();
@@ -41,14 +64,16 @@ public class POOAgeOfWarGUI extends JFrame{
 		pantallaInicio.add(panelLogo, BorderLayout.NORTH);
 		pantallaInicio.add(panelOpciones,BorderLayout.CENTER);
 	}
-	public void preparePanelInicioLogo(){
+	private void preparePanelInicioLogo(){
 		panelLogo = new JPanel();
-		panelLogo.setSize(50,50);
+		panelLogo.setBounds(0,0,400,100);
+		
+		//Image logo = new ImageIcon("C:\Users\luis_acevedo\Desktop\POOB\Proyecto_final\Sprites\AgeOfWar_logo.jpg").getImage();
 	}
 	
-	public void preparePanelInicioOpciones(){
+	private void preparePanelInicioOpciones(){
 		panelOpciones = new JPanel();
-		panelOpciones.setSize(50,50);
+		panelOpciones.setBounds(100,100,200,200);
 		panelOpciones.setLayout(new GridLayout(2,1));
 		jugar = new Button("JUGAR");
 		salir = new Button("SALIR");
@@ -57,7 +82,7 @@ public class POOAgeOfWarGUI extends JFrame{
 		panelOpciones.add(salir);
 	}
 	
-	public void prepareAcciones(){
+	private void prepareAcciones(){
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
 		WindowListener oyenteVentanaPrincipal = new WindowAdapter() {
