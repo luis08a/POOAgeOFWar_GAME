@@ -19,40 +19,55 @@ public class Arena {
 		}
 		System.out.println();
 		//vector temporal para guardar la actualizacion
-		System.out.println(b1.getDirb()+"b1.getdirt");
+		//System.out.println(b1.getDirb()+"b1.getdirt");
 	}
 	/*
 	 * esta funcion actualiza el tablero y hace que los soldados se muevan
 	 * */
 	public void actualizar(){
-		temp=new Unidad[]{v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v};
+		temp=new Unidad[]{v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v};
 		//temp[0]=new Base(1,0);
 		//temp[19]=new Base(2,0);
 		System.out.println(temp.length);
 		int cont=0;
 		for (int i=1;i<arena.length-1;i++){
 			 Unidad elemento=arena[i];
-			 if (elemento.getTipo()!="vacio"){
-				 
-				 System.out.println(elemento.getTipo()+" y cont "+cont);
-				 cont+=1;
-				 System.out.println(elemento.getPosx()+"antes");
-				 elemento.moverse(1);
-				 System.out.println(elemento.getBase()+"base a la que pert");
-				 System.out.println(elemento.getPosx()+"Despues");
-				 int p= elemento.getPosx();
-				 temp[p-1]=elemento;
-				 
+			 int siguiente=arena[i].getDirec();
+			 Unidad elsiguiente=arena[i+siguiente+siguiente];
+			 System.out.println(siguiente);
+			 System.out.println(elsiguiente.getTipo()+" tipo siguinte"+";actual "+elemento.getTipo());
+			 if (elemento.getTipo()!="vacio"&& elsiguiente.getTipo()=="vacio"){
+				 ///if (temp[i-1].getTipo()=="vacio"){
+					 System.out.println(temp[i+siguiente].getTipo()+" tipo en temp");
+					 //System.out.println(elemento.getTipo()+" y cont "+cont);
+					 cont+=1;
+					 //System.out.println(elemento.getPosx()+"antes");
+					 elemento.moverse(1);
+					 //System.out.println(elemento.getBase()+"base a la que pert");
+					 //System.out.println(elemento.getPosx()+"Despues");
+					 int p= elemento.getPosx();
+					 temp[p]=elemento;
+				 //}
 				 //System.out.println(temp[p].getTipo());
 				 //System.out.println(p+" ppp");
 			 }
+			 else if (elemento.getTipo()!="vacio"&& elsiguiente.getTipo()!="vacio"){
+				 if (temp[i+siguiente].getTipo()=="vacio"){
+					 int p= elemento.getPosx();
+					 System.out.println(p+" ppp");
+					 temp[p+siguiente]=elemento;
+					 //atacar
+				 }
+				 
+				}
 			 
 		}
 		for(int i=0;i<17;i++){
 			System.out.print(temp[i].getTipo()+",");
 		}
 		//arena=temp;
-		System.out.println(arena[0]);
+		System.out.println();
+		//System.out.println(arena[0]);
 		for(int i=0;i<=17;i++){
 			arena[i+1]=temp[i];
 			//System.out.print(arena[i].getTipo()+",");
@@ -83,7 +98,7 @@ public class Arena {
 		//System.out.println(base.getDirb()+"dir base con get dir");
 		Unidad uni=base.crearUnidad(tipo);
 		int spawn=base.getSpawn();
-		System.out.println(spawn);
+		//System.out.println(spawn);
 		arena[spawn]=uni;
 		for(int i=0;i<20;i++){
 			System.out.print(arena[i].getTipo()+",");
