@@ -23,8 +23,8 @@ public class POOAgeOfWarGUI extends JFrame{
 	private JMenuItem guardar;
 	private JMenuItem menuSalir;
 	//componentes del panel panel opciones jugador
-	private JLabel oro;
-	private JLabel desarrollo;
+	private JLabel labelOro;
+	private JLabel labelDesarrollo;
 	private JButton botonSpawn;
 	private JButton botonBack;
 	
@@ -34,14 +34,17 @@ public class POOAgeOfWarGUI extends JFrame{
 	}
 	
 	private void prepareElementosPantallaJuego() {
-		setSize(600,400);
-		setVisible(true);
-		centre(this);
-		setLayout(null);
+		this.setSize(600,400);
+		this.setBackground(java.awt.Color.WHITE);
+		this.setVisible(true);
+		this.centre(this);
+		this.setLayout(null);
 		preparePanelOpcionesJugador();
 		prepareElementosMenuJuego();
 		
 		this.add(panelOpcionesJugador);
+		
+		prepareAccionesPantallaJuego();
 	}
 	
 	private void preparePanelOpcionesJugador(){
@@ -52,28 +55,42 @@ public class POOAgeOfWarGUI extends JFrame{
 		panelOpcionesJugador.setBounds(0, 0, xEsquina, yEsquina);
 		panelOpcionesJugador.setLayout(null);
 		
-		botonSpawn = new JButton("a");
-		botonSpawn.setBounds(10, 10,30,30);
+		botonSpawn = new JButton("Unidad");
+		labelOro = new JLabel("Oro"); 
+		labelDesarrollo = new JLabel("Nivel de desarrollo");
+		botonBack = new JButton("Back");
 		
 		panelOpcionesJugador.add(botonSpawn);
+		panelOpcionesJugador.add(labelOro);
+		panelOpcionesJugador.add(labelDesarrollo);
+		panelOpcionesJugador.add(botonBack);
 		
+		botonSpawn.setBounds(200, 10,80,30);
+		labelOro.setBounds(20, 10, 40, 10);
+		labelDesarrollo.setBounds(20, 20, 120, 10);
+		botonBack.setBounds(520, 0, 70, 20);
+		
+		panelOpcionesJugador.setBackground(java.awt.Color.cyan);
 	}
 	
 	private void prepareElementosMenuJuego() {
 		bar = new JMenuBar();
 		menu = new JMenu("Opciones");
-		abrir = new JMenuItem();
-		guardar = new JMenuItem();
-		menuSalir = new JMenuItem();
+		abrir = new JMenuItem("Abrir");
+		guardar = new JMenuItem("Guardar");
+		menuSalir = new JMenuItem("Salir");
 		
 		bar.add(menu);
 		menu.add(abrir);
 		menu.add(guardar);
 		menu.add(menuSalir);
+		setJMenuBar(bar);
+		
 	}
 	private void prepareElementosVentanaPrincipal() {
 		pantallaInicio = new JDialog();
 		pantallaInicio.setTitle("POOAgeOfWar");
+		
 		pantallaInicio.setSize(400, 400);
 		pantallaInicio.setVisible(true);
 		centre(pantallaInicio);
@@ -88,6 +105,7 @@ public class POOAgeOfWarGUI extends JFrame{
 	}
 	private void preparePanelInicioLogo(){
 		panelLogo = new JPanel();
+		panelLogo.setBackground(java.awt.Color.white);
 		panelLogo.setBounds(0,0,400,100);
 		
 	}
@@ -96,6 +114,7 @@ public class POOAgeOfWarGUI extends JFrame{
 		panelOpciones = new JPanel();
 		panelOpciones.setBounds(100,100,200,200);
 		panelOpciones.setLayout(new GridLayout(2,1));
+		
 		jugar = new Button("JUGAR");
 		salir = new Button("SALIR");
 		
@@ -121,11 +140,41 @@ public class POOAgeOfWarGUI extends JFrame{
 			public void actionPerformed(ActionEvent e) {salir();}
 		};
 		
+		
 		pantallaInicio.addWindowListener(oyenteVentanaPrincipal);
 		jugar.addActionListener(oyenteBotonJugar);
 		salir.addActionListener(oyenteBotonSalir);
+		
 	}
 	
+	private void prepareAccionesPantallaJuego() {
+		ActionListener oyenteMenuSalir = new ActionListener(){
+			public void actionPerformed(ActionEvent e) {salir();}
+		};
+		
+		ActionListener oyenteAbrir = new ActionListener(){
+			public void actionPerformed(ActionEvent e) {JOptionPane.showMessageDialog(null, "En construcción");}
+		};
+		
+		ActionListener oyenteGuardar = new ActionListener(){
+			public void actionPerformed(ActionEvent e) {JOptionPane.showMessageDialog(null, "En construcción");}
+		};
+		
+		ActionListener oyenteBotonSpawn = new ActionListener(){
+			public void actionPerformed(ActionEvent e) {JOptionPane.showMessageDialog(null, "En construcción");}
+		};
+		
+		ActionListener oyenteBotonBack = new ActionListener(){
+			public void actionPerformed(ActionEvent e) {JOptionPane.showMessageDialog(null, "En construcción");}
+		};
+		
+		menuSalir.addActionListener(oyenteMenuSalir);
+		abrir.addActionListener(oyenteAbrir);
+		guardar.addActionListener(oyenteGuardar);
+		botonSpawn.addActionListener(oyenteBotonSpawn);
+		botonBack.addActionListener(oyenteBotonBack);
+		
+	}
 	private void salir() {
 		int choose = JOptionPane.showConfirmDialog(null, "¿ Desea salir ?");
 		if(choose == JOptionPane.YES_OPTION){
