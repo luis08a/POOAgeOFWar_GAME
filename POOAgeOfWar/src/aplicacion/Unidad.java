@@ -5,6 +5,8 @@ public abstract class Unidad {
 	private int ataque;
 	private int ancho;
 	private int posx;
+	private int poslado;
+	private int posLadoContrario;
 	private int posy;
 	private int costo;
 	private int defensa;
@@ -22,8 +24,8 @@ public abstract class Unidad {
 		this.setPosx(Spawn);
 		//posx =Spawn;
 		//System.out.println(posx+" spawn p x");
-		if (dir==1){base=1;}
-		else{base=2;}
+		if (dir==1){base=0;poslado=1;posLadoContrario=0;}
+		else{base=1;poslado=0;posLadoContrario=1;}
 	 }
 	public int getDirec(){
 		return direc;
@@ -58,6 +60,10 @@ public abstract class Unidad {
 	public int getPosx() {
 		return posx;
 	}
+	public int getPosLado(){
+		return poslado;
+	}
+	
 	public void setPosx(int dis) {
 		//System.out.println(posx+"posxxxx antes "+"direc "+dis);
 		posx =posx + dis;
@@ -99,7 +105,7 @@ public abstract class Unidad {
 		vida-=dano;
 	}
 	//public void 
-	
+	public int posLadoContrario(){return posLadoContrario;}
 	public void moverse(int distancia){
 		//System.out.println(this.getDirec()+"direc antesd de funcion");
 		this.setPosx(direc);
