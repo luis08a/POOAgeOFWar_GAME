@@ -16,5 +16,7 @@ public abstract class Soldado extends Unidad {
 		this.rangoAtaque = rangoAtaque;
 	}
 	
+	}
 	
-}
+	
+

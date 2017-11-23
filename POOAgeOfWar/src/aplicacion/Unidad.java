@@ -85,8 +85,8 @@ public abstract class Unidad {
 	public int getDefensa() {
 		return defensa;
 	}
-	public void setDefensa(int defensa) {
-		this.defensa =+ defensa;
+	public void setDefensa(int def) {
+		this.defensa = def;
 	}
 	public int getBase() {
 		return base;
@@ -102,7 +102,9 @@ public abstract class Unidad {
 	}
 	
 	public void recibirDano(int dano){
+		System.out.println(vida+" vida antes");
 		vida-=dano;
+		System.out.println(vida);
 	}
 	//public void 
 	public int posLadoContrario(){return posLadoContrario;}
@@ -112,8 +114,9 @@ public abstract class Unidad {
 		
 		
 	}
-	public void isBase(){
+	public void ataque(Unidad enemigo){
 		
+		enemigo.recibirDano(ataque);
 	}
 	
 }
