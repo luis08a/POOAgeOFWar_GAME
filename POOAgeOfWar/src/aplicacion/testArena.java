@@ -33,6 +33,7 @@ public class testArena {
 		r.actualizar();
 		r.actualizar();
 		r.actualizar();
+		r.actualizar();
 		
 		/*
 		r.actualizar();

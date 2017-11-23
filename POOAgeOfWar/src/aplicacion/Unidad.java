@@ -100,7 +100,12 @@ public abstract class Unidad {
 	public String getTipo(){
 		return tipo;
 	}
-	
+	public boolean estaMuerto(){
+		boolean r=false;
+		System.out.println(vida+" en esta muerto?");
+		if(vida<=0){r=true;}
+		return r;
+	}
 	public void recibirDano(int dano){
 		System.out.println(vida+" vida antes");
 		vida-=dano;

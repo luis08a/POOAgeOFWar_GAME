@@ -129,10 +129,17 @@ public class Arena {
 				elemento.ataque(elemento2);
 				int p= elemento.getPosx();
 				temp[p-1][0]=elemento;
-				elemento2.ataque(elemento2);
+				
+				
+				
+				elemento2.ataque(elemento);
 				int p2= elemento2.getPosx();
 				temp[p2-1][1]=elemento2;
 				System.out.println(elemento2.getVida()+"vida de elemento 2");
+				if (elemento2.estaMuerto()==true){temp[p-1][1]=v;}
+				if (elemento.estaMuerto()==true){temp[p-1][0]=v;}
+				
+				
 			}
 			
 			/*
