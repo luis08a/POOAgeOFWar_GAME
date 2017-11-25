@@ -4,8 +4,8 @@ import javax.swing.*;
 import java.awt.event.*;
 
 public class Menu extends JDialog{
-	private JPanel panelLogo;
-	private JPanel panelOpciones;
+	private Fondo panelLogo;
+	private Fondo panelOpciones;
 	private Button jugar;
 	private Button salir;
 	
@@ -29,19 +29,23 @@ public class Menu extends JDialog{
 	}
 	
 	private void preparePanelInicioLogo(){
-		panelLogo = new JPanel();
+		panelLogo = new Fondo("/recursos visuales/AgeOfWar logo.jpg");
 		panelLogo.setBackground(java.awt.Color.white);
 		panelLogo.setBounds(0,0,400,100);
 		
 	}
 	
 	private void preparePanelInicioOpciones(){
-		panelOpciones = new JPanel();
-		panelOpciones.setBounds(100,100,200,200);
-		panelOpciones.setLayout(new GridLayout(2,1));
+		panelOpciones = new Fondo("/recursos visuales/background0.png");
+			
+		panelOpciones.setBounds(0,100,400,300);
+		panelOpciones.setLayout(null);
 		
 		jugar = new Button("JUGAR");
 		salir = new Button("SALIR");
+		
+		jugar.setBounds(150, 50, 100, 50);
+		salir.setBounds(150, 100, 100, 50);
 		
 		panelOpciones.add(jugar);
 		panelOpciones.add(salir);
