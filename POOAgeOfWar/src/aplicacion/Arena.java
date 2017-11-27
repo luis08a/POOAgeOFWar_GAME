@@ -32,6 +32,7 @@ public class Arena {
 		 
 		 b1= new Base(1,0);
 		 //b1 adentro contiene la base y la segunda posicion funciona como spawn
+		 
 		 Unidad b1Ad[]={b1,v};
 		 b2=new Base(-1,1);
 		 Unidad b2Ad[]={v,b2};
@@ -82,33 +83,43 @@ public class Arena {
 			if (arena[i][0].getTipo()!= "vacio" && arena[i][1].getTipo()=="vacio"){
 				Unidad elemento=arena[i][0];
 				int siguiente=arena[i][0].getDirec();
-				Unidad elsiguiente=arena[i+siguiente+siguiente][0];
-				
-				 System.out.println(siguiente);
-				 System.out.println(elsiguiente.getTipo()+" tipo siguinte"+";actual "+elemento.getTipo());
+				Unidad elsiguiente=arena[i+siguiente][0];
+				Unidad aliado=arena[i+siguiente][0];
+				 System.out.println(" entra a leer ");
+				 //System.out.println(elsiguiente.getTipo()+" tipo siguinte"+";actual "+elemento.getTipo());
 				 if (elemento.getTipo()!="vacio"&& elsiguiente.getTipo()=="vacio"){
 					 ///if (temp[i-1].getTipo()=="vacio"){
 						 System.out.println(temp[i+siguiente][0].getTipo()+" tipo en temp");
 						 //System.out.println(elemento.getTipo()+" y cont "+cont);
 						 cont+=1;
-						 //System.out.println(elemento.getPosx()+"antes");
+						 System.out.println(elemento.getPosx()+"antes");
 						 elemento.moverse(1);
 						 //System.out.println(elemento.getBase()+"base a la que pert");
-						 //System.out.println(elemento.getPosx()+"Despues");
+						 System.out.println(elemento.getPosx()+"Despues");
 						 int p= elemento.getPosx();
 						 temp[p-1][0]=elemento;
+						 
 					 //}
-				 }	 
+				 }
+				 else{
+					 
+					
+					 int p= elemento.getPosx();
+					 temp[p-1][0]=elemento;
+				 }
 			 
 			}
 			if (arena[i][0].getTipo()== "vacio" && arena[i][1].getTipo()!="vacio"){
 				Unidad elemento=arena[i][1];
 				int siguiente=arena[i][1].getDirec();
-				Unidad elsiguiente=arena[i+siguiente+siguiente][1];
+				//elsiguiente se refiere al proximo enemigo que se puede encontrar
+				Unidad elsiguiente=temp[i-1][0];
+				//
+				Unidad aliado=arena[i+siguiente][1];
 				
-				 System.out.println(siguiente);
-				 System.out.println(elsiguiente.getTipo()+" tipo siguinte"+";actual "+elemento.getTipo());
-				 if (elemento.getTipo()!="vacio"&& elsiguiente.getTipo()=="vacio"){
+				 //System.out.println(siguiente);
+				 //System.out.println(elsiguiente.getTipo()+" tipo siguinte"+";actual "+elemento.getTipo());
+				 if (elemento.getTipo()!="vacio"&& elsiguiente.getTipo()=="vacio"&&aliado.getTipo()=="vacio"){
 					 ///if (temp[i-1].getTipo()=="vacio"){
 						 System.out.println(temp[i+siguiente][1].getTipo()+" tipo en temp");
 						 //System.out.println(elemento.getTipo()+" y cont "+cont);
@@ -120,9 +131,16 @@ public class Arena {
 						 int p= elemento.getPosx();
 						 temp[p-1][1]=elemento;
 					 //}
-				 }	 
+				 }
+				 else{
+						
+						
+						int p2= elemento.getPosx();
+						temp[p2-1][1]=elemento;
+					}
 			}
-			else if(arena[i][0].getTipo()!= "vacio" && arena[i][1].getTipo()!="vacio"){
+			
+			else if(arena[i][0].getTipo()!= "vacio" && arena[i][1].getTipo()!="vacio" ){
 				Unidad elemento=arena[i][0];
 				
 				Unidad elemento2=arena[i][1];
@@ -151,6 +169,8 @@ public class Arena {
 				
 				
 			}
+			
+			
 			
 			/*
 			 else if (elemento.getTipo()!="vacio"&& elsiguiente.getTipo()!="vacio"){
@@ -199,14 +219,19 @@ public class Arena {
 	public void ponerUnidad(Base base,String tipo){
 		//System.out.println("instancia de unidad en la arena");
 		//System.out.println(base.getDirb()+"dir base con get dir");
+		
 		Unidad uni=base.crearUnidad(tipo);
 		int spawn=base.getSpawn();
-		//System.out.println(spawn);
-		//arena[5][0]= new Base(1,0);
-		if (spawn==1){arena[spawn][0]=uni;}
-		else if (spawn==18){arena[spawn][1]=uni;}
-		//arena[spawn]=uni;
-		//System.out.println("["+arena[10][0].getTipo()+",");
+		if (base.getOro()>= uni.getCosto()){
+			System.out.println(base.getOro()+" >= "+uni.getCosto());
+			
+			//arena[5][0]= new Base(1,0);
+			if (spawn==1){arena[spawn][0]=uni;}
+			else if (spawn==18){arena[spawn][1]=uni;}
+			//arena[spawn]=uni;
+			//System.out.println("["+arena[10][0].getTipo()+",");
+		}
+		else{System.out.println("no hay  dinerodsfsdfsfsfsdf?????????????????????");}
 		for(int i=0;i<20;i++){
 			System.out.print("["+arena[i][0].getTipo()+",");
 			System.out.print(arena[i][1].getTipo()+"] ");

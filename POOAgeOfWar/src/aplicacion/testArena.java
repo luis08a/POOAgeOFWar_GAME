@@ -11,6 +11,7 @@ public class testArena {
 	public  testArena() {
 		
 	}
+	
 	@Test
 	public void deberiaIniciarLaArena(){
 		Arena r=new Arena();
@@ -24,12 +25,12 @@ public class testArena {
 		//System.out.println(bas2.getDirb()+"dir base en test pepe");
 		r.ponerUnidad(bas2, "@");
 		r.actualizar();
-		
-		r.actualizar();
-		r.actualizar();
-		r.actualizar();
-		r.actualizar();
-		r.actualizar();
+		r.ponerUnidad(bas, "@");		
+		r.actualizar();		
+		r.actualizar();		
+		r.actualizar();		
+		r.actualizar();		
+		r.actualizar();		
 		r.actualizar();
 		r.actualizar();
 		r.actualizar();
@@ -42,14 +43,43 @@ public class testArena {
 		r.actualizar();
 		r.actualizar();
 		*/
-		/*
-		Base bas2=r.getBases(2);
-		System.out.println(bas2.getDirb()+"dir base en test pepe");
-		r.ponerUnidad(bas2, "@");
-		r.actualizar();
-		*/
 		
-	}
+		
+		
+	} 
+	/*
+	@Test
+	public void deberiaPonerEnLaMismaBase(){
+		Arena r=new Arena();
+		Base bas=r.getBases(1);
+		Base bas2=r.getBases(2);	
+		
+		r.ponerUnidad(bas, "@");
+		r.actualizar();
+		r.ponerUnidad(bas, "@");
+		r.actualizar();
+		r.actualizar();
+		r.ponerUnidad(bas, "@");
+		r.actualizar();
+		r.ponerUnidad(bas, "@");
+		r.actualizar();
+		r.ponerUnidad(bas2, "@");
+		
+		r.actualizar();
+		r.actualizar();
+		r.actualizar();
+		r.actualizar();
+		r.actualizar();
+		r.actualizar();
+		r.actualizar();
+		r.actualizar();
+		r.actualizar();
+		r.actualizar();
+		r.actualizar();
+	
+		
+		
+	}*/
 	
 
 }

@@ -1,7 +1,7 @@
 package aplicacion;
 
 public class Base extends Unidad {
-	private int oro=0;
+	private int oro;
 	private int experiecia;
 	private String tipo="#";
 	private int numero;
@@ -54,7 +54,7 @@ public class Base extends Unidad {
 		
 		int dir = this.getDirec();
 		Soldado s=new Melee(dir,spawn);
-		
+		oro-=s.getCosto(); 
 		if (tipo=="@"){
 			s= new Melee(dir,spawn);
 			if (this.getOro()>s.getCosto()){
