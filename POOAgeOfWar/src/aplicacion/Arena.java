@@ -124,6 +124,7 @@ public class Arena {
 			}
 			else if(arena[i][0].getTipo()!= "vacio" && arena[i][1].getTipo()!="vacio"){
 				Unidad elemento=arena[i][0];
+				
 				Unidad elemento2=arena[i][1];
 				System.out.println("patata");
 				elemento.ataque(elemento2);
@@ -136,8 +137,17 @@ public class Arena {
 				int p2= elemento2.getPosx();
 				temp[p2-1][1]=elemento2;
 				System.out.println(elemento2.getVida()+"vida de elemento 2");
-				if (elemento2.estaMuerto()==true){temp[p-1][1]=v;}
-				if (elemento.estaMuerto()==true){temp[p-1][0]=v;}
+				if (elemento2.estaMuerto()==true){
+					Base base= this.getBases(1);
+					base.ganaOro(elemento2.getCosto());
+					
+					temp[p-1][1]=v;System.out.println("boolean True [p-1][1]");
+					}
+				if (elemento.estaMuerto()==true){temp[p-1][0]=v;
+					Base base= this.getBases(1);
+					base.ganaOro(elemento.getCosto());
+					System.out.println(base.getOro()+" oro base 1");
+				}
 				
 				
 			}
