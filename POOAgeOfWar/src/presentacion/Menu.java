@@ -20,6 +20,7 @@ public class Menu extends JDialog{
 		setLocationRelativeTo(null);
 		setLayout(null);
 		setVisible(true);
+		setResizable(false);
 		
 		preparePanelInicioOpciones();
 		preparePanelInicioLogo();

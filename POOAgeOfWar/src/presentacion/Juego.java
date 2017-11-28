@@ -4,17 +4,20 @@ import javax.swing.*;
 import java.awt.event.*;
 
 public class Juego extends JFrame {
+	//Elementos Menú barra
 	private JPanel panelOpciones;
 	private JMenuBar bar;
 	private JMenu menu;
 	private JMenuItem abrir;
 	private JMenuItem guardar;
 	private JMenuItem menuSalir;
-	
+	//Elementos panel opciones
 	private JLabel labelOro;
 	private JLabel labelDesarrollo;
 	private JButton botonSpawn;
 	private JButton botonBack;
+	//Elementos Tablero de Juego
+	private panelGame tablero;
 	
 	public Juego(){
 		prepareElementos();
@@ -22,13 +25,15 @@ public class Juego extends JFrame {
 	}
 	
 	private void prepareElementos(){
-		setSize(1500,1000);
+		setSize(1300,700);
 		setVisible(true);
 		setLocationRelativeTo(null);
 		setLayout(null);
+		setResizable(false);
 		
 		preparePanelOpciones();
 		prepareElementosMenu();
+		prepareTableroJuego();
 		
 	}
 	
@@ -53,9 +58,9 @@ public class Juego extends JFrame {
 		botonSpawn.setBounds(200, 10,80,30);
 		labelOro.setBounds(20, 10, 40, 10);
 		labelDesarrollo.setBounds(20, 20, 120, 10);
-		botonBack.setBounds(520, 0, 70, 20);
+		botonBack.setBounds(xEsquina-70, 0, 70, 20);
 		
-		panelOpciones.setBackground(java.awt.Color.cyan);
+		panelOpciones.setBackground(Color.cyan);
 		
 		add(panelOpciones);
 	}
@@ -72,6 +77,17 @@ public class Juego extends JFrame {
 		menu.add(guardar);
 		menu.add(menuSalir);
 		setJMenuBar(bar);
+	}
+	
+	private void prepareTableroJuego() {
+		tablero = new panelGame();
+		Dimension screen = this.getSize();
+		int xEsquina = (screen.width = getSize().width );
+		int yEsquina = (screen.height = getSize().height ) /4;
+		tablero.setBounds(0, yEsquina, xEsquina, yEsquina*4);
+		tablero.createSprite("name", 30, 10);
+		
+		add(tablero);
 	}
 	
 	private void prepareAcciones(){
