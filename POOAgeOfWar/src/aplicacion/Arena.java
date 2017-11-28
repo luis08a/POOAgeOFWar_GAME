@@ -79,6 +79,7 @@ public class Arena {
 		int cont=0;
 		for (int i=1;i<arena.length-1;i++){
 			//posC == posicion contraria en el vector
+			
 			int pos1=arena[i][0].posLadoContrario();
 			if (arena[i][0].getTipo()!= "vacio" && arena[i][1].getTipo()=="vacio"){
 				Unidad elemento=arena[i][0];
@@ -86,10 +87,20 @@ public class Arena {
 				Unidad elsiguiente=arena[i+siguiente][0];
 				Unidad aliado=arena[i+siguiente][0];
 				 System.out.println(" entra a leer ");
+				 
 				 //System.out.println(elsiguiente.getTipo()+" tipo siguinte"+";actual "+elemento.getTipo());
-				 if (elemento.getTipo()!="vacio"&& elsiguiente.getTipo()=="vacio"){
+				 System.out.println(elemento.getPosx()+"=="+(arena.length-2) + " ?");
+				 if (elemento.getPosx()==arena.length-2){
+					 elemento.ataque(b2);
+					 int p= elemento.getPosx();
+					 temp[p-1][0]=elemento;
+					 System.out.println(b2.getVida()+"vida despues del ataque a base");
+					 if (b2.estaMuerto()==true){
+						System.out.println("gana jugador");System.exit(0);}
+				 }
+				 else if (elemento.getTipo()!="vacio"&& elsiguiente.getTipo()=="vacio"){
 					 ///if (temp[i-1].getTipo()=="vacio"){
-						 System.out.println(temp[i+siguiente][0].getTipo()+" tipo en temp");
+						 //yyyyyySystem.out.println(temp[i+siguiente][0].getTipo()+" tipo en temp");
 						 //System.out.println(elemento.getTipo()+" y cont "+cont);
 						 cont+=1;
 						 System.out.println(elemento.getPosx()+"antes");
@@ -119,7 +130,14 @@ public class Arena {
 				
 				 //System.out.println(siguiente);
 				 //System.out.println(elsiguiente.getTipo()+" tipo siguinte"+";actual "+elemento.getTipo());
-				 if (elemento.getTipo()!="vacio"&& elsiguiente.getTipo()=="vacio"&&aliado.getTipo()=="vacio"){
+				if (elemento.getPosx()==1){
+					 elemento.ataque(b1);
+					 int p= elemento.getPosx();
+					 temp[p-1][0]=elemento;
+					 if (b1.estaMuerto()==true){
+							System.out.println("gana maquina");System.exit(0);}
+				 }
+				else if (elemento.getTipo()!="vacio"&& elsiguiente.getTipo()=="vacio"&&aliado.getTipo()=="vacio"){
 					 ///if (temp[i-1].getTipo()=="vacio"){
 						 System.out.println(temp[i+siguiente][1].getTipo()+" tipo en temp");
 						 //System.out.println(elemento.getTipo()+" y cont "+cont);
