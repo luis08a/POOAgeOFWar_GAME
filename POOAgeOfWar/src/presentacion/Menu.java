@@ -3,7 +3,7 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 
-public class Menu extends JDialog{
+public class Menu extends JDialog implements Runnable{
 	private Fondo panelLogo;
 	private Fondo panelOpciones;
 	private Button jugar;
@@ -31,11 +31,13 @@ public class Menu extends JDialog{
 	
 	private void preparePanelInicioLogo(){
 		panelLogo = new Fondo("/recursos visuales/AgeOfWar logo.jpg");
-		panelLogo.setBackground(java.awt.Color.white);
 		panelLogo.setBounds(0,0,400,100);
 		
 	}
 	
+	public void run() {
+		
+	}
 	private void preparePanelInicioOpciones(){
 		panelOpciones = new Fondo("/recursos visuales/background0.png");
 			
@@ -51,6 +53,7 @@ public class Menu extends JDialog{
 		panelOpciones.add(jugar);
 		panelOpciones.add(salir);
 	}
+	
 	private void prepareAcciones(){
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		
