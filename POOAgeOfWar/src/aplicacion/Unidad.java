@@ -16,12 +16,13 @@ public abstract class Unidad {
 	private boolean isBase;
 	
 	
+	
 	public Unidad(int dir,int Spawn){
 		//System.out.println(direc+"direc en unidad antesA");
 		direc=dir;
 		//System.out.println(direc+"direc en unidad");
 		//System.out.println(posx+" spawn antes");
-		this.setPosx(Spawn);
+		//this.setPosx(Spawn);
 		//posx =Spawn;
 		//System.out.println(posx+" spawn p x");
 		if (dir==1){base=0;poslado=1;posLadoContrario=0;}
@@ -57,19 +58,19 @@ public abstract class Unidad {
 	public void setAncho(int ancho) {
 		this.ancho = ancho;
 	}
-	public int getPosx() {
-		return posx;
-	}
+	//public int getPosx() {
+	//	return posx;
+	//}
 	public int getPosLado(){
 		return poslado;
 	}
 	
-	public void setPosx(int dis) {
+	//public void setPosx(int dis) {
 		//System.out.println(posx+"posxxxx antes "+"direc "+dis);
-		posx =posx + dis;
+		//posx =posx + dis;
 		//System.out.println("despues"+ (posx+dis));
 		//System.out.println(posx+"posxxxx");
-	}
+	//}
 	public int getPosy() {
 		return posy;
 	}
@@ -113,12 +114,12 @@ public abstract class Unidad {
 	}
 	//public void 
 	public int posLadoContrario(){return posLadoContrario;}
-	public void moverse(int distancia){
+	///public void moverse(int distancia){
 		//System.out.println(this.getDirec()+"direc antesd de funcion");
-		this.setPosx(direc);
+		///this.setPosx(direc);
 		
 		
-	}
+	//}
 	public void ataque(Unidad enemigo){
 		
 		enemigo.recibirDano(ataque);

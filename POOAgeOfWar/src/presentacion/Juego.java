@@ -18,17 +18,18 @@ public class Juego extends JFrame {
 	private JButton botonBack;
 	//Elementos Tablero de Juego
 	private panelGame tablero;
-	
+	public static  int alto=700;
+	public static int ancho=1300;
 	public Juego(){
 		prepareElementos();
 		prepareAcciones();
 	}
 	
 	private void prepareElementos(){
-		setSize(1300,700);
+		setSize(ancho,alto);
 		setVisible(true);
 		setLocationRelativeTo(null);
-		setLayout(null);
+		setLayout(new BorderLayout());
 		setResizable(false);
 		
 		preparePanelOpciones();
@@ -62,7 +63,7 @@ public class Juego extends JFrame {
 		
 		panelOpciones.setBackground(Color.cyan);
 		
-		add(panelOpciones);
+		this.add(panelOpciones, BorderLayout.NORTH);
 	}
 	
 	private void prepareElementosMenu() {
@@ -83,9 +84,8 @@ public class Juego extends JFrame {
 		tablero = new panelGame();
 		Dimension screen = this.getSize();
 		int xEsquina = (screen.width = getSize().width );
-		int yEsquina = (screen.height = getSize().height ) /4;
-		tablero.setBounds(0, yEsquina, xEsquina, yEsquina*4);
-		tablero.createSprite("name", 30, 10);
+		int yEsquina = (screen.height = getSize().height) /4;
+		add(panelOpciones, BorderLayout.CENTER);
 		
 		add(tablero);
 	}
@@ -106,7 +106,7 @@ public class Juego extends JFrame {
 		};
 		
 		ActionListener oyenteBotonSpawn = new ActionListener(){
-			public void actionPerformed(ActionEvent e) {JOptionPane.showMessageDialog(null, "En construcción");}
+			public void actionPerformed(ActionEvent e) {tablero.createSprite("name");}
 		};
 		
 		ActionListener oyenteBotonBack = new ActionListener(){
