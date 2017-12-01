@@ -143,5 +143,8 @@ public class Arena {
 		System.out.println();
 		
 	}
+	public void obtSoldad(int pos ){
+		
+	}
 	
 }

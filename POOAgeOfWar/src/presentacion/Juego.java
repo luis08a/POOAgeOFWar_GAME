@@ -1,6 +1,9 @@
 package presentacion;
 import java.awt.*;
 import javax.swing.*;
+
+import aplicacion.Arena;
+
 import java.awt.event.*;
 
 public class Juego extends JFrame {
@@ -81,7 +84,9 @@ public class Juego extends JFrame {
 	}
 	
 	private void prepareTableroJuego() {
+		
 		tablero = new panelGame();
+		
 		Dimension screen = this.getSize();
 		int xEsquina = (screen.width = getSize().width );
 		int yEsquina = (screen.height = getSize().height) /4;
@@ -118,7 +123,9 @@ public class Juego extends JFrame {
 		guardar.addActionListener(oyenteGuardar);
 		botonSpawn.addActionListener(oyenteBotonSpawn);
 		botonBack.addActionListener(oyenteBotonBack);
+		
 	}
+	
 	private void salir(){
 		int choose = JOptionPane.showConfirmDialog(null, "¿ Desea salir ?");
 		if(choose == JOptionPane.YES_OPTION){
