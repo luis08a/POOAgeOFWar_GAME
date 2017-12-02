@@ -7,7 +7,7 @@ import aplicacion.Arena;
 import java.awt.event.*;
 
 public class Juego extends JFrame {
-	//Elementos Menú barra
+	//Elementos Men� barra
 	private JPanel panelOpciones;
 	private JMenuBar bar;
 	private JMenu menu;
@@ -20,23 +20,16 @@ public class Juego extends JFrame {
 	private JButton botonSpawn;
 	private JButton botonBack;
 	//Elementos Tablero de Juego
-	private PanelGame tablero;
-	public static final int ALTO=700;
-	public static final int ANCHO=1300;
-	
-	/*
-	 * Constructor
-	 */
+	private panelGame tablero;
+	public static  int alto=700;
+	public static int ancho=1300;
 	public Juego(){
 		prepareElementos();
 		prepareAcciones();
 	}
 	
-	/*
-	 * Prepara los elementos necesarios para le interfaz. 
-	 */
 	private void prepareElementos(){
-		setSize(ANCHO,ALTO);
+		setSize(ancho,alto);
 		setVisible(true);
 		setLocationRelativeTo(null);
 		setLayout(new BorderLayout());
@@ -48,15 +41,12 @@ public class Juego extends JFrame {
 		
 	}
 	
-	/*
-	 * Prepara los elementos necesarios para el Panel de opciones del jugador
-	 */
 	private void preparePanelOpciones(){
 		panelOpciones = new JPanel();
-		int xEsquina = ANCHO;
-		int yEsquina = ALTO/5;
-		//panelOpciones.setBounds(0, 0, xEsquina, yEsquina);
-		panelOpciones.setSize(xEsquina, yEsquina);
+		Dimension screen = this.getSize();
+		int xEsquina = (screen.width = getSize().width );
+		int yEsquina = (screen.height = getSize().height ) /4;
+		panelOpciones.setBounds(0, 0, xEsquina, yEsquina);
 		panelOpciones.setLayout(null);
 		
 		botonSpawn = new JButton("Unidad");
@@ -79,9 +69,6 @@ public class Juego extends JFrame {
 		this.add(panelOpciones, BorderLayout.NORTH);
 	}
 	
-	/*
-	 * Prepara los elementos necesarios para crear el menú barra con opciones.
-	 */
 	private void prepareElementosMenu() {
 		bar = new JMenuBar();
 		menu = new JMenu("Opciones");
@@ -96,19 +83,18 @@ public class Juego extends JFrame {
 		setJMenuBar(bar);
 	}
 	
-	/*
-	 * Prepara el "tablero" en el cual se animará el juego 
-	 */
 	private void prepareTableroJuego() {
 		
-		tablero = PanelGame.getPanelGame();
+		tablero = new panelGame();
+		
+		Dimension screen = this.getSize();
+		int xEsquina = (screen.width = getSize().width );
+		int yEsquina = (screen.height = getSize().height) /4;
 		add(panelOpciones, BorderLayout.CENTER);
+		
 		add(tablero);
 	}
 	
-	/*
-	 * Prepara los oyentes de cada componente con el cual el usuario puede interactuar
-	 */
 	private void prepareAcciones(){
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
@@ -117,11 +103,11 @@ public class Juego extends JFrame {
 		};
 		
 		ActionListener oyenteAbrir = new ActionListener(){
-			public void actionPerformed(ActionEvent e) {JOptionPane.showMessageDialog(null, "En construcción");}
+			public void actionPerformed(ActionEvent e) {JOptionPane.showMessageDialog(null, "En construcci�n");}
 		};
 		
 		ActionListener oyenteGuardar = new ActionListener(){
-			public void actionPerformed(ActionEvent e) {JOptionPane.showMessageDialog(null, "En construcción");}
+			public void actionPerformed(ActionEvent e) {JOptionPane.showMessageDialog(null, "En construcci�n");}
 		};
 		
 		ActionListener oyenteBotonSpawn = new ActionListener(){
@@ -140,11 +126,8 @@ public class Juego extends JFrame {
 		
 	}
 	
-	/*
-	 * Da fin al programa, terminando con la ejecución de la máquina virtual.
-	 */
 	private void salir(){
-		int choose = JOptionPane.showConfirmDialog(null, "¿ Desea salir ?");
+		int choose = JOptionPane.showConfirmDialog(null, "� Desea salir ?");
 		if(choose == JOptionPane.YES_OPTION){
 			System.exit(0);
 		}
