@@ -1,14 +1,15 @@
 package aplicacion;
 
 public class Arena {
-	private Unidad[][] arena;
+	private static Arena r;
+	private static Unidad[][] arena;
 	private Unidad[][] temp;
 	private Base b1;
 	private Base b2;
 	private Unidad v;
 	
 	
-	public Arena(){
+	private Arena(){
 		 v= new VacioUnidades(0);
 		 //adentro = ad, es lo que permite que dos soldados se enfrenten cuando se encuentran, es el espacio en la arena
 		 Unidad[] ad={v,v};
@@ -47,6 +48,12 @@ public class Arena {
 		System.out.println();
 		//vector temporal para guardar la actualizacion
 		//System.out.println(b1.getDirb()+"b1.getdirt");
+	}
+	public static Arena creeArena(){
+		if (r==null){
+			r=new Arena();
+		}
+		return r;
 	}
 	/*
 	 * esta funcion actualiza el tablero y hace que los soldados se muevan

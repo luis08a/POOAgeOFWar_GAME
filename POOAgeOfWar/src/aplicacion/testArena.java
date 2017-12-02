@@ -14,7 +14,7 @@ public class testArena {
 	
 	@Test
 	public void deberiaIniciarLaArena(){
-		Arena r=new Arena();
+		Arena r=Arena.creeArena();
 		Base bas=r.getBases(1);
 		//System.out.print(bas.getDirb()+"dir base en test");
 		//System.out.println(bas.getSpawn());
