@@ -28,8 +28,7 @@ public class PanelGame extends JPanel{
 		//setSize(whidth,height);
 		Arena r= prepareArena();
 		this.setDoubleBuffered(true);
-		b1=r.getBases(1);
-		b2=r.getBases(2);
+		
 		
 	}
 	
@@ -57,8 +56,9 @@ public class PanelGame extends JPanel{
         Toolkit.getDefaultToolkit().sync();
 	}
 	private Arena prepareArena(){
-		Arena r=new Arena();
-		return r;		
+		Arena r=Arena.creeArena();
+		return r;
+		
 	}
 	
 	public static PanelGame getPanelGame() {
