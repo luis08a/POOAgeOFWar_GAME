@@ -12,36 +12,39 @@ public class PanelGame extends JPanel{
 	
 	public static PanelGame pg = null;
 	private Arena r;
-	private final int height=Juego.ALTO*(3/4);
+	private final int height=Juego.ALTO*(4/5);
 	private final int whidth=Juego.ANCHO;
 	private Sprite[] sprites = new Sprite[20]; 
 	private final Sprite[] bases = new Sprite[2];
 	private Image fondo;
-	private Base b1;
-	private Base b2;
 	
+	/*
+	 * Constructor
+	 */
 	private PanelGame() {
 		setFocusable(true);
-		
 		setBackground(Color.white);
 		setDoubleBuffered(true);
-		//setSize(whidth,height);
-		Arena r= prepareArena();
-		this.setDoubleBuffered(true);
-		
-		
+		setPreferredSize(new Dimension(height,whidth));
+		prepareArena();
 	}
 	
+	/*
+	 * Crea un Sprite (Dibujo) que será recreado en pantalla.
+	 */
 	public void createSprite(String name) {
-		//r.ponerUnidad(base, tipo);
 		Sprite s = new SpriteTest(100,400);
 		sprites[0] = s;
 		repaint();
 	}
 	
+	/*
+	 * (non-Javadoc)
+	 * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
+	 */
 	public void paintComponent(Graphics g) {
 		fondo = new ImageIcon(getClass().getResource("/recursos visuales/bg.png")).getImage();
-		g.drawImage(fondo, 0, 0, getSize().width, getSize().height-400, null);
+		g.drawImage(fondo, 0, 0, getSize().width, getSize().height, null);
 		Image torre1 = new ImageIcon(getClass().getResource("/recursos visuales/tower-drawing/Tower.png")).getImage();
 		g.drawImage(torre1, 0, 350, 80, 120, this);
 		
@@ -55,12 +58,15 @@ public class PanelGame extends JPanel{
         
         Toolkit.getDefaultToolkit().sync();
 	}
-	private Arena prepareArena(){
-		Arena r=Arena.creeArena();
-		return r;
-		
+	
+	
+	private void prepareArena(){
+		r= Arena.creeArena();
 	}
 	
+	/*
+	 * Crea una única instancia de PanelGame.
+	 */
 	public static PanelGame getPanelGame() {
 		if (pg==null) {
 			pg = new PanelGame();
