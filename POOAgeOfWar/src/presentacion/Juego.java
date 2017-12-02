@@ -55,7 +55,6 @@ public class Juego extends JFrame {
 		panelOpciones = new JPanel();
 		int xEsquina = ANCHO;
 		int yEsquina = ALTO/5;
-		//panelOpciones.setBounds(0, 300, xEsquina, yEsquina);
 		panelOpciones.setPreferredSize(new Dimension(xEsquina, yEsquina));
 		panelOpciones.setLayout(null);
 		
@@ -100,7 +99,6 @@ public class Juego extends JFrame {
 	 * Prepara el "tablero" en el cual se animará el juego 
 	 */
 	private void prepareTableroJuego() {
-		
 		tablero = PanelGame.getPanelGame();
 		add(tablero, BorderLayout.CENTER);
 	}
