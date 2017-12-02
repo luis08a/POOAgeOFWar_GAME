@@ -19,7 +19,7 @@ public class PanelGame extends JPanel implements Runnable{
 	private Image fondo;
 	private Thread thread;
 	private Unidad[][] u = new Unidad[20][2];
-	private volatile boolean enEjecución = true;
+	private volatile boolean enEjecucion = true;
 	
 	/*
 	 * Constructor
@@ -34,7 +34,7 @@ public class PanelGame extends JPanel implements Runnable{
 	}
 	
 	/*
-	 * Crea un Sprite (Dibujo) que serÃ¡ recreado en pantalla.
+	 * Crea un Sprite (Dibujo) que serÃƒÂ¡ recreado en pantalla.
 	 */
 	public void createSprite(String name) {
 		///
@@ -71,7 +71,7 @@ public class PanelGame extends JPanel implements Runnable{
 	}
 	
 	/*
-	 * Crea una única instancia de PanelGame.
+	 * Crea una Ãºnica instancia de PanelGame.
 	 */
 	public static PanelGame getPanelGame() {
 		if (pg==null) {
@@ -95,12 +95,22 @@ public class PanelGame extends JPanel implements Runnable{
 	}
 	
 	private void actualizar(){
+		
 		r.actualizar();
 		repaint();
 	}
 	public void  run(){
-		while(enEjecución) {
-			
-		}
+		Base b1=r.getBases(1);
+		Base b2=r.getBases(2);
+		
+		while(enEjecucion) {
+			if (b1.getVida()==0||b2.getVida()==0){
+				enEjecucion=false;
+			}
+			else{
+				try {thread.sleep(1000);actualizar();}
+				catch(InterruptedException ie){}			
+			}
+		}	
 	}
 }
