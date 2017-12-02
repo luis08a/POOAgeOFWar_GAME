@@ -8,7 +8,7 @@ import aplicacion.*;
 
 
 
-public class PanelGame extends JPanel{
+public class PanelGame extends JPanel implements Runnable{
 	
 	public static PanelGame pg = null;
 	private Arena r;
@@ -17,6 +17,7 @@ public class PanelGame extends JPanel{
 	private Sprite[] sprites = new Sprite[20]; 
 	private final Sprite[] bases = new Sprite[2];
 	private Image fondo;
+	private Thread thread;
 	
 	/*
 	 * Constructor
@@ -27,13 +28,20 @@ public class PanelGame extends JPanel{
 		setDoubleBuffered(true);
 		setPreferredSize(new Dimension(height,whidth));
 		prepareArena();
+		
 	}
 	
 	/*
 	 * Crea un Sprite (Dibujo) que será recreado en pantalla.
 	 */
 	public void createSprite(String name) {
-		Sprite s = new SpriteTest(100,400);
+		///
+		Base b1= r.getBases(1);
+		r.ponerUnidad(b1, "@");
+		Unidad[][] u= r.getArena();
+		int p= u[1][0].getPosx();
+		Sprite s = new SpriteTest(p,400);
+		
 		sprites[0] = s;
 		repaint();
 	}
@@ -52,6 +60,7 @@ public class PanelGame extends JPanel{
         Graphics2D g2d = (Graphics2D) g;
         for ( Sprite m : sprites) {
         	if (m!=null) {
+        		
 	            g2d.drawImage(m.getImage(), m.getX(),m.getY(),80,80, this);
         	}
         } 
@@ -62,6 +71,7 @@ public class PanelGame extends JPanel{
 	
 	private void prepareArena(){
 		r= Arena.creeArena();
+		this.iniciar();
 	}
 	
 	/*
@@ -72,5 +82,19 @@ public class PanelGame extends JPanel{
 			pg = new PanelGame();
 		}
 		return pg;
+	}
+	private void iniciar(){
+		thread=new Thread(this,"actualiz");
+		thread.start();
+	}
+	private void actualizar(){
+		r.actualizar();
+		repaint();
+	}
+	public void  run(){
+		
+			
+			
+		
 	}
 }

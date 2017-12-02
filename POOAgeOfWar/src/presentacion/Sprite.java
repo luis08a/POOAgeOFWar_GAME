@@ -23,6 +23,7 @@ public class Sprite {
 	}
 	
 	public int getX() {
+		
 		return xPosition;
 	}
 	

@@ -7,6 +7,7 @@ public abstract class Soldado extends Unidad {
 
 	public Soldado(int dir,int spawn){
 		super(dir,spawn);
+		this.setPosX(100);
 	}
 	public int getRangoAtaque() {
 		return rangoAtaque;
@@ -15,6 +16,7 @@ public abstract class Soldado extends Unidad {
 	public void setRangoAtaque(int rangoAtaque) {
 		this.rangoAtaque = rangoAtaque;
 	}
+	
 	
 	}
 	

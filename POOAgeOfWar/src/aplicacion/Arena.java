@@ -83,6 +83,7 @@ public class Arena {
 					Unidad t=arena[i+1][0];
 					arena[i+1][0]=arena[i][0];
 					arena[i][0]=t;
+					arena[i][0].getPosx();
 				}				
 			}
 			
@@ -119,6 +120,12 @@ public class Arena {
 		}
 		System.out.println();
 		}
+	
+	
+	
+	
+	
+	
 	public Base getBases(int num){
 		Base p=b1;
 		if (num==1){
@@ -128,9 +135,7 @@ public class Arena {
 		return p;
 	}
 	public void ponerUnidad(Base base,String tipo){
-		//System.out.println("instancia de unidad en la arena");
-		//System.out.println(base.getDirb()+"dir base con get dir");
-		
+			
 		Unidad uni=base.crearUnidad(tipo);
 		int spawn=base.getSpawn();
 		if (base.getOro()>= uni.getCosto()){
@@ -142,6 +147,7 @@ public class Arena {
 			//arena[spawn]=uni;
 			//System.out.println("["+arena[10][0].getTipo()+",");
 		}
+		
 		else{System.out.println("no hay  dinerodsfsdfsfsfsdf?????????????????????");}
 		for(int i=0;i<20;i++){
 			System.out.print("["+arena[i][0].getTipo()+",");
@@ -150,8 +156,8 @@ public class Arena {
 		System.out.println();
 		
 	}
-	public void obtSoldad(int pos ){
-		
+	public Unidad[][] getArena( ){
+		return arena;
 	}
 	
 }

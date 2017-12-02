@@ -25,9 +25,12 @@ public abstract class Unidad {
 		//this.setPosx(Spawn);
 		//posx =Spawn;
 		//System.out.println(posx+" spawn p x");
-		if (dir==1){base=0;poslado=1;posLadoContrario=0;}
-		else{base=1;poslado=0;posLadoContrario=1;}
+		if (dir==1){base=0;poslado=1;posLadoContrario=0;posx=0;}
+		else{base=1;poslado=0;posLadoContrario=1;posx=1300-120;}
 	 }
+	public void setPosX(int p){
+		posx=p;
+	}
 	public int getDirec(){
 		return direc;
 	}
@@ -58,9 +61,13 @@ public abstract class Unidad {
 	public void setAncho(int ancho) {
 		this.ancho = ancho;
 	}
-	//public int getPosx() {
-	//	return posx;
-	//}
+	public void mover(){
+		posx=posx+80*direc;
+	}
+	public int getPosx() {
+		
+		return posx;
+	}
 	public int getPosLado(){
 		return poslado;
 	}
