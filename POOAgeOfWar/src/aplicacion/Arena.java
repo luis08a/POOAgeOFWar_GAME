@@ -66,7 +66,8 @@ public class Arena {
 				
 				arena[i][0].ataque(b2);
 				 if (b2.estaMuerto()==true){
-						System.out.println("gana jugador");System.exit(0);}
+						System.out.println("gana jugador");//System.exit(0);}
+			}
 			}
 			
 			else if (i<arena.length-1){
@@ -83,7 +84,7 @@ public class Arena {
 					Unidad t=arena[i+1][0];
 					arena[i+1][0]=arena[i][0];
 					arena[i][0]=t;
-					arena[i][0].getPosx();
+					arena[i][0].mover();
 				}				
 			}
 			
@@ -92,7 +93,8 @@ public class Arena {
 			if (i==1&&arena[i][0].getTipo()!="vacio"){
 				arena[i][1].ataque(b1);
 				 if (b1.estaMuerto()==true){
-						System.out.println("gana maquina");System.exit(0);}
+						System.out.println("gana maquina");//System.exit(0);}
+				 }
 			}
 			else if (i>1){
 				
@@ -109,6 +111,7 @@ public class Arena {
 					final Unidad t=arena[i-1][1];
 					arena[i-1][1]=arena[i][1];
 					arena[i][1]=t;
+					arena[i][1].mover();
 				}				
 			}
 			
