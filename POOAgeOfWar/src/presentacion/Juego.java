@@ -7,7 +7,7 @@ import aplicacion.Arena;
 import java.awt.event.*;
 
 public class Juego extends JFrame {
-	//Elementos MenÃº barra
+	//Elementos Menú barra
 	private JPanel panelOpciones;
 	private JMenuBar bar;
 	private JMenu menu;
@@ -49,7 +49,7 @@ public class Juego extends JFrame {
 	}
 	
 	/*
-	 * Prepara los elementos necesarios para el Panel de opciones del jugador
+	 * Prepara los elementos necesarios para el Panel de opciones del jugador.
 	 */
 	private void preparePanelOpciones(){
 		panelOpciones = new JPanel();
@@ -96,7 +96,7 @@ public class Juego extends JFrame {
 	}
 	
 	/*
-	 * Prepara el "tablero" en el cual se animarÃ¡ el juego 
+	 * Prepara el "tablero" en el cual se animará el juego 
 	 */
 	private void prepareTableroJuego() {
 		tablero = PanelGame.getPanelGame();
@@ -141,7 +141,7 @@ public class Juego extends JFrame {
 	 * Da fin al programa, terminando con la ejecuciÃ³n de la mÃ¡quina virtual.
 	 */
 	private void salir(){
-		int choose = JOptionPane.showConfirmDialog(null, "Â¿ Desea salir ?");
+		int choose = JOptionPane.showConfirmDialog(null, "¿ Desea salir ?");
 		if(choose == JOptionPane.YES_OPTION){
 			System.exit(0);
 		}

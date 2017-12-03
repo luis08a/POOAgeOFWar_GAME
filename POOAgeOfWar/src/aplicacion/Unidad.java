@@ -7,7 +7,7 @@ public abstract class Unidad {
 	private int posx;
 	private int poslado;
 	private int posLadoContrario;
-	private int posy;
+	private final int posy = 400;
 	private int costo;
 	private int defensa;
 	private int base;
@@ -15,8 +15,10 @@ public abstract class Unidad {
 	private String tipo;
 	private boolean isBase;
 	
-	
-	
+	/*
+	 * Constructor
+	 * @param dir, dirección en la cual se movera la unidad.	
+	 */
 	public Unidad(int dir,int Spawn){
 		//System.out.println(direc+"direc en unidad antesA");
 		direc=dir;
@@ -27,10 +29,19 @@ public abstract class Unidad {
 		//System.out.println(posx+" spawn p x");
 		if (dir==1){base=0;poslado=1;posLadoContrario=0;posx=0;}
 		else{base=1;poslado=0;posLadoContrario=1;posx=1300-120;}
-	 }
+	}
+	
+	/*
+	 * Da una posición en el eje x.
+	 * @param p, nueva posición de la unidad.
+	 */
 	public void setPosX(int p){
 		posx=p;
 	}
+	
+	/*
+	 * 
+	 */
 	public int getDirec(){
 		return direc;
 	}
@@ -62,10 +73,9 @@ public abstract class Unidad {
 		this.ancho = ancho;
 	}
 	public void mover(){
-		posx=posx+80*direc;
+		posx=posx+50*direc;
 	}
 	public int getPosx() {
-		
 		return posx;
 	}
 	public int getPosLado(){
@@ -81,9 +91,10 @@ public abstract class Unidad {
 	public int getPosy() {
 		return posy;
 	}
-	public void setPosy(int posy) {
+	/*public void setPosy(int posy) {
 		this.posy =+ posy;
 	}
+	*/
 	public int getCosto() {
 		return costo;
 	}
@@ -128,7 +139,6 @@ public abstract class Unidad {
 		
 	//}
 	public void ataque(Unidad enemigo){
-		
 		enemigo.recibirDano(ataque);
 	}
 	

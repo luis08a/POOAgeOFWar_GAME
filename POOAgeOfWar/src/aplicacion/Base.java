@@ -14,6 +14,10 @@ public class Base extends Unidad {
 	private int i;
 	private  Unidad[] unidadesVivas=new Unidad[20];
 	
+	/*
+	 * Constructor
+	 * @param dir, dierección en la cual se moveran las unidades asociadas a esta base.
+	 */
 	public Base(int dir,int base){
 		super(dir,0);
 		numero =base;

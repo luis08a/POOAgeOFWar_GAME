@@ -12,14 +12,14 @@ public class PanelGame extends JPanel implements Runnable{
 	
 	public static PanelGame pg = null;
 	private Arena r;
-	private final int height=Juego.ALTO*(4/5);
-	private final int whidth=Juego.ANCHO;
+	private final int HEIGHT=Juego.ALTO*(4/5);
+	private final int WHIDTH=Juego.ANCHO;
 	private Sprite[] sprites = new Sprite[20]; 
 	private final Sprite[] bases = new Sprite[2];
 	private Image fondo;
 	private Thread thread;
-	private Unidad[][] u = new Unidad[20][2];
-	private volatile boolean enEjecucion = true;
+	private Unidad[][] u ;
+	private volatile boolean enEjecucion;
 	
 	/*
 	 * Constructor
@@ -28,16 +28,16 @@ public class PanelGame extends JPanel implements Runnable{
 		setFocusable(true);
 		setBackground(Color.white);
 		setDoubleBuffered(true);
-		setPreferredSize(new Dimension(height,whidth));
+		setPreferredSize(new Dimension(HEIGHT,WHIDTH));
 		prepareArena();
 		
+		iniciar();
 	}
 	
 	/*
-	 * Crea un Sprite (Dibujo) que serÃƒÆ’Ã‚Â¡ recreado en pantalla.
+	 * Crea un Sprite (Dibujo) que será recreado en pantalla.
 	 */
 	public void createSprite(String name) {
-		///
 		Base b1= r.getBases(1);
 		r.ponerUnidad(b1, "@");
 		
@@ -49,8 +49,10 @@ public class PanelGame extends JPanel implements Runnable{
 	 * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
 	 */
 	public void paintComponent(Graphics g) {
+		
 		fondo = new ImageIcon(getClass().getResource("/recursos visuales/bg.png")).getImage();
 		g.drawImage(fondo, 0, 0, getSize().width, getSize().height, null);
+		
 		Image torre1 = new ImageIcon(getClass().getResource("/recursos visuales/tower-drawing/Tower.png")).getImage();
 		g.drawImage(torre1, 0, 350, 80, 120, this);
 		
@@ -71,7 +73,7 @@ public class PanelGame extends JPanel implements Runnable{
 	}
 	
 	/*
-	 * Crea una ÃƒÂºnica instancia de PanelGame.
+	 * Crea una única instancia de PanelGame.
 	 */
 	public static PanelGame getPanelGame() {
 		if (pg==null) {
@@ -80,37 +82,70 @@ public class PanelGame extends JPanel implements Runnable{
 		return pg;
 	}
 	
+	/*
+	 * 
+	 */
 	private void prepareArena(){
 		r= Arena.creeArena();
 		u = r.getArena();
 		iniciar();
 	}
+	
+	/*
+	 * Inicia el hilo de actualización de la pantalla
+	 */
 	private void iniciar(){
+		enEjecucion =true;
+		
 		thread=new Thread(this,"actualiz");
 		thread.start();
 	}
 	
+	/*
+	 * Detiene el hilo de actualización
+	 */
 	private void parar() {
-		
+		enEjecucion = false;
 	}
 	
+	/*
+	 * Actualiza la pantalla y la arena.
+	 */
 	private void actualizar(){
-		
 		r.actualizar();
 		repaint();
 	}
+	
+	/*
+	 * (non-Javadoc)
+	 * @see java.lang.Runnable#run()
+	 */
 	public void  run(){
-		Base b1=r.getBases(1);
-		Base b2=r.getBases(2);
+		//final int NS_POR_SEGUNDO = 100000000;
+		//final byte APS  = 1;
+		//final double NS_POR_ACTUALIZACION = NS_POR_SEGUNDO / APS;
 		
+		//long  referencia = System.nanoTime();
+		
+		//long tiempoTranscurrido;
+		//long delta = 0;
 		while(enEjecucion) {
-			if (b1.getVida()==0||b2.getVida()==0){
-				enEjecucion=false;
+			//long inicioLoop = System.nanoTime();
+			
+			//tiempoTranscurrido = inicioLoop * referencia;
+			//referencia = inicioLoop;
+			
+			//delta += tiempoTranscurrido / NS_POR_ACTUALIZACION;
+			//while(delta >=1) {
+				//actualizar();
+				//delta--;
+			//}
+			try {
+				Thread.sleep(1000);
+				actualizar();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
 			}
-			else{
-				try {thread.sleep(1000);actualizar();}
-				catch(InterruptedException ie){}			
-			}
-		}	
+		}
 	}
 }
