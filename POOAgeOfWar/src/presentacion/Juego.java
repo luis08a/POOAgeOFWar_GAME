@@ -196,9 +196,7 @@ public class Juego extends JFrame {
 			public void actionPerformed(ActionEvent e) {JOptionPane.showMessageDialog(null, "En construcción");}
 		};
 		
-		ActionListener oyenteBotonSpawn = new ActionListener(){
-			public void actionPerformed(ActionEvent e) {tablero.createSprite("name");}
-		};
+		
 		
 		ActionListener oyenteBotonBack = new ActionListener(){
 			public void actionPerformed(ActionEvent e) {tablero.parar();POOAgeOfWarGUI.cargarMenu();}
@@ -214,7 +212,7 @@ public class Juego extends JFrame {
 	private void prepareAccionesJ1() {
 		
 		ActionListener oyenteBotonA = new ActionListener(){
-			public void actionPerformed(ActionEvent e) {tablero.createSprite("name");}
+			public void actionPerformed(ActionEvent e) {tablero.createSprite("name",1);}
 		};
 		botonA.addActionListener(oyenteBotonA);
 		
@@ -237,7 +235,7 @@ public class Juego extends JFrame {
 private void prepareAccionesJ2() {
 		
 		ActionListener oyenteBotonJ = new ActionListener(){
-			public void actionPerformed(ActionEvent e) {JOptionPane.showMessageDialog(null, "En construcción");}
+			public void actionPerformed(ActionEvent e) {tablero.createSprite("name",2);}
 		};
 		botonJ.addActionListener(oyenteBotonJ);
 		

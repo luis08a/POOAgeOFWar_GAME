@@ -2,6 +2,8 @@ package presentacion;
 
 import java.awt.*;
 import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
+import java.awt.image.BufferedImage;
 
 import javax.swing.*;
 
@@ -17,6 +19,7 @@ public class PanelGame extends JPanel implements Runnable{
 	private final Sprite[] bases = new Sprite[2];
 	private Image fondo = new ImageIcon(getClass().getResource("/recursos visuales/1.png")).getImage();;
 	private Thread thread;
+	private Thread pin;
 	private Unidad[][] u ;
 	private volatile boolean enEjecucion;
 	private boolean JCJ;
@@ -39,10 +42,12 @@ public class PanelGame extends JPanel implements Runnable{
 	/*
 	 * Crea un Sprite (Dibujo) que será recreado en pantalla.
 	 */
-	public void createSprite(String name) {
-		Base b1= r.getBase(1);
+	public void createSprite(String name,int num) {
+		Base b= r.getBase(num);
+		
+		
 		try {
-			r.ponerUnidad(b1, "@");
+			r.ponerUnidad(b, "@");
 		} catch (PAOWException e) {
 			
 			//e.printStackTrace();
@@ -77,6 +82,7 @@ public class PanelGame extends JPanel implements Runnable{
         	
         	if (u[i][1]!=null ) {
         		Sprite n = new SpriteTest(u[i][1].getPosx(),u[i][1].getPosy()); 
+        		
 	            g2d.drawImage(n.getImage(), n.getX(),n.getY(),80,80, this);
         	}
         	
@@ -113,9 +119,26 @@ public class PanelGame extends JPanel implements Runnable{
 		enEjecucion =true;
 		
 		thread=new Thread(this,"actualiz");
+		
 		thread.start();
+		
+		
 	}
-	
+	/*
+	 * (non-Javadoc)
+	 * @see java.lang.Runnable#run()
+	 */
+	public void  run(){		
+		while(enEjecucion) {			
+			try {				
+				Thread.sleep(1000);
+				
+				actualizar();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 	/*
 	 * Detiene el hilo de actualización
 	 */
@@ -131,42 +154,12 @@ public class PanelGame extends JPanel implements Runnable{
 	/*
 	 * Actualiza la pantalla y la arena.
 	 */
-	private void actualizar(){
+	private void actualizar(){		
 		r.actualizar();
 		repaint();
 		//r.enemyIAIngenuo();
 	}
 	
-	/*
-	 * (non-Javadoc)
-	 * @see java.lang.Runnable#run()
-	 */
-	public void  run(){
-		//final int NS_POR_SEGUNDO = 100000000;
-		//final byte APS  = 1;
-		//final double NS_POR_ACTUALIZACION = NS_POR_SEGUNDO / APS;
-		
-		//long  referencia = System.nanoTime();
-		
-		//long tiempoTranscurrido;
-		//long delta = 0;
-		while(enEjecucion) {
-			//long inicioLoop = System.nanoTime();
-			
-			//tiempoTranscurrido = inicioLoop * referencia;
-			//referencia = inicioLoop;
-			
-			//delta += tiempoTranscurrido / NS_POR_ACTUALIZACION;
-			//while(delta >=1) {
-				//actualizar();
-				//delta--;
-			//}
-			try {
-				Thread.sleep(1000);
-				actualizar();
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
-	}
+	
+	
 }
