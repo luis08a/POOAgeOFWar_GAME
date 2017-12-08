@@ -17,16 +17,15 @@ public abstract class Unidad {
 	
 	/*
 	 * Constructor
-	 * @param dir, dirección en la cual se movera la unidad.	
+	 * @param dir: dirección en la cual se movera la unidad. spawn: psición inicial de cada unidad en la arena.
 	 */
-	public Unidad(int dir,int Spawn){
-		//System.out.println(direc+"direc en unidad antesA");
+	public Unidad(int dir,int spawn){
+		
 		direc=dir;
-		//System.out.println(direc+"direc en unidad");
-		//System.out.println(posx+" spawn antes");
+		
 		//this.setPosx(Spawn);
 		//posx =Spawn;
-		//System.out.println(posx+" spawn p x");
+		
 		if (dir==1){base=0;poslado=1;posLadoContrario=0;posx=0;}
 		else{base=1;poslado=0;posLadoContrario=1;posx=1300-120;}
 	}
@@ -73,7 +72,7 @@ public abstract class Unidad {
 		this.ancho = ancho;
 	}
 	public void mover(){
-		posx=posx+50*direc;
+		posx=posx+60*direc;
 	}
 	public int getPosx() {
 		return posx;

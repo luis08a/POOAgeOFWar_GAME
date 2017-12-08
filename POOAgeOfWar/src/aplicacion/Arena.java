@@ -22,9 +22,11 @@ public class Arena {
 		for(int i=0; i<20;i++) {
 			if (i==1)arena[i]=b1Ad;
 			if(i==19)arena[i]=b2Ad;
-			for (int j=0; j<2; j++)
-				arena[i][j]=null;
-			
+			else {
+				for (int j=0; j<2; j++) {
+					arena[i][j]=null;
+				}
+			}
 		}
 	}
 	
@@ -50,7 +52,7 @@ public class Arena {
 				if(arena[i][1]!=null){
 					arena[i][0].ataque(arena[i][1]);
 					if (arena[i][1].estaMuerto()==true){
-						Base base= this.getBases(1);
+						Base base= this.getBase(1);
 						base.ganaOro(arena[i][1].getCosto());
 						
 						arena[i][1]=v;System.out.println("boolean True [p-1][1]");
@@ -80,11 +82,11 @@ public class Arena {
 				if(arena[i][0]!=null){
 					arena[i][1].ataque(arena[i][0]);
 					if (arena[i][0].estaMuerto()==true){
-						Base base= this.getBases(2);
+						Base base= this.getBase(2);
 						base.ganaOro(arena[i][0].getCosto());
 						System.out.println(base.getOro()+" oro base 2");
 						arena[i][0]=v;System.out.println("boolean True jugador2");
-				}
+					}
 				}
 				else if(arena[i-1][1]==null){
 					Unidad t=null;
@@ -105,14 +107,13 @@ public class Arena {
 	
 	/*
 	 * @param Número de la base. Sólo hay dos en la arena.
+	 * 1: base izquierda. 2: base derecha.
 	 * @return Un elemento de tipo Base.	
 	 */
-	public Base getBases(int num){
-		Base p=b1;
-		if (num==1){
-			 p=b1;
-		}
-		else if (num==2){p=b2;}
+	public Base getBase(int num){
+		Base p = b1;
+		if (num==1){ p=b1;}
+		else if (num==2){ p=b2; }
 		return p;
 	}
 	
@@ -120,7 +121,7 @@ public class Arena {
 	 * Agrega una unidad a la arena;
 	 * Más especificamente al arreglo de unidades que contiene la información del estado de la arena.
 	 */
-	public void ponerUnidad(Base base,String tipo){
+	public void ponerUnidad(Base base,String tipo) throws PAOWException{
 			
 		Unidad uni=base.crearUnidad(tipo);
 		int spawn=base.getSpawn();
@@ -132,8 +133,15 @@ public class Arena {
 			else if (spawn==18){arena[spawn][1]=uni;}
 		}
 		
-		else{System.out.println("no hay  dinerodsfsdfsfsfsdf?????????????????????");}
+		else{
+			throw new PAOWException("no hay  dinerodsfsdfsfsfsdf?????????????????????");}
 		
+	}
+	
+	public void enemyIAIngenuo() {
+		Ingenuo i = Ingenuo.getIA();
+		//i.start(this);
+		i.crearUnidad(this);
 	}
 	
 	/*

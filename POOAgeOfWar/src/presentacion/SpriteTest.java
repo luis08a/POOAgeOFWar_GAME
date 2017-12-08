@@ -7,7 +7,7 @@ public class SpriteTest extends Sprite{
 	public SpriteTest(int x, int y){
 		
 		super(x,y);
-		loadImage("/recursos visuales/EnemyGuy/_02/01-Idle/__Bandit02_Idle_000.png");
+		loadImage("/recursos visuales/walk_1.png");
 		imagen = getImage();
 		
 	}

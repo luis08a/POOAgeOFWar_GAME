@@ -12,6 +12,7 @@ public class Menu extends JDialog implements Runnable{
 	public Menu(){
 		prepareElementos();
 		prepareAcciones();
+		setVisible(true);
 	}
 	
 	private void prepareElementos(){
@@ -19,7 +20,7 @@ public class Menu extends JDialog implements Runnable{
 		setSize(400, 400);
 		setLocationRelativeTo(null);
 		setLayout(null);
-		setVisible(true);
+		
 		setResizable(false);
 		
 		preparePanelInicioOpciones();
@@ -59,7 +60,7 @@ public class Menu extends JDialog implements Runnable{
 		
 		ActionListener oyenteBotonJugar = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				POOAgeOfWarGUI.cargarTablero();
+				POOAgeOfWarGUI.cargarPJ();
 			}
 		};
 		

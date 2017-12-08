@@ -15,17 +15,29 @@ public class testArena {
 	@Test
 	public void deberiaIniciarLaArena(){
 		Arena r=Arena.creeArena();
-		Base bas=r.getBases(1);
+		Base bas=r.getBase(1);
 		//System.out.print(bas.getDirb()+"dir base en test");
 		//System.out.println(bas.getSpawn());
-		r.ponerUnidad(bas, "@");
+		try {
+			r.ponerUnidad(bas, "@");
+		} catch (PAOWException e) {
+			
+		}
 		r.actualizar();
 		
-		Base bas2=r.getBases(2);
+		Base bas2=r.getBase(2);
 		//System.out.println(bas2.getDirb()+"dir base en test pepe");
-		r.ponerUnidad(bas2, "@");
+		try {
+			r.ponerUnidad(bas2, "@");
+		} catch (PAOWException e) {
+			
+		}
 		r.actualizar();
-		r.ponerUnidad(bas, "@");
+		try {
+			r.ponerUnidad(bas, "@");
+		} catch (PAOWException e) {
+			
+		}
 		
 		r.actualizar();		
 		r.actualizar();		

@@ -2,6 +2,10 @@ package aplicacion;
 
 public class Melee extends Soldado {
 	 
+	/*
+	 * Constructor
+	 * @param dir: dirección, referente a la arena, en la cual se moverá. spawn: base 
+	 */
 	public Melee(int dir,int spawn){
 		
 		super(dir,spawn);

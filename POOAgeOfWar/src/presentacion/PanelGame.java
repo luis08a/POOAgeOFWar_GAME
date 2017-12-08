@@ -1,25 +1,26 @@
 package presentacion;
 
 import java.awt.*;
+import java.awt.geom.AffineTransform;
+
 import javax.swing.*;
 
-import aplicacion.Arena;
 import aplicacion.*;
-
-
 
 public class PanelGame extends JPanel implements Runnable{
 	
 	public static PanelGame pg = null;
 	private Arena r;
-	private final int HEIGHT=Juego.ALTO*(4/5);
-	private final int WHIDTH=Juego.ANCHO;
+	private final int HEIGHT=Juego.ALTO*4/5;
+	private final int WIDTH=Juego.ANCHO;
 	private Sprite[] sprites = new Sprite[20]; 
 	private final Sprite[] bases = new Sprite[2];
-	private Image fondo;
+	private Image fondo = new ImageIcon(getClass().getResource("/recursos visuales/1.png")).getImage();;
 	private Thread thread;
 	private Unidad[][] u ;
 	private volatile boolean enEjecucion;
+	private boolean JCJ;
+	
 	
 	/*
 	 * Constructor
@@ -28,7 +29,8 @@ public class PanelGame extends JPanel implements Runnable{
 		setFocusable(true);
 		setBackground(Color.white);
 		setDoubleBuffered(true);
-		setPreferredSize(new Dimension(HEIGHT,WHIDTH));
+		setPreferredSize(new Dimension(WIDTH,HEIGHT));
+		
 		prepareArena();
 		
 		iniciar();
@@ -38,8 +40,13 @@ public class PanelGame extends JPanel implements Runnable{
 	 * Crea un Sprite (Dibujo) que será recreado en pantalla.
 	 */
 	public void createSprite(String name) {
-		Base b1= r.getBases(1);
-		r.ponerUnidad(b1, "@");
+		Base b1= r.getBase(1);
+		try {
+			r.ponerUnidad(b1, "@");
+		} catch (PAOWException e) {
+			
+			//e.printStackTrace();
+		}
 		
 		repaint();
 	}
@@ -49,33 +56,40 @@ public class PanelGame extends JPanel implements Runnable{
 	 * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
 	 */
 	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
 		
-		fondo = new ImageIcon(getClass().getResource("/recursos visuales/bg.png")).getImage();
 		g.drawImage(fondo, 0, 0, getSize().width, getSize().height, null);
 		
 		Image torre1 = new ImageIcon(getClass().getResource("/recursos visuales/tower-drawing/Tower.png")).getImage();
 		g.drawImage(torre1, 0, 350, 80, 120, this);
 		
+		Image torre2 = new ImageIcon(getClass().getResource("/recursos visuales/tower-drawing/Tower.png")).getImage();
+		g.drawImage(torre2, WIDTH - 80, 350, 80, 120, null);
+		
 		//Crear unidad
         Graphics2D g2d = (Graphics2D) g;
         for (int i= 1; i< u.length -1; i++ ) {
-        	if (u[i][0]!=null && u[i][0].getTipo().equals("vacio")==false ) {
+        	
+        	if (u[i][0]!=null ) {
         		Sprite m = new SpriteTest(u[i][0].getPosx(),u[i][0].getPosy()); 
 	            g2d.drawImage(m.getImage(), m.getX(),m.getY(),80,80, this);
         	}
-        	if (u[i][1]!=null && u[i][1].getTipo().equals("vacio")==false) {
-        		Sprite n = new SpriteTest(u[i][0].getPosx(),u[i][0].getPosy()); 
+        	
+        	if (u[i][1]!=null ) {
+        		Sprite n = new SpriteTest(u[i][1].getPosx(),u[i][1].getPosy()); 
 	            g2d.drawImage(n.getImage(), n.getX(),n.getY(),80,80, this);
         	}
+        	
         } 
         
         Toolkit.getDefaultToolkit().sync();
+        
 	}
 	
 	/*
 	 * Crea una única instancia de PanelGame.
 	 */
-	public static PanelGame getPanelGame() {
+	public static PanelGame getPanelGame(boolean jcj) {
 		if (pg==null) {
 			pg = new PanelGame();
 		}
@@ -83,11 +97,12 @@ public class PanelGame extends JPanel implements Runnable{
 	}
 	
 	/*
-	 * 
+	 * Crea una instancia de la clase Arena, inicialmente vacia.
 	 */
 	private void prepareArena(){
 		r= Arena.creeArena();
 		u = r.getArena();
+		//r.enemyIAIngenuo();
 		iniciar();
 	}
 	
@@ -104,8 +119,13 @@ public class PanelGame extends JPanel implements Runnable{
 	/*
 	 * Detiene el hilo de actualización
 	 */
-	private void parar() {
+	public void parar() {
 		enEjecucion = false;
+		try {
+			thread.join();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	/*
@@ -114,6 +134,7 @@ public class PanelGame extends JPanel implements Runnable{
 	private void actualizar(){
 		r.actualizar();
 		repaint();
+		//r.enemyIAIngenuo();
 	}
 	
 	/*
