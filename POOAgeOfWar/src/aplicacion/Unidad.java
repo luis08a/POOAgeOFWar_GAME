@@ -17,7 +17,7 @@ public abstract class Unidad {
 	
 	/*
 	 * Constructor
-	 * @param dir: dirección en la cual se movera la unidad. spawn: psición inicial de cada unidad en la arena.
+	 * @param dir: direcciÃ³n en la cual se movera la unidad. spawn: psiciÃ³n inicial de cada unidad en la arena.
 	 */
 	public Unidad(int dir,int spawn){
 		
@@ -27,16 +27,10 @@ public abstract class Unidad {
 		//posx =Spawn;
 		
 		if (dir==1){base=0;poslado=1;posLadoContrario=0;posx=0;}
-		else{base=1;poslado=0;posLadoContrario=1;posx=1300-120;}
+		else{base=1;poslado=0;posLadoContrario=1;posx=1200;}
 	}
 	
-	/*
-	 * Da una posición en el eje x.
-	 * @param p, nueva posición de la unidad.
-	 */
-	public void setPosX(int p){
-		posx=p;
-	}
+	
 	
 	/*
 	 * 
