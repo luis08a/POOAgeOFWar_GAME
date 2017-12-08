@@ -116,7 +116,9 @@ public class Arena {
 		else if (num==2){ p=b2; }
 		return p;
 	}
-	
+	public void aumentarEdad(Base base){
+		base.aumentarEra();
+	}
 	/*
 	 * Agrega una unidad a la arena;
 	 * Más especificamente al arreglo de unidades que contiene la información del estado de la arena.
@@ -127,7 +129,7 @@ public class Arena {
 		int spawn=base.getSpawn();
 		if (base.getOro()>= uni.getCosto()){
 			System.out.println(base.getOro()+" >= "+uni.getCosto());
-			
+			base.compraUnidad(uni);
 			
 			if (spawn==1){arena[spawn][0]=uni;}
 			else if (spawn==18){arena[spawn][1]=uni;}

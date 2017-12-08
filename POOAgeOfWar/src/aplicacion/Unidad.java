@@ -13,11 +13,12 @@ public abstract class Unidad {
 	private int base;
 	private int direc;
 	private String tipo;
+	private int devuelve;
 	private boolean isBase;
 	
 	/*
 	 * Constructor
-	 * @param dir: direcciÃ³n en la cual se movera la unidad. spawn: psiciÃ³n inicial de cada unidad en la arena.
+	 * @param dir: dirección en la cual se movera la unidad. spawn: psición inicial de cada unidad en la arena.
 	 */
 	public Unidad(int dir,int spawn){
 		
@@ -112,6 +113,8 @@ public abstract class Unidad {
 	public String getTipo(){
 		return tipo;
 	}
+	public void setDevuelve(int d){devuelve=d; }
+	public int getDevuelve(){return devuelve; }
 	public boolean estaMuerto(){
 		boolean r=false;
 		System.out.println(vida+" en esta muerto?");
@@ -134,6 +137,7 @@ public abstract class Unidad {
 	public void ataque(Unidad enemigo){
 		enemigo.recibirDano(ataque);
 	}
+	
 	
 }
 

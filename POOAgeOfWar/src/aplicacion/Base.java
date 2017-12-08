@@ -57,7 +57,12 @@ public class Base extends Unidad {
 	public int getOro(){
 		return oro;
 	}
-	
+	public void compraUnidad(Unidad s){
+		oro-=s.getCosto();
+	}
+	public void aumentarEra(){
+		era+=1;
+	}
 	public  Unidad crearUnidad(String tipo){
 		
 		int dir = this.getDirec();
@@ -65,13 +70,14 @@ public class Base extends Unidad {
 		
 		if (tipo=="@"){
 			s= new Melee(dir,spawn);
-			
-			oro-=s.getCosto(); 
+			e.revisarEra(era, s);
+			//oro-=s.getCosto(); 
 		}
 		if (tipo=="#"){
 			
 			s= new Tanque(dir,spawn);
-			oro-=s.getCosto(); 
+			e.revisarEra(era, s);
+			//oro-=s.getCosto(); 
 			
 		}
 		

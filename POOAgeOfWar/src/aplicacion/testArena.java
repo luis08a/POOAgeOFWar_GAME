@@ -40,7 +40,17 @@ public class testArena {
 		}
 		
 		r.actualizar();		
+		try {
+			r.ponerUnidad(bas2, "@");
+		} catch (PAOWException e) {
+			
+		}
 		r.actualizar();		
+		try {
+			r.ponerUnidad(bas2, "#");
+		} catch (PAOWException e) {
+			
+		}
 		r.actualizar();		
 		r.actualizar();		
 		r.actualizar();		
