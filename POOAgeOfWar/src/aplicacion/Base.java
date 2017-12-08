@@ -9,10 +9,11 @@ public class Base extends Unidad {
 	//si la base es la numero 1 la direccion es
 	//hacia la derecha, si no, la direccion es
 	//hacia la izquierda(multiplicando -1)
-	private   int dir;
+	
 	private  int spawn;
-	private int i;
-	private  Unidad[] unidadesVivas=new Unidad[20];
+	private int era;
+	private Era e;
+	
 	
 	/*
 	 * Constructor
@@ -21,6 +22,8 @@ public class Base extends Unidad {
 	public Base(int dir,int base){
 		super(dir,0);
 		numero =base;
+		era=1;
+		e = new Era();
 		//direccion a la derecha
 		//System.out.println("base antes de la condicion "+base);
 		//spawn pos grande 0 en 1
@@ -59,12 +62,19 @@ public class Base extends Unidad {
 		
 		int dir = this.getDirec();
 		Soldado s=new Melee(dir,spawn);
-		oro-=s.getCosto(); 
+		
 		if (tipo=="@"){
 			s= new Melee(dir,spawn);
-			if (this.getOro()>s.getCosto()){
-			unidadesVivas[unidadesVivas.length -1]=s;}
+			
+			oro-=s.getCosto(); 
 		}
+		if (tipo=="#"){
+			
+			s= new Tanque(dir,spawn);
+			oro-=s.getCosto(); 
+			
+		}
+		
 		
 		return s;
 		
