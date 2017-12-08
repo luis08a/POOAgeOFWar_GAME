@@ -92,14 +92,6 @@ public class PanelGame extends JPanel implements Runnable{
         
 	}
 	
-	public BufferedImage flipHorizontal(BufferedImage src){
-	     AffineTransform tx=AffineTransform.getScaleInstance(1.0,-1.0);  //scaling
-	     tx.translate(0,-src.getHeight());  //translating
-	     AffineTransformOp tr=new AffineTransformOp(tx,null);  //transforming
-	     
-	     return tr.filter(src, null);  //filtering
-	    }
-	
 	/*
 	 * Crea una única instancia de PanelGame.
 	 */
