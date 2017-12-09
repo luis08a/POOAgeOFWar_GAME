@@ -1,5 +1,6 @@
 package presentacion;
 import java.awt.*;
+import java.awt.image.*;
 import javax.swing.*;
 
 public class Sprite {
@@ -31,11 +32,6 @@ public class Sprite {
 		return yPosition;
 	}
 	
-	public void move() {}
-	
-	/*
-	*
-	*/
 	public static BufferedImage toBufferedImage(Image img){
 	    BufferedImage bimage = new BufferedImage(img.getWidth(null), img.getHeight(null), BufferedImage.TYPE_INT_ARGB);
 	    Graphics2D bGr = bimage.createGraphics();

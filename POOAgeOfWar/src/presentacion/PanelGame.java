@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 import javax.swing.*;
 
@@ -15,12 +16,12 @@ public class PanelGame extends JPanel implements Runnable{
 	private Arena r;
 	private final int HEIGHT=Juego.ALTO*4/5;
 	private final int WIDTH=Juego.ANCHO;
-	private Image fondo = new ImageIcon(getClass().getResource("/recursos visuales/1.png")).getImage();;
+	private Image fondo = new ImageIcon(getClass().getResource("/recursos visuales/1.png")).getImage();
+	private ArrayList<Sprite> s = new ArrayList<Sprite>(20);
 	private Thread thread;
 	private Unidad[][] u ;
 	private volatile boolean enEjecucion;
 	private boolean JCJ;
-	
 	
 	/*
 	 * Constructor
@@ -44,9 +45,14 @@ public class PanelGame extends JPanel implements Runnable{
 		try {
 			r.ponerUnidad(b, "@");
 		} catch (PAOWException e) {
-			//e.printStackTrace();
+			e.printStackTrace();
 		}
 		repaint();
+	}
+	
+	public void mejora(int num) {
+		Base b = r.getBase(num);
+		r.aumentarEdad(b);
 	}
 	
 	/*
@@ -69,12 +75,14 @@ public class PanelGame extends JPanel implements Runnable{
         for (int i= 1; i< u.length -1; i++ ) {
         	
         	if (u[i][0]!=null ) {
-        		Sprite m = new SpriteTest(u[i][0].getPosx(),u[i][0].getPosy()); 
+        		int e = u[i][0].getEra();
+        		Sprite m = new SpriteTest(u[i][0].getPosx(),u[i][0].getPosy(),e); 
 	            g2d.drawImage(m.getImage(), m.getX(),m.getY(),80,80, this);
         	}
         	
         	if (u[i][1]!=null ) {
-        		Sprite n = new SpriteTest(u[i][1].getPosx(),u[i][1].getPosy());
+        		int e = u[i][1].getEra();
+        		Sprite n = new SpriteTest(u[i][1].getPosx(),u[i][1].getPosy(),e);
         		Image im = n.getImage();
         		
         		AffineTransform tx = AffineTransform.getScaleInstance(-1, 1);
@@ -93,7 +101,7 @@ public class PanelGame extends JPanel implements Runnable{
 	}
 	
 	/*
-	 * Crea una Ãºnica instancia de PanelGame.
+	 * Crea una única instancia de PanelGame.
 	 */
 	public static PanelGame getPanelGame(boolean jcj) {
 		if (pg==null) {
@@ -113,7 +121,7 @@ public class PanelGame extends JPanel implements Runnable{
 	}
 	
 	/*
-	 * Inicia el hilo de actualizaciÃ³n de la pantalla
+	 * Inicia el hilo de actualización de la pantalla
 	 */
 	private void iniciar(){
 		enEjecucion =true;
@@ -123,7 +131,7 @@ public class PanelGame extends JPanel implements Runnable{
 	}
 	
 	/*
-	 * Detiene el hilo de actualizaciÃ³n
+	 * Detiene el hilo de actualización
 	 */
 	public void parar() {
 		try {

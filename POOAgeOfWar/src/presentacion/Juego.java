@@ -227,7 +227,7 @@ public class Juego extends JFrame {
 		botonD.addActionListener(oyenteBotonD);
 		
 		ActionListener oyenteBotonEvolve1 = new ActionListener(){
-			public void actionPerformed(ActionEvent e) {JOptionPane.showMessageDialog(null, "En construcción");}
+			public void actionPerformed(ActionEvent e) {tablero.mejora(1);}
 		};
 		botonEvolve1.addActionListener(oyenteBotonEvolve1);
 	}
@@ -250,7 +250,7 @@ private void prepareAccionesJ2() {
 		botonL.addActionListener(oyenteBotonL);
 		
 		ActionListener oyenteBotonEvolve2 = new ActionListener(){
-			public void actionPerformed(ActionEvent e) {JOptionPane.showMessageDialog(null, "En construcción");}
+			public void actionPerformed(ActionEvent e) {tablero.mejora(2);}
 		};
 		botonEvolve2.addActionListener(oyenteBotonEvolve2);
 		

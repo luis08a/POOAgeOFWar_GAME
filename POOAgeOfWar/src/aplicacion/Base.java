@@ -24,15 +24,8 @@ public class Base extends Unidad {
 		numero =base;
 		era=1;
 		e = new Era();
-		//direccion a la derecha
-		//System.out.println("base antes de la condicion "+base);
-		//spawn pos grande 0 en 1
 		if (base==0){spawn=1;}
-		
-		//direccion a la izquierda
-		//spawn pos grande 19 pos 0
 		else if (base==1) {spawn=18;}
-		this.setIsBase(true);
 		oro=100;
 		this.setVida(200);
 		System.out.println(dir+"dir base instanciada, spawn "+spawn);
@@ -63,10 +56,15 @@ public class Base extends Unidad {
 	public void aumentarEra(){
 		era+=1;
 	}
+	
+	public int getEra() {
+		return era;
+	}
+	
 	public  Unidad crearUnidad(String tipo){
 		
 		int dir = this.getDirec();
-		Soldado s=new Melee(dir,spawn);
+		Soldado s = new Melee(dir,spawn);
 		
 		if (tipo=="@"){
 			s= new Melee(dir,spawn);
@@ -77,11 +75,9 @@ public class Base extends Unidad {
 			
 			s= new Tanque(dir,spawn);
 			e.revisarEra(era, s);
-			//oro-=s.getCosto(); 
-			
+			//oro-=s.getCosto();
 		}
-		
-		
+		s.setEra(era);
 		return s;
 		
 	}

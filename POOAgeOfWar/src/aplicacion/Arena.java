@@ -116,6 +116,10 @@ public class Arena {
 		else if (num==2){ p=b2; }
 		return p;
 	}
+	
+	/*
+	 * Cambia la era de la base.
+	 */
 	public void aumentarEdad(Base base){
 		base.aumentarEra();
 	}
@@ -125,7 +129,7 @@ public class Arena {
 	 */
 	public void ponerUnidad(Base base,String tipo) throws PAOWException{
 			
-		Unidad uni=base.crearUnidad(tipo);
+		Unidad uni = base.crearUnidad(tipo);
 		int spawn=base.getSpawn();
 		if (base.getOro()>= uni.getCosto()){
 			System.out.println(base.getOro()+" >= "+uni.getCosto());

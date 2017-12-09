@@ -20,13 +20,12 @@ public  class Era {
 		s.setCosto(15);		
 	}
 	
-	
 	public void era2T( Unidad s){s.setVida(15);
 		s.setAtaque(2);
 		s.setDefensa(3);	
 		s.setDevuelve(1);
 		s.setCosto(10);	
-		}
+	}
 
 	
 }
