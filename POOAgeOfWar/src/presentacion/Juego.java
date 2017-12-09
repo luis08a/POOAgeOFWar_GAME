@@ -5,7 +5,7 @@ import java.awt.event.*;
 
 public class Juego extends JFrame {
 	private boolean jcj;
-	//Elementos Menú barra
+	//Elementos MenÃº barra
 	private JPanel panelOpciones;
 	private JMenuBar bar;
 	private JMenu menu;
@@ -153,7 +153,7 @@ public class Juego extends JFrame {
 	}
 	
 	/*
-	 * Prepara los elementos necesarios para crear el menú barra con opciones.
+	 * Prepara los elementos necesarios para crear el menÃº barra con opciones.
 	 */
 	private void prepareElementosMenu() {
 		bar = new JMenuBar();
@@ -170,7 +170,7 @@ public class Juego extends JFrame {
 	}
 	
 	/*
-	 * Prepara el "tablero" en el cual se animará el juego 
+	 * Prepara el "tablero" en el cual se animarÃ¡ el juego 
 	 */
 	private void prepareTableroJuego() {
 		PanelGame.pg=null;
@@ -189,11 +189,11 @@ public class Juego extends JFrame {
 		};
 		
 		ActionListener oyenteAbrir = new ActionListener(){
-			public void actionPerformed(ActionEvent e) {JOptionPane.showMessageDialog(null, "En construcción");}
+			public void actionPerformed(ActionEvent e) {JOptionPane.showMessageDialog(null, "En construcciÃ³n");}
 		};
 		
 		ActionListener oyenteGuardar = new ActionListener(){
-			public void actionPerformed(ActionEvent e) {JOptionPane.showMessageDialog(null, "En construcción");}
+			public void actionPerformed(ActionEvent e) {JOptionPane.showMessageDialog(null, "En construcciÃ³n");}
 		};
 		
 		
@@ -212,22 +212,48 @@ public class Juego extends JFrame {
 	private void prepareAccionesJ1() {
 		
 		ActionListener oyenteBotonA = new ActionListener(){
-			public void actionPerformed(ActionEvent e) {tablero.createSprite("name",1);}
+			
+			public void actionPerformed(ActionEvent e) {
+				
+					tablero.createSprite("name",1);}
 		};
 		botonA.addActionListener(oyenteBotonA);
+		botonA.addKeyListener(new KeyListener() {
+			
+			@Override
+			public void keyTyped(KeyEvent e) {
+				
+				if (e.getKeyCode()==KeyEvent.VK_A){tablero.createSprite("name",1);}
+				
+			}
+			
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if (e.getKeyCode()==KeyEvent.VK_A){tablero.createSprite("name",1);}
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+	
 		
 		ActionListener oyenteBotonS = new ActionListener(){
-			public void actionPerformed(ActionEvent e) {JOptionPane.showMessageDialog(null, "En construcción");}
+			public void actionPerformed(ActionEvent e) {JOptionPane.showMessageDialog(null, "En construcciÃ³n");}
 		};
 		botonS.addActionListener(oyenteBotonS);
 		
 		ActionListener oyenteBotonD = new ActionListener(){
-			public void actionPerformed(ActionEvent e) {JOptionPane.showMessageDialog(null, "En construcción");}
+			public void actionPerformed(ActionEvent e) {JOptionPane.showMessageDialog(null, "En construcciÃ³n");}
 		};
 		botonD.addActionListener(oyenteBotonD);
 		
 		ActionListener oyenteBotonEvolve1 = new ActionListener(){
-			public void actionPerformed(ActionEvent e) {tablero.mejora(1);}
+			public void actionPerformed(ActionEvent e) {JOptionPane.showMessageDialog(null, "En construcciÃ³n");}
 		};
 		botonEvolve1.addActionListener(oyenteBotonEvolve1);
 	}
@@ -240,27 +266,27 @@ private void prepareAccionesJ2() {
 		botonJ.addActionListener(oyenteBotonJ);
 		
 		ActionListener oyenteBotonK = new ActionListener(){
-			public void actionPerformed(ActionEvent e) {JOptionPane.showMessageDialog(null, "En construcción");}
+			public void actionPerformed(ActionEvent e) {JOptionPane.showMessageDialog(null, "En construcciÃ³n");}
 		};
 		botonK.addActionListener(oyenteBotonK);
 		
 		ActionListener oyenteBotonL = new ActionListener(){
-			public void actionPerformed(ActionEvent e) {JOptionPane.showMessageDialog(null, "En construcción");}
+			public void actionPerformed(ActionEvent e) {JOptionPane.showMessageDialog(null, "En construcciÃ³n");}
 		};
 		botonL.addActionListener(oyenteBotonL);
 		
 		ActionListener oyenteBotonEvolve2 = new ActionListener(){
-			public void actionPerformed(ActionEvent e) {tablero.mejora(2);}
+			public void actionPerformed(ActionEvent e) {JOptionPane.showMessageDialog(null, "En construcciÃ³n");}
 		};
 		botonEvolve2.addActionListener(oyenteBotonEvolve2);
 		
 	}
 	
 	/*
-	 * Da fin al programa, terminando con la ejecución de la máquina virtual.
+	 * Da fin al programa, terminando con la ejecuciÃ³n de la mÃ¡quina virtual.
 	 */
 	private void salir(){
-		int choose = JOptionPane.showConfirmDialog(null, "¿ Desea salir ?");
+		int choose = JOptionPane.showConfirmDialog(null, "Â¿ Desea salir ?");
 		if(choose == JOptionPane.YES_OPTION){
 			System.exit(0);
 		}
