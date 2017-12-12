@@ -62,13 +62,10 @@ public class PreJuego extends JDialog {
 		combo.addItem("");
 		combo.addItem("Jugador vs Jugador");
 		combo.addItem("Jugador vs IA");
-		//jcj = new JButton("Jugador vs Jugador");
-		//ia = new JButton("Jugador vs IA");
-		
+				
 		panelOpciones.add(s);
 		panelOpciones.add(combo);
-		//panelOpciones.add(jcj);
-		//panelOpciones.add(ia);
+		
 		
 		add(panelOpciones);
 	}
@@ -78,26 +75,14 @@ public class PreJuego extends JDialog {
 		ItemListener oyenteCombo=new ItemListener(){
 			public void itemStateChanged(ItemEvent e){
 				String sel=(String) combo.getSelectedItem();
-				System.out.println(sel);
 				if(sel.equals("Jugador vs Jugador")){
-					POOAgeOfWarGUI.cargarTablero(true);}
-				else{POOAgeOfWarGUI.cargarTablero(false);}
+					POOAgeOfWarGUI.cargarTablero(null);}
+				else{POOAgeOfWarGUI.cargarTablero(sel);
+				}
 		}};
 		combo.addItemListener(oyenteCombo);
 		
-		ActionListener oyenteJcj = new ActionListener(){
-			public void actionPerformed(ActionEvent e) {
-				POOAgeOfWarGUI.cargarTablero(true);
-			}
-		};
-		//jcj.addActionListener(oyenteJcj);
 		
-		ActionListener oyenteIa = new ActionListener(){
-			public void actionPerformed(ActionEvent e) {
-				POOAgeOfWarGUI.cargarTablero(false);
-			}
-		};
-		//ia.addActionListener(oyenteIa);
 	}
 	
 	/*

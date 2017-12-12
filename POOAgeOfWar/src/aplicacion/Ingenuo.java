@@ -1,13 +1,13 @@
 package aplicacion;
 
-public class Ingenuo implements Inteligencia {
+public class Ingenuo extends Maquina {
 	private static Ingenuo i;
 	
 	/*
 	 * Constructor
 	 */
-	private Ingenuo() {
-		
+	Ingenuo(Base n) {
+		super(n);
 	}
 	
 	/*
@@ -16,14 +16,11 @@ public class Ingenuo implements Inteligencia {
 	 */
 	public  void crearUnidad(Arena a) {
 		Base b = a.getBase(2);
-		int n = (int) (Math.random()* 2) + 1;
-		if ( n % 2 == 0) {
-			try {
-				a.ponerUnidad(b, "@");
-			} catch (PAOWException e) {
-				// TODO Auto-generated catch block
-				//e.printStackTrace();
-			}
+		try {
+			a.ponerUnidad(b, "@");
+		} catch (PAOWException e) {
+			// TODO Auto-generated catch block
+			//e.printStackTrace();
 		}
 	}
 	
@@ -47,10 +44,23 @@ public class Ingenuo implements Inteligencia {
 	 * permite crear una única instancia de la clase Ingenuo
 	 * @return La única instancia de Ingenuo
 	 */
-	public static Ingenuo getIA() {
+	public static Ingenuo getIA(Base n) {
 		if (i == null) {
-			i = new Ingenuo();
+			i = new Ingenuo(n);
 		}
 		return i;
+	}
+
+	@Override
+	void avanzarEra() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void comportamiento(Arena a) {
+		// TODO Auto-generated method stub
+		int n = (int) (Math.random()* 2) + 1;
+		if ( n % 2 == 0) {}
 	}
 }

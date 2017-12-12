@@ -14,8 +14,7 @@ public class POOAgeOfWarGUI{
 		inicio = new Menu();
 	}
 	
-	public static void cargarTablero(boolean jcj){
-		tablero = new Juego(jcj);
+	public static void cargarTablero(String jcj){
 		if (inicio!=null) {
 			inicio.dispose();
 			inicio = null;
@@ -23,6 +22,12 @@ public class POOAgeOfWarGUI{
 		if (opcionesPJ!=null) {
 		opcionesPJ.dispose();
 		opcionesPJ=null;}
+		//System.out.println(jcj);
+		if(jcj==null){tablero = new Juego();}
+		else if ((jcj!=null)){
+		tablero = new Juego(jcj);}
+		
+		
 	}
 	
 	public static void cargarMenu(){

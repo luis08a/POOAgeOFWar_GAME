@@ -22,18 +22,27 @@ public class PanelGame extends JPanel implements Runnable{
 	private Unidad[][] u ;
 	private volatile boolean enEjecucion;
 	private boolean JCJ;
+	private Jugador J1;
+	private Jugador J2;
 	
 	/*
 	 * Constructor
 	 */
-	private PanelGame() {
+	private PanelGame(String tipoIA) {
 		setFocusable(true);
 		setBackground(Color.white);
 		setDoubleBuffered(true);
 		setPreferredSize(new Dimension(WIDTH,HEIGHT));
 		
 		prepareArena();
-		
+		if (tipoIA!=null){			
+			r.jugadorVsIA(tipoIA);
+		}
+		else if( tipoIA == null){
+			r.jugadorVsJugador();
+		}
+		J1=r.getJ1();
+		J2=r.getJ2();
 		iniciar();
 	}
 	
@@ -48,6 +57,10 @@ public class PanelGame extends JPanel implements Runnable{
 			e.printStackTrace();
 		}
 		repaint();
+	}
+	
+	public void crearIA(String IA){
+		//J2 = Arena.cr
 	}
 	
 	/*
@@ -107,9 +120,9 @@ public class PanelGame extends JPanel implements Runnable{
 	/*
 	 * Crea una única instancia de PanelGame.
 	 */
-	public static PanelGame getPanelGame(boolean jcj) {
+	public static PanelGame getPanelGame(String tipoIA) {
 		if (pg==null) {
-			pg = new PanelGame();
+			pg = new PanelGame(tipoIA);
 		}
 		return pg;
 	}

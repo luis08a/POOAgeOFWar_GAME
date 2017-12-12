@@ -30,17 +30,26 @@ public class Juego extends JFrame {
 	private PanelGame tablero;
 	public static final int ALTO=700;
 	public static final int ANCHO=1300;
+	private String tipoIA;
 	
 	
 	/*
 	 * Constructor
 	 */
-	public Juego(boolean jcj) {
-		this.jcj =jcj;
+	public Juego(String tipIA) {
+		tipoIA=tipIA;
+		jcj = false;
 		prepareElementos();
 		prepareAcciones();
 		setVisible(true);
 	}
+	public Juego (){
+		jcj =true;
+		prepareElementos();
+		prepareAcciones();
+		setVisible(true);
+	}
+	
 	
 	/*
 	 * Prepara los elementos necesarios para le interfaz. 
@@ -174,7 +183,7 @@ public class Juego extends JFrame {
 	 */
 	private void prepareTableroJuego() {
 		PanelGame.pg=null;
-		tablero = PanelGame.getPanelGame(true);
+		tablero = PanelGame.getPanelGame(tipoIA);
 		add(tablero, BorderLayout.CENTER);
 	}
 	

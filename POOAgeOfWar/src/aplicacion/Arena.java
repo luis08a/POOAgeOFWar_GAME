@@ -6,6 +6,8 @@ public class Arena {
 	private Base b1;
 	private Base b2;
 	private Unidad v;
+	private Jugador j1;
+	private Jugador j2;
 	
 	/*
 	 * Constructor.
@@ -29,7 +31,24 @@ public class Arena {
 			}
 		}
 	}
+	public Jugador getJ1(){
+		return j1;
+	}
+	public Jugador getJ2(){
+		return j2;
+	}
+	public void jugadorVsJugador(){
+		j1 = new Humano(b1);
+		j2 = new Humano(b2);
+	}
 	
+	public void jugadorVsIA(String IA){
+		switch (IA){
+		case "Ingenuo": j2=new Ingenuo(b2); 
+		case "Tacano": j2= new Tacano(b2);
+	}
+		
+	}
 	/*
 	 * Actualiza el estado de Arena, para ello hace que las unidades se muevan.
 	 * */
@@ -145,7 +164,7 @@ public class Arena {
 	}
 	
 	public void enemyIAIngenuo() {
-		Ingenuo i = Ingenuo.getIA();
+		Ingenuo i = Ingenuo.getIA(b2);
 		//i.start(this);
 		i.crearUnidad(this);
 	}
