@@ -1,5 +1,7 @@
 package aplicacion;
 
-public class Jugador {
-
+public abstract class Jugador {
+	
+	abstract void crearSoldado();
+	abstract void avanzarEra();
 }

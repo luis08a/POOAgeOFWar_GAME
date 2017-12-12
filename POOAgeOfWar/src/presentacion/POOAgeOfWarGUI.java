@@ -20,8 +20,9 @@ public class POOAgeOfWarGUI{
 			inicio.dispose();
 			inicio = null;
 		}
+		if (opcionesPJ!=null) {
 		opcionesPJ.dispose();
-		opcionesPJ=null;
+		opcionesPJ=null;}
 	}
 	
 	public static void cargarMenu(){

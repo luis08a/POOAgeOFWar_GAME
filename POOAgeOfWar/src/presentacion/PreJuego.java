@@ -59,7 +59,7 @@ public class PreJuego extends JDialog {
 		
 		JLabel s = new JLabel("\t Seleccione");
 		combo=new JComboBox();
-		
+		combo.addItem("");
 		combo.addItem("Jugador vs Jugador");
 		combo.addItem("Jugador vs IA");
 		//jcj = new JButton("Jugador vs Jugador");
@@ -79,9 +79,9 @@ public class PreJuego extends JDialog {
 			public void itemStateChanged(ItemEvent e){
 				String sel=(String) combo.getSelectedItem();
 				System.out.println(sel);
-				if(sel=="Jugador vs Jugador"){
-				POOAgeOfWarGUI.cargarTablero(true);}
-				else{POOAgeOfWarGUI.cargarTablero(true);}
+				if(sel.equals("Jugador vs Jugador")){
+					POOAgeOfWarGUI.cargarTablero(true);}
+				else{POOAgeOfWarGUI.cargarTablero(false);}
 		}};
 		combo.addItemListener(oyenteCombo);
 		
