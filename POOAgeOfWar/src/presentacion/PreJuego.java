@@ -9,9 +9,11 @@ public class PreJuego extends JDialog {
 	private int height = 400;
 	private int width = 400;
 	private JPanel panelOpciones;
+	private JComboBox combo;
 	private JButton jcj;
 	private JButton ia;
 	private JPanel panelNombre;
+	
 	
 	/*
 	 * Constructor.
@@ -50,36 +52,52 @@ public class PreJuego extends JDialog {
 	}
 	
 	private void panelOpciones() {
+		
 		panelOpciones = new JPanel();
 		panelOpciones.setLayout(new GridLayout(3,1));
 		panelOpciones.setBounds(125, 100, 150, 200);
 		
 		JLabel s = new JLabel("\t Seleccione");
-		jcj = new JButton("Jugador vs Jugador");
-		ia = new JButton("Jugador vs IA");
+		combo=new JComboBox();
+		
+		combo.addItem("Jugador vs Jugador");
+		combo.addItem("Jugador vs IA");
+		//jcj = new JButton("Jugador vs Jugador");
+		//ia = new JButton("Jugador vs IA");
 		
 		panelOpciones.add(s);
-		panelOpciones.add(jcj);
-		panelOpciones.add(ia);
+		panelOpciones.add(combo);
+		//panelOpciones.add(jcj);
+		//panelOpciones.add(ia);
 		
 		add(panelOpciones);
 	}
 	
 	private void prepareAcciones() {
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		ItemListener oyenteCombo=new ItemListener(){
+			public void itemStateChanged(ItemEvent e){
+				String sel=(String) combo.getSelectedItem();
+				System.out.println(sel);
+				if(sel=="Jugador vs Jugador"){
+				POOAgeOfWarGUI.cargarTablero(true);}
+				else{POOAgeOfWarGUI.cargarTablero(true);}
+		}};
+		combo.addItemListener(oyenteCombo);
 		
 		ActionListener oyenteJcj = new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
 				POOAgeOfWarGUI.cargarTablero(true);
 			}
 		};
-		jcj.addActionListener(oyenteJcj);
+		//jcj.addActionListener(oyenteJcj);
+		
 		ActionListener oyenteIa = new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
 				POOAgeOfWarGUI.cargarTablero(false);
 			}
 		};
-		ia.addActionListener(oyenteIa);
+		//ia.addActionListener(oyenteIa);
 	}
 	
 	/*

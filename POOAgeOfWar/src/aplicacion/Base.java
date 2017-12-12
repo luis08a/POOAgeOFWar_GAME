@@ -64,18 +64,17 @@ public class Base extends Unidad {
 	public  Unidad crearUnidad(String tipo){
 		
 		int dir = this.getDirec();
-		Soldado s = new Melee(dir,spawn);
+		int eraAc=e.eraActual();
+		Soldado s = new Melee(dir,spawn,eraAc);
 		
 		if (tipo=="@"){
-			s= new Melee(dir,spawn);
-			e.revisarEra(era, s);
-			//oro-=s.getCosto(); 
+			s= new Melee(dir,spawn,eraAc);
+			
 		}
 		if (tipo=="#"){
 			
 			s= new Tanque(dir,spawn);
-			e.revisarEra(era, s);
-			//oro-=s.getCosto();
+			
 		}
 		s.setEra(era);
 		return s;

@@ -50,6 +50,10 @@ public class PanelGame extends JPanel implements Runnable{
 		repaint();
 	}
 	
+	/*
+	 * la funcion aumenta la era de la base en especifico
+	 * @param num: numero de la base que recibira la mejora
+	 * */
 	public void mejora(int num) {
 		Base b = r.getBase(num);
 		r.aumentarEdad(b);
