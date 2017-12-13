@@ -1,14 +1,11 @@
 package presentacion;
 import java.awt.*;
 import javax.swing.*;
-
-import aplicacion.PAOWException;
-
 import java.awt.event.*;
 
 public class Juego extends JFrame {
 	private boolean jcj;
-	//Elementos Menú barra
+	//Elementos MenÃº barra
 	private JPanel panelOpciones;
 	private JMenuBar bar;
 	private JMenu menu;
@@ -34,7 +31,10 @@ public class Juego extends JFrame {
 	public static final int ALTO=700;
 	public static final int ANCHO=1300;
 	private String tipoIA;
-	
+	private static JTextField cantOroJ1;
+	private JTextField eraNumJ1;
+	private JTextField eraNumJ2;
+	private static JTextField cantOroJ2;
 	
 	/*
 	 * Constructor
@@ -102,11 +102,18 @@ public class Juego extends JFrame {
 		state.setLayout(new GridLayout(2,1));
 		
 		JPanel state1 = new JPanel();
-		state1.setLayout(new GridLayout(2,1));
-		JLabel labelOro = new JLabel("Oro");
-		JLabel labelDesarrollo = new JLabel("Nivel de desarrollo");
+		state1.setLayout(new GridLayout(2,2));
+		JLabel labelOro = new JLabel("Oro:");
+		 cantOroJ1=new JTextField( "100");
+		 cantOroJ1.setFocusable(false);
+		 eraNumJ1=new JTextField("1");
+		 eraNumJ1.setFocusable(false);
+		JLabel labelDesarrollo = new JLabel("Nivel de desarrollo:");
 		state1.add(labelOro);
+		state1.add(cantOroJ1);
 		state1.add(labelDesarrollo);
+		
+		state1.add(eraNumJ1);
 		state.add(state1);
 		botonEvolve1 = new JButton("Avanzar era (E)");
 		state.add(botonEvolve1);
@@ -114,6 +121,7 @@ public class Juego extends JFrame {
 		JPanel action = new JPanel();
 		action.setLayout(new GridLayout(2,1));
 		JLabel unidad = new JLabel(" Unidades ");
+		
 		action.add(unidad);
 		JPanel action1 = new JPanel();
 		action1.setLayout(new GridLayout(1,3));
@@ -139,10 +147,17 @@ public class Juego extends JFrame {
 		
 		JPanel state1 = new JPanel();
 		state1.setLayout(new GridLayout(2,1));
-		JLabel labelOro = new JLabel("Oro");
-		JLabel labelDesarrollo = new JLabel("Nivel de desarrollo");
+		JLabel labelOro = new JLabel("Oro:");
+		 cantOroJ2=new JTextField( "100");
+		 cantOroJ2.setFocusable(false);
+		 eraNumJ2=new JTextField("1");
+		 eraNumJ2.setFocusable(false);
+		JLabel labelDesarrollo = new JLabel("Nivel de desarrollo:");
 		state1.add(labelOro);
+		state1.add(cantOroJ2);
 		state1.add(labelDesarrollo);
+		
+		state1.add(eraNumJ2);
 		state.add(state1);
 		botonEvolve2 = new JButton("Avanzar era (U)");
 		state.add(botonEvolve2);
@@ -166,7 +181,7 @@ public class Juego extends JFrame {
 	}
 	
 	/*
-	 * Prepara los elementos necesarios para crear el menú barra con opciones.
+	 * Prepara los elementos necesarios para crear el menÃº barra con opciones.
 	 */
 	private void prepareElementosMenu() {
 		bar = new JMenuBar();
@@ -183,7 +198,7 @@ public class Juego extends JFrame {
 	}
 	
 	/*
-	 * Prepara el "tablero" en el cual se animará el juego 
+	 * Prepara el "tablero" en el cual se animarÃ¡ el juego 
 	 */
 	private void prepareTableroJuego() {
 		PanelGame.pg=null;
@@ -202,11 +217,11 @@ public class Juego extends JFrame {
 		};
 		
 		ActionListener oyenteAbrir = new ActionListener(){
-			public void actionPerformed(ActionEvent e) {JOptionPane.showMessageDialog(null, "En construcción");}
+			public void actionPerformed(ActionEvent e) {JOptionPane.showMessageDialog(null, "En construcciÃ³n");}
 		};
 		
 		ActionListener oyenteGuardar = new ActionListener(){
-			public void actionPerformed(ActionEvent e) {JOptionPane.showMessageDialog(null, "En construcción");}
+			public void actionPerformed(ActionEvent e) {JOptionPane.showMessageDialog(null, "En construcciÃ³n");}
 		};
 		
 		
@@ -260,18 +275,22 @@ public class Juego extends JFrame {
 		botonS.addActionListener(oyenteBotonS);
 		
 		ActionListener oyenteBotonD = new ActionListener(){
-			public void actionPerformed(ActionEvent e) {JOptionPane.showMessageDialog(null, "En construcción");}
+			public void actionPerformed(ActionEvent e) {JOptionPane.showMessageDialog(null, "En construcciÃ³n");}
 		};
 		botonD.addActionListener(oyenteBotonD);
 		
 		ActionListener oyenteBotonEvolve1 = new ActionListener(){
-			public void actionPerformed(ActionEvent e) {try {
-				tablero.avanzarEra(1);
-			} catch (PAOWException e1) {
-			}}
+			public void actionPerformed(ActionEvent e) {tablero.avanzarEra(1);
+			int er=tablero.getEra(1);
+			eraNumJ1.setText(Integer.toString(er));}
 		};
 		botonEvolve1.addActionListener(oyenteBotonEvolve1);
+		
 	}
+public static void actualizLabels(int oroJ1,int oroJ2){
+	cantOroJ1.setText(Integer.toString(oroJ1));	
+	cantOroJ2.setText(Integer.toString(oroJ2));
+}
 	
 private void prepareAccionesJ2() {
 		
@@ -286,24 +305,24 @@ private void prepareAccionesJ2() {
 		botonK.addActionListener(oyenteBotonK);
 		
 		ActionListener oyenteBotonL = new ActionListener(){
-			public void actionPerformed(ActionEvent e) {JOptionPane.showMessageDialog(null, "En construcción");}
+			public void actionPerformed(ActionEvent e) {JOptionPane.showMessageDialog(null, "En construcciÃ³n");}
 		};
 		botonL.addActionListener(oyenteBotonL);
 		
 		ActionListener oyenteBotonEvolve2 = new ActionListener(){
-			public void actionPerformed(ActionEvent e) {try {
-				tablero.avanzarEra(2);
-			} catch (PAOWException e1) {}}
+			public void actionPerformed(ActionEvent e) {tablero.avanzarEra(2);
+			int er=tablero.getEra(2);
+			eraNumJ2.setText(Integer.toString(er));}
 		};
 		botonEvolve2.addActionListener(oyenteBotonEvolve2);
 		
 	}
 	
 	/*
-	 * Da fin al programa, terminando con la ejecución de la máquina virtual.
+	 * Da fin al programa, terminando con la ejecuciÃ³n de la mÃ¡quina virtual.
 	 */
 	private void salir(){
-		int choose = JOptionPane.showConfirmDialog(null, "¿ Desea salir ?");
+		int choose = JOptionPane.showConfirmDialog(null, "Â¿ Desea salir ?");
 		if(choose == JOptionPane.YES_OPTION){
 			System.exit(0);
 		}
