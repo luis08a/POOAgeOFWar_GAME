@@ -43,6 +43,7 @@ public class Juego extends JFrame {
 		prepareAcciones();
 		setVisible(true);
 	}
+	
 	public Juego (){
 		jcj =true;
 		prepareElementos();
@@ -246,7 +247,6 @@ public class Juego extends JFrame {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				// TODO Auto-generated method stub
-				
 			}
 		});
 	

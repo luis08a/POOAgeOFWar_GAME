@@ -15,8 +15,8 @@ public class Humano extends Jugador{
 
 	
 	public Unidad crearSoldadoTanque() {
-		// TODO Auto-generated method stub
-		return null;
+		Unidad m=b.crearUnidad("#");
+		return m;
 	}
 
 	

@@ -37,9 +37,7 @@ public class PanelGame extends JPanel implements Runnable{
 		prepareArena();
 		if (tipoIA!=null){			
 			r.jugadorVsIA(tipoIA);
-			J2=  r.getJ2();
-			System.out.println(J2);
-			
+			J2=  r.getJ2();			
 			isIA=true;
 		}
 		else if( tipoIA == null){
@@ -79,8 +77,8 @@ public class PanelGame extends JPanel implements Runnable{
 	}
 	
 	public void crearSoldadoTanque(int Jugador ) {
-		if (Jugador == 1) {J1.crearSoldadoTanque();}
-		else if(Jugador ==2 ){J2.crearSoldadoTanque();}
+		if (Jugador == 1) {Unidad u =J1.crearSoldadoTanque();Base b=J1.getBase();r.ponerUnidad(b, u);}
+		else if(Jugador ==2 ){Unidad u =J2.crearSoldadoTanque();Base b=J2.getBase();r.ponerUnidad(b, u);}
 	}
 	
 	public void avanzarEra(int Jugador ) {
@@ -106,25 +104,23 @@ public class PanelGame extends JPanel implements Runnable{
 		
 		g.drawImage(fondo, 0, 0, getSize().width, getSize().height, null);
 		
-		Image torre1 = new ImageIcon(getClass().getResource("/recursos visuales/tower-drawing/Tower.png")).getImage();
-		g.drawImage(torre1, 0, 350, 80, 120, this);
+		Sprite torre1 = new Sprite(r.getBase(1));
+		g.drawImage(torre1.getImage(), 0, 350, 80, 120, this);
 		
-		Image torre2 = new ImageIcon(getClass().getResource("/recursos visuales/tower-drawing/Tower.png")).getImage();
-		g.drawImage(torre2, WIDTH - 80, 350, 80, 120, null);
+		Sprite torre2 = new Sprite(r.getBase(2));
+		g.drawImage(torre2.getImage(), WIDTH - 80, 350, 80, 120, null);
 		
 		//Crear unidad
         Graphics2D g2d = (Graphics2D) g;
         for (int i= 1; i< u.length -1; i++ ) {
         	
         	if (u[i][0]!=null ) {
-        		int e = u[i][0].getEra();
-        		Sprite m = new SpriteTest(u[i][0].getPosx(),u[i][0].getPosy(),e); 
+        		Sprite m = new Sprite(u[i][0]); 
 	            g2d.drawImage(m.getImage(), m.getX(),m.getY(),80,80, this);
         	}
         	
         	if (u[i][1]!=null ) {
-        		int e = u[i][1].getEra();
-        		Sprite n = new SpriteTest(u[i][1].getPosx(),u[i][1].getPosy(),e);
+        		Sprite n = new Sprite(u[i][1]);
         		Image im = n.getImage();
         		
         		AffineTransform tx = AffineTransform.getScaleInstance(-1, 1);

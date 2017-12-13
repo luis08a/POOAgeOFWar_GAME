@@ -57,11 +57,12 @@ public class PreJuego extends JDialog {
 		panelOpciones.setLayout(new GridLayout(3,1));
 		panelOpciones.setBounds(125, 100, 150, 200);
 		
-		JLabel s = new JLabel("\t Seleccione");
+		JLabel s = new JLabel("\t Contra quien desea Jugar");
 		combo=new JComboBox();
-		combo.addItem("");
-		combo.addItem("Jugador vs Jugador");
-		combo.addItem("Jugador vs IA");
+		combo.addItem("Selecione:");
+		combo.addItem("Jugador");
+		combo.addItem("Ingenuo");
+		combo.addItem("Tacaño");
 				
 		panelOpciones.add(s);
 		panelOpciones.add(combo);
@@ -73,11 +74,23 @@ public class PreJuego extends JDialog {
 	private void prepareAcciones() {
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		ItemListener oyenteCombo=new ItemListener(){
+			private String sel;
+
 			public void itemStateChanged(ItemEvent e){
-				String sel=(String) combo.getSelectedItem();
-				if(sel.equals("Jugador vs Jugador")){
-					POOAgeOfWarGUI.cargarTablero(null);}
-				else{POOAgeOfWarGUI.cargarTablero("Ingenuo");
+				if (e.getStateChange() == ItemEvent.SELECTED) {
+					sel=(String) combo.getSelectedItem();
+				}
+				
+				else if(e.getStateChange() == ItemEvent.DESELECTED){
+					sel=(String) combo.getSelectedItem();
+					switch(sel) {
+					case "Jugador": POOAgeOfWarGUI.cargarTablero(null);
+					break;
+					case "Ingenuo": POOAgeOfWarGUI.cargarTablero("Ingenuo");
+					break;
+					case "Tacaño": POOAgeOfWarGUI.cargarTablero("Tacano");
+					break;
+					}
 				}
 		}};
 		combo.addItemListener(oyenteCombo);

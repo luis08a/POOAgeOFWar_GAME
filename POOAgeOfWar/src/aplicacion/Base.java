@@ -27,7 +27,7 @@ public class Base extends Unidad {
 		if (base==0){spawn=1;}
 		else if (base==1) {spawn=18;}
 		oro=100;
-		this.setVida(200);
+		this.setVida(100);
 		System.out.println(dir+"dir base instanciada, spawn "+spawn);
 		
 	}

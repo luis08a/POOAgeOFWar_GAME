@@ -23,7 +23,7 @@ public class POOAgeOfWarGUI{
 		opcionesPJ.dispose();
 		opcionesPJ=null;}
 		//System.out.println(jcj);
-		if(jcj==null){tablero = new Juego();}
+		if(jcj==null) {tablero = new Juego();}
 		else if ((jcj!=null)){
 		tablero = new Juego(jcj);}
 		

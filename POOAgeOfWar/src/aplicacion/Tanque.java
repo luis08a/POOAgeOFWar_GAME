@@ -14,7 +14,6 @@ public class Tanque extends Soldado {
 			tankE2();
 		}
 		
-		
 	}
 	
 	public void tankE1(){

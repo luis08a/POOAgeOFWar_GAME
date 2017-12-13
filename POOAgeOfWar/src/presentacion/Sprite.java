@@ -4,16 +4,25 @@ import java.awt.*;
 import java.awt.image.*;
 import javax.swing.*;
 
+import aplicacion.*;
+
 public class Sprite {
 	protected int xPosition;
 	protected int yPosition;
 	private int height;
 	private int width;
 	private Image imagen;
+	private final String[] SoldadosMelee = {"/recursos visuales/walk_1.png","/recursos visuales/EnemyGuy/_02/01-Idle/__Bandit02_Idle_000.png"};
+	private final String[] SoldadosTanque = {"/recursos visuales\\dragon_1.png","/recursos visuales/American_sherman_move_forward_1.png"};
+	private final String[] torres = {"/recursos visuales/Tower1.png","/recursos visuales/Tower2.png","/recursos visuales/Tower3.png"};
 	
-	public Sprite(int x, int y){
-		xPosition = x;
-		yPosition = y;
+	public Sprite(Unidad u){
+		xPosition = u.getPosx();
+		yPosition = u.getPosy();
+		
+		if (u instanceof Melee ) { loadImage(SoldadosMelee[u.getEra()-1]);}
+		else if (u instanceof Tanque ) { loadImage(SoldadosTanque[u.getEra()-1]);}
+		else if (u instanceof Base) {loadImage(torres[u.getEra()-1]);}
 	}
 	
 	public void loadImage(String source) {
