@@ -11,20 +11,6 @@ public class Ingenuo extends Maquina {
 	}
 	
 	/*
-	 * Crea una unidad en una arena dada
-	 * @param a, la arena en la cual se creará la unidad
-	 */
-	public  void crearUnidad(Arena a) {
-		Base b = a.getBase(2);
-		try {
-			a.ponerUnidad(b, "@");
-		} catch (PAOWException e) {
-			// TODO Auto-generated catch block
-			//e.printStackTrace();
-		}
-	}
-	
-	/*
 	 * Inicia el comportamiento de la IA.
 	 * @param a: arena en la cual añade unidades.
 	 */
@@ -33,7 +19,7 @@ public class Ingenuo extends Maquina {
 		while(start) {
 			try {
 				Thread.sleep(5000);
-				crearUnidad(a);
+				//crearUnidad(a);
 			} catch (InterruptedException e) {
 				//e.printStackTrace();
 			}
@@ -52,15 +38,36 @@ public class Ingenuo extends Maquina {
 	}
 
 	@Override
-	void avanzarEra() {
+	public void avanzarEra() {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void comportamiento(Arena a) {
-		// TODO Auto-generated method stub
-		int n = (int) (Math.random()* 2) + 1;
-		if ( n % 2 == 0) {}
+	public void desicion(Arena a) {
+		/*
+		 * int n = (int) (Math.random()* 2) + 1;
+		 
+		
+		if ( n % 2 == 0) {Unidad u = crearSoldadoMelee();a.ponerUnidad(b, u);}
+		else { Unidad u = crearSoldadoTanque();a.ponerUnidad(b, u);}
+		*/
+		Unidad u = crearSoldadoMelee();
+		a.ponerUnidad(b, u);
 	}
+
+	@Override
+	public Unidad crearSoldadoMelee() {
+		Unidad m=b.crearUnidad("@");
+		return m;
+	}
+
+	@Override
+	public Unidad crearSoldadoTanque() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+	
 }

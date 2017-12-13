@@ -20,7 +20,13 @@ public class Humano extends Jugador{
 	}
 
 	
-	void avanzarEra() {
+	public void avanzarEra() {
+		// TODO Auto-generated method stub
+		b.aumentarEra();
+	}
+
+	@Override
+	public void desicion(Arena a) {
 		// TODO Auto-generated method stub
 		
 	}

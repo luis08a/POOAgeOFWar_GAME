@@ -2,6 +2,6 @@ package aplicacion;
 
 public interface Inteligencia {
 	
-	abstract void comportamiento(Arena a);
+	abstract void desicion(Arena a);
 	
 }

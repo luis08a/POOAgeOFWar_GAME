@@ -27,7 +27,6 @@ public class POOAgeOfWarGUI{
 		else if ((jcj!=null)){
 		tablero = new Juego(jcj);}
 		
-		
 	}
 	
 	public static void cargarMenu(){

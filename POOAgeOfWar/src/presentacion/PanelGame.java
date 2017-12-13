@@ -21,7 +21,7 @@ public class PanelGame extends JPanel implements Runnable{
 	private Thread thread;
 	private Unidad[][] u ;
 	private volatile boolean enEjecucion;
-	private boolean JCJ;
+	private boolean isIA;
 	private Jugador J1;
 	private Jugador J2;
 	
@@ -37,18 +37,26 @@ public class PanelGame extends JPanel implements Runnable{
 		prepareArena();
 		if (tipoIA!=null){			
 			r.jugadorVsIA(tipoIA);
+			J2=  r.getJ2();
+			System.out.println(J2);
+			
+			isIA=true;
 		}
 		else if( tipoIA == null){
 			r.jugadorVsJugador();
+			J2=r.getJ2();
+			
+			isIA=false;
 		}
+		
 		J1=r.getJ1();
-		J2=r.getJ2();
+		
 		iniciar();
 	}
 	
 	/*
 	 * Crea un Sprite (Dibujo) que será recreado en pantalla.
-	 */
+	 
 	public void createSprite(String name,int num) {
 		Base b= r.getBase(num);
 		try {
@@ -58,9 +66,26 @@ public class PanelGame extends JPanel implements Runnable{
 		}
 		repaint();
 	}
+	*/
 	
-	public void crearIA(String IA){
-		//J2 = Arena.cr
+	
+	public void crearSoldadoMelee(int Jugador)  {
+		if (Jugador == 1) {Unidad u =J1.crearSoldadoMelee();
+		Base b=J1.getBase();
+		r.ponerUnidad(b, u);
+		}
+		else if(Jugador ==2 ){Unidad u = J2.crearSoldadoMelee();Base b=J2.getBase();r.ponerUnidad(b, u);}
+		
+	}
+	
+	public void crearSoldadoTanque(int Jugador ) {
+		if (Jugador == 1) {J1.crearSoldadoTanque();}
+		else if(Jugador ==2 ){J2.crearSoldadoTanque();}
+	}
+	
+	public void avanzarEra(int Jugador ) {
+		if (Jugador == 1) {J1.avanzarEra();}
+		else if(Jugador ==2 ){J2.avanzarEra();}
 	}
 	
 	/*
@@ -163,9 +188,9 @@ public class PanelGame extends JPanel implements Runnable{
 	 * Actualiza la pantalla y la arena.
 	 */
 	private synchronized void actualizar(){
+		if (isIA==true)J2.desicion(r);
 		r.actualizar();
 		repaint();
-		//r.enemyIAIngenuo();
 	}
 	
 	/*

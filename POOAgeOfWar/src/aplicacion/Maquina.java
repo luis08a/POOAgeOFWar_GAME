@@ -8,13 +8,9 @@ public abstract class Maquina extends Jugador implements Inteligencia{
 	}
 
 	@Override
-	protected Unidad crearSoldadoMelee() {
-		return null;
-	}
+	public abstract Unidad crearSoldadoMelee() ;
 
 	@Override
-	protected Unidad crearSoldadoTanque() {
-		return null;
-	}
+	public abstract Unidad crearSoldadoTanque();
 
 }

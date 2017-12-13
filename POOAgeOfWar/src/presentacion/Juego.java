@@ -224,7 +224,7 @@ public class Juego extends JFrame {
 			
 			public void actionPerformed(ActionEvent e) {
 				
-					tablero.createSprite("name",1);}
+					tablero.crearSoldadoMelee(1);}
 		};
 		botonA.addActionListener(oyenteBotonA);
 		
@@ -232,13 +232,13 @@ public class Juego extends JFrame {
 			@Override
 			public void keyTyped(KeyEvent e) {
 				
-				if (e.getKeyCode()==KeyEvent.VK_A){tablero.createSprite("name",1);}
+				if (e.getKeyCode()==KeyEvent.VK_A){tablero.crearSoldadoMelee(1);}
 				
 			}
 			
 			@Override
 			public void keyReleased(KeyEvent e) {
-				if (e.getKeyCode()==KeyEvent.VK_A){tablero.createSprite("name",1);}
+				if (e.getKeyCode()==KeyEvent.VK_A){tablero.crearSoldadoMelee(1);}
 				// TODO Auto-generated method stub
 				
 			}
@@ -252,7 +252,7 @@ public class Juego extends JFrame {
 	
 		
 		ActionListener oyenteBotonS = new ActionListener(){
-			public void actionPerformed(ActionEvent e) {JOptionPane.showMessageDialog(null, "En construcción");}
+			public void actionPerformed(ActionEvent e) {tablero.crearSoldadoTanque(1);}
 		};
 		botonS.addActionListener(oyenteBotonS);
 		
@@ -262,7 +262,7 @@ public class Juego extends JFrame {
 		botonD.addActionListener(oyenteBotonD);
 		
 		ActionListener oyenteBotonEvolve1 = new ActionListener(){
-			public void actionPerformed(ActionEvent e) {tablero.mejora(1);}
+			public void actionPerformed(ActionEvent e) {tablero.avanzarEra(1);}
 		};
 		botonEvolve1.addActionListener(oyenteBotonEvolve1);
 	}
@@ -270,12 +270,12 @@ public class Juego extends JFrame {
 private void prepareAccionesJ2() {
 		
 		ActionListener oyenteBotonJ = new ActionListener(){
-			public void actionPerformed(ActionEvent e) {tablero.createSprite("name",2);}
+			public void actionPerformed(ActionEvent e) {tablero.crearSoldadoMelee(2);}
 		};
 		botonJ.addActionListener(oyenteBotonJ);
 		
 		ActionListener oyenteBotonK = new ActionListener(){
-			public void actionPerformed(ActionEvent e) {JOptionPane.showMessageDialog(null, "En construcción");}
+			public void actionPerformed(ActionEvent e) {tablero.crearSoldadoTanque(2);}
 		};
 		botonK.addActionListener(oyenteBotonK);
 		
@@ -285,7 +285,7 @@ private void prepareAccionesJ2() {
 		botonL.addActionListener(oyenteBotonL);
 		
 		ActionListener oyenteBotonEvolve2 = new ActionListener(){
-			public void actionPerformed(ActionEvent e) {tablero.mejora(2);}
+			public void actionPerformed(ActionEvent e) {tablero.avanzarEra(2);}
 		};
 		botonEvolve2.addActionListener(oyenteBotonEvolve2);
 		

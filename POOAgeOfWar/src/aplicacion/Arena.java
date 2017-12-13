@@ -5,7 +5,6 @@ public class Arena {
 	private static Unidad[][] arena;
 	private Base b1;
 	private Base b2;
-	private Unidad v;
 	private Jugador j1;
 	private Jugador j2;
 	
@@ -34,18 +33,26 @@ public class Arena {
 	public Jugador getJ1(){
 		return j1;
 	}
+	
 	public Jugador getJ2(){
 		return j2;
 	}
+	
+	/*
+	 * Caso de jugador vs Jgador. Crea dsjugadores.
+	 */
 	public void jugadorVsJugador(){
 		j1 = new Humano(b1);
 		j2 = new Humano(b2);
 	}
 	
 	public void jugadorVsIA(String IA){
+		j1 = new Humano(b1);
 		switch (IA){
-		case "Ingenuo": j2=new Ingenuo(b2); 
 		case "Tacano": j2= new Tacano(b2);
+		break;
+		case "Ingenuo": j2=new Ingenuo(b2);
+		break;
 	}
 		
 	}
@@ -74,7 +81,7 @@ public class Arena {
 						Base base= this.getBase(1);
 						base.ganaOro(arena[i][1].getCosto());
 						
-						arena[i][1]=v;System.out.println("boolean True [p-1][1]");
+						arena[i][1]=null;System.out.println("boolean True [p-1][1]");
 					}
 				}
 				else if(arena[i+1][0]==null){
@@ -104,7 +111,7 @@ public class Arena {
 						Base base= this.getBase(2);
 						base.ganaOro(arena[i][0].getCosto());
 						System.out.println(base.getOro()+" oro base 2");
-						arena[i][0]=v;System.out.println("boolean True jugador2");
+						arena[i][0]=null;System.out.println("boolean True jugador2");
 					}
 				}
 				else if(arena[i-1][1]==null){
@@ -142,31 +149,34 @@ public class Arena {
 	public void aumentarEdad(Base base){
 		base.aumentarEra();
 	}
+	
 	/*
 	 * Agrega una unidad a la arena;
 	 * Más especificamente al arreglo de unidades que contiene la información del estado de la arena.
 	 */
-	public void ponerUnidad(Base base,String tipo) throws PAOWException{
-			
-		Unidad uni = base.crearUnidad(tipo);
+	public void ponerUnidad(Base base, Unidad u) {
+		//Unidad uni = base.crearUnidad(tipo);
 		int spawn=base.getSpawn();
+		/*
+		 
 		if (base.getOro()>= uni.getCosto()){
 			System.out.println(base.getOro()+" >= "+uni.getCosto());
 			base.compraUnidad(uni);
-			
-			if (spawn==1){arena[spawn][0]=uni;}
-			else if (spawn==18){arena[spawn][1]=uni;}
-		}
+		*/	
+		if (spawn==1){arena[spawn][0]=u;}
+		else if (spawn==18){arena[spawn][1]=u;}
+		//}
 		
-		else{
-			throw new PAOWException("no hay  dinerodsfsdfsfsfsdf?????????????????????");}
+		//else{
+			//throw new PAOWException("no hay  dinerodsfsdfsfsfsdf?????????????????????");}
 		
 	}
 	
 	public void enemyIAIngenuo() {
 		Ingenuo i = Ingenuo.getIA(b2);
 		//i.start(this);
-		i.crearUnidad(this);
+		i.desicion(this);
+		
 	}
 	
 	/*

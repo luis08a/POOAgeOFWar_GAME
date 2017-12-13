@@ -77,7 +77,7 @@ public class PreJuego extends JDialog {
 				String sel=(String) combo.getSelectedItem();
 				if(sel.equals("Jugador vs Jugador")){
 					POOAgeOfWarGUI.cargarTablero(null);}
-				else{POOAgeOfWarGUI.cargarTablero(sel);
+				else{POOAgeOfWarGUI.cargarTablero("Ingenuo");
 				}
 		}};
 		combo.addItemListener(oyenteCombo);

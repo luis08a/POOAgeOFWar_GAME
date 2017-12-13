@@ -8,15 +8,27 @@ public class Tacano extends Maquina{
 	}
 
 	@Override
-	public void comportamiento(Arena a) {
+	public void desicion(Arena a) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	void avanzarEra() {
+	public void avanzarEra() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public Unidad crearSoldadoMelee() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Unidad crearSoldadoTanque() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }
