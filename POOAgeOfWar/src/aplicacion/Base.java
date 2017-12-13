@@ -11,7 +11,6 @@ public class Base extends Unidad {
 	//hacia la izquierda(multiplicando -1)
 	
 	private  int spawn;
-	private int era;
 	private Era e;
 	
 	
@@ -54,17 +53,18 @@ public class Base extends Unidad {
 		oro-=s.getCosto();
 	}
 	public void aumentarEra(){
-		era+=1;
+		e.aumentarEra();
 	}
 	
 	public int getEra() {
-		return era;
+		return e.eraActual();
 	}
 	
 	public  Unidad crearUnidad(String tipo){
 		
 		int dir = this.getDirec();
 		int eraAc=e.eraActual();
+		System.out.println(eraAc);
 		Soldado s = new Melee(dir,spawn,eraAc);
 		
 		if (tipo=="@"){
