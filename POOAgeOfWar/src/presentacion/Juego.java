@@ -48,6 +48,7 @@ public class Juego extends JFrame {
 		prepareElementos();
 		prepareAcciones();
 		setVisible(true);
+		setFocusable(true);
 	}
 	
 	public Juego (){
@@ -55,6 +56,7 @@ public class Juego extends JFrame {
 		prepareElementos();
 		prepareAcciones();
 		setVisible(true);
+		setFocusable(true);
 	}
 	
 	
@@ -129,11 +131,10 @@ public class Juego extends JFrame {
 		JPanel action1 = new JPanel();
 		action1.setLayout(new GridLayout(1,3));
 		botonA = new JButton("Unidad 1(A)");
+		botonA.setFocusable(true);
 		botonS = new JButton("Unidad 2(S)");
-		botonD = new JButton("Unidad 3(D)");
 		action1.add(botonA);
 		action1.add(botonS);
-		action1.add(botonD);
 		action.add(action1);
 		
 		J1.add(state);
@@ -173,10 +174,8 @@ public class Juego extends JFrame {
 		action1.setLayout(new GridLayout(1,3));
 		botonJ = new JButton("Unidad 1(J)");
 		botonK = new JButton("Unidad 2(K)");
-		botonL = new JButton("Unidad 3(L)");
 		action1.add(botonJ);
 		action1.add(botonK);
-		action1.add(botonL);
 		action.add(action1);
 		
 		J2.add(state);
@@ -250,25 +249,18 @@ public class Juego extends JFrame {
 		};
 		botonA.addActionListener(oyenteBotonA);
 		
-		botonA.addKeyListener(new KeyListener() {
-			@Override
-			public void keyTyped(KeyEvent e) {
-				
-				if (e.getKeyCode()==KeyEvent.VK_A){tablero.crearSoldadoMelee(1);}
-				
-			}
-			
-			@Override
-			public void keyReleased(KeyEvent e) {
-				if (e.getKeyCode()==KeyEvent.VK_A){tablero.crearSoldadoMelee(1);}
-				// TODO Auto-generated method stub
-				
-			}
-			
+		addKeyListener(new KeyListener() {
 			@Override
 			public void keyPressed(KeyEvent e) {
-				// TODO Auto-generated method stub
+				if (e.getKeyCode()==e.VK_A){tablero.crearSoldadoMelee(1);}
 			}
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if (e.VK_A==e.getKeyCode()){tablero.crearSoldadoMelee(1);}
+			}
+			@Override
+			public void keyTyped(KeyEvent e) {
+			}			
 		});
 	
 		
@@ -277,10 +269,19 @@ public class Juego extends JFrame {
 		};
 		botonS.addActionListener(oyenteBotonS);
 		
-		ActionListener oyenteBotonD = new ActionListener(){
-			public void actionPerformed(ActionEvent e) {JOptionPane.showMessageDialog(null, "En construcción");}
-		};
-		botonD.addActionListener(oyenteBotonD);
+		addKeyListener(new KeyListener() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode()==e.VK_S){tablero.crearSoldadoTanque(1);}
+			}
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if (e.VK_S==e.getKeyCode()){tablero.crearSoldadoTanque(1);}
+			}
+			@Override
+			public void keyTyped(KeyEvent e) {
+			}			
+		});
 		
 		ActionListener oyenteBotonEvolve1 = new ActionListener(){
 			public void actionPerformed(ActionEvent e) {try {
@@ -290,6 +291,26 @@ public class Juego extends JFrame {
 			eraNumJ1.setText(Integer.toString(er));}
 		};
 		botonEvolve1.addActionListener(oyenteBotonEvolve1);
+		addKeyListener(new KeyListener() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode()==e.VK_E){try {
+					tablero.avanzarEra(1);
+				} catch (PAOWException e1) {	}
+				}
+			}
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if (e.getKeyCode()==e.VK_E){try {
+					tablero.avanzarEra(1);
+				} catch (PAOWException e1) {	}
+				}
+
+			}
+			@Override
+			public void keyTyped(KeyEvent e) {
+			}			
+		});
 		
 	}
 public static void actualizLabels(int oroJ1,int oroJ2){
@@ -307,16 +328,37 @@ private void prepareAccionesJ2() {
 			public void actionPerformed(ActionEvent e) {tablero.crearSoldadoMelee(2);}
 		};
 		botonJ.addActionListener(oyenteBotonJ);
+		addKeyListener(new KeyListener() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode()==e.VK_J){tablero.crearSoldadoMelee(2);}
+			}
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if (e.VK_J==e.getKeyCode()){tablero.crearSoldadoMelee(2);}
+			}
+			@Override
+			public void keyTyped(KeyEvent e) {
+			}			
+		});
 		
 		ActionListener oyenteBotonK = new ActionListener(){
 			public void actionPerformed(ActionEvent e) {tablero.crearSoldadoTanque(2);}
 		};
 		botonK.addActionListener(oyenteBotonK);
-		
-		ActionListener oyenteBotonL = new ActionListener(){
-			public void actionPerformed(ActionEvent e) {JOptionPane.showMessageDialog(null, "En construcción");}
-		};
-		botonL.addActionListener(oyenteBotonL);
+		addKeyListener(new KeyListener() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode()==e.VK_K){tablero.crearSoldadoTanque(2);}
+			}
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if (e.VK_K==e.getKeyCode()){tablero.crearSoldadoTanque(2);}
+			}
+			@Override
+			public void keyTyped(KeyEvent e) {
+			}			
+		});
 		
 		ActionListener oyenteBotonEvolve2 = new ActionListener(){
 			public void actionPerformed(ActionEvent e) {try {
@@ -326,7 +368,28 @@ private void prepareAccionesJ2() {
 			eraNumJ2.setText(Integer.toString(er));}
 		};
 		botonEvolve2.addActionListener(oyenteBotonEvolve2);
-		
+		addKeyListener(new KeyListener() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode()==e.VK_U){{try {
+					tablero.avanzarEra(2);
+				} catch (PAOWException e1) { }
+				int er=tablero.getEra(2);
+				eraNumJ2.setText(Integer.toString(er));}}
+			}
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if (e.getKeyCode()==e.VK_U){{try {
+					tablero.avanzarEra(2);
+				} catch (PAOWException e1) { }
+				int er=tablero.getEra(2);
+				eraNumJ2.setText(Integer.toString(er));}}
+
+			}
+			@Override
+			public void keyTyped(KeyEvent e) {
+			}			
+		});
 	}
 	
 	/*

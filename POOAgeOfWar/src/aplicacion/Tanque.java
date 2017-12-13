@@ -22,15 +22,14 @@ public class Tanque extends Soldado {
 	}
 	
 	public void tankE1(){
-		
 		this.setVida(15);
 		this.setAtaque(2);
 		this.setDefensa(3);				
 		this.setDevuelve(1);
 		this.setCosto(10);
 		
-		
 	}
+	
 	public void tankE2(){
 		this.setVida(15);
 		this.setAtaque(7);
@@ -55,10 +54,5 @@ public class Tanque extends Soldado {
 		this.setCosto(90);	
 	}
 		
-		
-		
-		
-		
-		
-	}
+}
 
