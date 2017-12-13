@@ -122,21 +122,30 @@ public class Juego extends JFrame {
 		
 		state1.add(eraNumJ1);
 		state.add(state1);
+		
 		botonEvolve1 = new JButton("Avanzar era (E)");
 		state.add(botonEvolve1);
 		
 		JPanel action = new JPanel();
 		action.setLayout(new GridLayout(2,1));
-		JLabel unidad = new JLabel(" Unidades ");
+		JLabel vida = new JLabel(" vida: ");
+		 cantvidaJ1=new  JTextField (" 10");
+		 cantvidaJ1.setFocusable(false);
+		 
+		JPanel p=new JPanel();
+		p.setLayout(new GridLayout(2,1));
+		p.add(vida);
+		p.add(cantvidaJ1);
+		action.add(p);
 		
-		action.add(unidad);
 		JPanel action1 = new JPanel();
 		action1.setLayout(new GridLayout(1,3));
 		botonA = new JButton("Unidad 1(A)");
-		botonA.setFocusable(true);
 		botonS = new JButton("Unidad 2(S)");
+		botonD = new JButton("Unidad 3(D)");
 		action1.add(botonA);
 		action1.add(botonS);
+		action1.add(botonD);
 		action.add(action1);
 		
 		J1.add(state);
@@ -339,9 +348,11 @@ public class Juego extends JFrame {
 		});
 		
 	}
-public static void actualizLabels(int oroJ1,int oroJ2){
+public static void actualizLabels(int oroJ1,int oroJ2,int v1){
 	cantOroJ1.setText(Integer.toString(oroJ1));	
 	cantOroJ2.setText(Integer.toString(oroJ2));
+	cantvidaJ1.setText(Integer.toString(v1));
+}
 }
 public static void actualizLabels(int oroJ1){
 	cantOroJ1.setText(Integer.toString(oroJ1));	
