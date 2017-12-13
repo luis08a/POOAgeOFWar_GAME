@@ -5,6 +5,8 @@ import javax.swing.*;
 import aplicacion.PAOWException;
 
 import java.awt.event.*;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class Juego extends JFrame {
 	private boolean jcj;
@@ -219,12 +221,23 @@ public class Juego extends JFrame {
 		};
 		
 		ActionListener oyenteAbrir = new ActionListener(){
-			public void actionPerformed(ActionEvent e) {JOptionPane.showMessageDialog(null, "En construcción");}
+			public void actionPerformed(ActionEvent e) {try {
+				opcionAbrir();
+			} catch (ClassNotFoundException | IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}}
 		};
 		
 		ActionListener oyenteGuardar = new ActionListener(){
-			public void actionPerformed(ActionEvent e) {JOptionPane.showMessageDialog(null, "En construcción");}
-		};
+			public void actionPerformed(ActionEvent e) {
+				try {
+					opcionGuardar();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}};
 		
 		
 		
@@ -237,6 +250,19 @@ public class Juego extends JFrame {
 		guardar.addActionListener(oyenteGuardar);
 		//botonSpawn.addActionListener(oyenteBotonSpawn);
 		//botonBack.addActionListener(oyenteBotonBack);
+	}
+	
+	public void opcionGuardar() throws FileNotFoundException, IOException {
+		
+            JFileChooser fc = new JFileChooser();
+            int r = fc.showSaveDialog(this);
+            if(r == JFileChooser.APPROVE_OPTION){ tablero.guardar(fc.getSelectedFile());}
+	}
+	
+	private void opcionAbrir() throws FileNotFoundException, ClassNotFoundException, IOException {
+		JFileChooser fc = new JFileChooser();
+        int r = fc.showSaveDialog(this);
+        if(r == JFileChooser.APPROVE_OPTION){ tablero.abrir(fc.getSelectedFile());}
 	}
 	
 	private void prepareAccionesJ1() {

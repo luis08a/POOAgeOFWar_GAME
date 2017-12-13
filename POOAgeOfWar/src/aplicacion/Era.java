@@ -1,6 +1,8 @@
 package aplicacion;
 
-public  class Era {
+import java.io.Serializable;
+
+public  class Era implements Serializable{
 	public static final int MAX_ERA = 4; 
 	private int costo = 180;
 	
@@ -20,7 +22,7 @@ public  class Era {
 	public void aumentarEra() {
 		if (era<MAX_ERA) {
 			era+=1;
-			costo+=1;
+			costo+=90;
 		}
 	}
 }

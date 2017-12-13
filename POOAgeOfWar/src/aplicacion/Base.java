@@ -1,6 +1,8 @@
 package aplicacion;
 
-public class Base extends Unidad {
+import java.io.Serializable;
+
+public class Base extends Unidad implements Serializable{
 	private int oro;
 	private int experiecia;
 	private String tipo="#";

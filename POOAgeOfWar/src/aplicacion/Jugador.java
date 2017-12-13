@@ -1,6 +1,8 @@
 package aplicacion;
 
-public abstract class Jugador implements Inteligencia{
+import java.io.Serializable;
+
+public abstract class Jugador implements Inteligencia,Serializable{
 	protected final Base b;
 	
 	public Jugador(Base n){

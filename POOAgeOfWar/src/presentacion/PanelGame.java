@@ -4,6 +4,13 @@ import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 import javax.swing.*;
@@ -17,7 +24,6 @@ public class PanelGame extends JPanel implements Runnable{
 	private final int HEIGHT=Juego.ALTO*4/5;
 	private final int WIDTH=Juego.ANCHO;
 	private Image fondo = new ImageIcon(getClass().getResource("/recursos visuales/1.png")).getImage();
-	private ArrayList<Sprite> s = new ArrayList<Sprite>(20);
 	private Thread thread;
 	private Unidad[][] u ;
 	private volatile boolean enEjecucion;
@@ -196,4 +202,24 @@ public class PanelGame extends JPanel implements Runnable{
 			}
 		}
 	}
+	
+	public void guardar(File f) throws FileNotFoundException, IOException {
+		ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(f));
+		out.writeObject(J1);
+		out.writeObject(J2);
+		out.writeObject(r);
+		out.writeObject(u);
+		out.close();
+		
+	}
+	
+	public void abrir(File f) throws FileNotFoundException, IOException, ClassNotFoundException {
+		ObjectInputStream in = new ObjectInputStream(new FileInputStream(f));
+		J1 = (Jugador)in.readObject();
+		J2 = (Jugador)in.readObject();
+		r = (Arena)in.readObject();
+		u = (Unidad[][]) in.readObject();
+		in.close();
+	}
+	
 }

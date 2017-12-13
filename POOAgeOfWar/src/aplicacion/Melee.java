@@ -1,6 +1,8 @@
 package aplicacion;
 
-public class Melee extends Soldado {
+import java.io.Serializable;
+
+public class Melee extends Soldado implements Serializable{
 	 
 	/*
 	 * Constructor

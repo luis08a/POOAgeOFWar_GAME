@@ -1,6 +1,8 @@
 package aplicacion;
 
-public class Tanque extends Soldado {
+import java.io.Serializable;
+
+public class Tanque extends Soldado implements Serializable{
 	public Tanque(int dir,int spawn, int era){
 		super(dir,spawn);
 		this.setRangoAtaque(0);

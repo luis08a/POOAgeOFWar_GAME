@@ -1,6 +1,8 @@
 package aplicacion;
 
-public class Arena {
+import java.io.Serializable;
+
+public class Arena implements Serializable{
 	private static Arena r;
 	private static Unidad[][] arena;
 	private Base b1;

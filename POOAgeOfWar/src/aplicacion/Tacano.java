@@ -1,6 +1,8 @@
 package aplicacion;
 
-public class Tacano extends Maquina{
+import java.io.Serializable;
+
+public class Tacano extends Maquina implements Serializable{
 
 	public Tacano(Base n) {
 		super(n);

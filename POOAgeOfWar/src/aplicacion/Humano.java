@@ -1,6 +1,8 @@
 package aplicacion;
 
-public class Humano extends Jugador{
+import java.io.Serializable;
+
+public class Humano extends Jugador implements Serializable{
 	
 	
 	public Humano(Base n){

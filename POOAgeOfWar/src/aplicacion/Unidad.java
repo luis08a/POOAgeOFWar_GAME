@@ -1,6 +1,8 @@
 package aplicacion;
 
-public abstract class Unidad {
+import java.io.Serializable;
+
+public abstract class Unidad implements Serializable{
 	private int vida;
 	private int ataque;
 	private int ancho;
