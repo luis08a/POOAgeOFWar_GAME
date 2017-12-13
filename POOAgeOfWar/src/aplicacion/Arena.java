@@ -7,7 +7,7 @@ public class Arena {
 	private Base b2;
 	private Jugador j1;
 	private Jugador j2;
-	
+	private int time;
 	/*
 	 * Constructor.
 	 */
@@ -66,7 +66,12 @@ public class Arena {
 	 * Actualiza el estado de Arena, para ello hace que las unidades se muevan.
 	 * */
 	public void actualizar(){
-		
+		public void actualizar(){
+		time+=1;
+		switch(time){
+		case 15:b1.ganaOro(15);b2.ganaOro(15);
+		break;
+		}
 		for(int i =arena.length-1;i>0;i--){
 			
 			if (arena[i][0]==null) continue;
