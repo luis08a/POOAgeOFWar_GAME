@@ -83,18 +83,18 @@ public class PanelGame extends JPanel implements Runnable{
 	
 	public  void obtenerDinero(){
 		int d1=r.obtDinero(1);
+		int v1=r.getBase(1).getVida();
 		System.out.println(d1);
 		
 		if (!isIA) {
 			int d2=r.obtDinero(2);
-			Juego.actualizLabels(d1,d2 );
+			Juego.actualizLabels(d1,d2,v1);
 		}
 		else {
 		
 		Juego.actualizLabels(d1);}
 		
 	}
-	
 	/*
 	 * (non-Javadoc)
 	 * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
@@ -139,7 +139,7 @@ public class PanelGame extends JPanel implements Runnable{
 	}
 	
 	/*
-	 * Crea una única instancia de PanelGame.
+	 * Crea una Ãºnica instancia de PanelGame.
 	 */
 	public static PanelGame getPanelGame(String tipoIA) {
 		if (pg==null) {
@@ -158,7 +158,7 @@ public class PanelGame extends JPanel implements Runnable{
 	}
 	
 	/*
-	 * Inicia el hilo de actualización de la pantalla
+	 * Inicia el hilo de actualizaciÃ³n de la pantalla
 	 */
 	private void iniciar(){
 		enEjecucion =true;
@@ -167,7 +167,7 @@ public class PanelGame extends JPanel implements Runnable{
 	}
 	
 	/*
-	 * Detiene el hilo de actualización
+	 * Detiene el hilo de actualizaciÃ³n
 	 */
 	public void parar() {
 		try {
