@@ -81,18 +81,9 @@ public class PanelGame extends JPanel implements Runnable{
 		else if(Jugador ==2 ){Unidad u =J2.crearSoldadoTanque();Base b=J2.getBase();r.ponerUnidad(b, u);}
 	}
 	
-	public void avanzarEra(int Jugador ) {
+	public void avanzarEra(int Jugador ) throws PAOWException{
 		if (Jugador == 1) {J1.avanzarEra();}
 		else if(Jugador ==2 ){J2.avanzarEra();}
-	}
-	
-	/*
-	 * la funcion aumenta la era de la base en especifico
-	 * @param num: numero de la base que recibira la mejora
-	 * */
-	public void mejora(int num) {
-		Base b = r.getBase(num);
-		r.aumentarEdad(b);
 	}
 	
 	/*
@@ -198,6 +189,7 @@ public class PanelGame extends JPanel implements Runnable{
 			try {
 				Thread.sleep(1000);
 				actualizar();
+				
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

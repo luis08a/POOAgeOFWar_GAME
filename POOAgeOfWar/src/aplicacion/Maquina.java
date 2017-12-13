@@ -7,10 +7,4 @@ public abstract class Maquina extends Jugador implements Inteligencia{
 		super(n);
 	}
 
-	@Override
-	public abstract Unidad crearSoldadoMelee() ;
-
-	@Override
-	public abstract Unidad crearSoldadoTanque();
-
 }

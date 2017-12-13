@@ -1,6 +1,9 @@
 package presentacion;
 import java.awt.*;
 import javax.swing.*;
+
+import aplicacion.PAOWException;
+
 import java.awt.event.*;
 
 public class Juego extends JFrame {
@@ -262,7 +265,10 @@ public class Juego extends JFrame {
 		botonD.addActionListener(oyenteBotonD);
 		
 		ActionListener oyenteBotonEvolve1 = new ActionListener(){
-			public void actionPerformed(ActionEvent e) {tablero.avanzarEra(1);}
+			public void actionPerformed(ActionEvent e) {try {
+				tablero.avanzarEra(1);
+			} catch (PAOWException e1) {
+			}}
 		};
 		botonEvolve1.addActionListener(oyenteBotonEvolve1);
 	}
@@ -285,7 +291,9 @@ private void prepareAccionesJ2() {
 		botonL.addActionListener(oyenteBotonL);
 		
 		ActionListener oyenteBotonEvolve2 = new ActionListener(){
-			public void actionPerformed(ActionEvent e) {tablero.avanzarEra(2);}
+			public void actionPerformed(ActionEvent e) {try {
+				tablero.avanzarEra(2);
+			} catch (PAOWException e1) {}}
 		};
 		botonEvolve2.addActionListener(oyenteBotonEvolve2);
 		

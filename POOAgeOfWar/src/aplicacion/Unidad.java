@@ -52,7 +52,7 @@ public abstract class Unidad {
 		this.ancho = ancho;
 	}
 	public void mover(){
-		posx=posx+60*direc;
+		posx=posx+65*direc;
 	}
 	public int getPosx() {
 		return posx;

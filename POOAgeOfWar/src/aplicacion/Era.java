@@ -2,6 +2,8 @@ package aplicacion;
 
 public  class Era {
 	public static final int MAX_ERA = 4; 
+	private int costo = 180;
+	
 	private int era;
 	
 	public Era (){
@@ -11,9 +13,14 @@ public  class Era {
 		return era;
 	}
 	
+	public int getCosto() {
+		return costo;
+	}
+	
 	public void aumentarEra() {
 		if (era<MAX_ERA) {
 			era+=1;
+			costo+=1;
 		}
 	}
 }

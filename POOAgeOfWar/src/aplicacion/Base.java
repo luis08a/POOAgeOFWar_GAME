@@ -21,7 +21,6 @@ public class Base extends Unidad {
 	public Base(int dir,int base){
 		super(dir,0);
 		numero =base;
-		era=1;
 		e = new Era();
 		if (base==0){spawn=1;}
 		else if (base==1) {spawn=18;}
@@ -52,8 +51,12 @@ public class Base extends Unidad {
 	public void compraUnidad(Unidad s){
 		oro-=s.getCosto();
 	}
-	public void aumentarEra(){
-		e.aumentarEra();
+	public void aumentarEra() throws PAOWException{
+		int c= e.getCosto();
+		if (oro<c) {
+			throw new PAOWException("No hay suiciente oro");
+		}
+		else {e.aumentarEra();oro-=c;}
 	}
 	
 	public int getEra() {
@@ -64,7 +67,6 @@ public class Base extends Unidad {
 		
 		int dir = this.getDirec();
 		int eraAc=e.eraActual();
-		System.out.println(eraAc);
 		Soldado s = new Melee(dir,spawn,eraAc);
 		
 		if (tipo=="@"){
@@ -73,10 +75,11 @@ public class Base extends Unidad {
 		}
 		if (tipo=="#"){
 			
-			s= new Tanque(dir,spawn);
+			s= new Tanque(dir,spawn, eraAc);
 			
 		}
-		s.setEra(era);
+		
+		s.setEra(eraAc);
 		return s;
 		
 	}

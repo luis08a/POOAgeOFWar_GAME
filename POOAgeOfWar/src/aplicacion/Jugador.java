@@ -7,20 +7,27 @@ public abstract class Jugador implements Inteligencia{
 		b=n;
 	}
 	
-	/*
-	public void crearSoldado(){
-		crearSoldadoMelee();
-		crearSoldadoTanque();
-	}
-	*/
 	public Base getBase() {
 		return b;
 	}
 	
+	public void avanzarEra() throws PAOWException{
+		b.aumentarEra();
+	}
+
+	public void desicion(Arena a) {
+	}
 	
-	public abstract Unidad crearSoldadoMelee();
-	public abstract Unidad crearSoldadoTanque();
-	public abstract void avanzarEra();
+	public Unidad crearSoldadoMelee() {
+		Unidad m=b.crearUnidad("@");
+		return m;
+	}
+
+	public Unidad crearSoldadoTanque() {
+		Unidad m=b.crearUnidad("#");
+		return m;
+	}
+
 	public void giveUp() throws PAOWException{
 		throw new PAOWException("Jugador se rinde");
 	}

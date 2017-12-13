@@ -1,7 +1,7 @@
 package aplicacion;
 
 public class Tanque extends Soldado {
-	public Tanque(int dir,int spawn){
+	public Tanque(int dir,int spawn, int era){
 		super(dir,spawn);
 		this.setRangoAtaque(0);
 		this.setDirec(dir);

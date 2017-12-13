@@ -146,7 +146,7 @@ public class Arena {
 	/*
 	 * Cambia la era de la base.
 	 */
-	public void aumentarEdad(Base base){
+	public void aumentarEdad(Base base) throws PAOWException{
 		base.aumentarEra();
 	}
 	
