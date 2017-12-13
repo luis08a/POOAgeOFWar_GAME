@@ -44,7 +44,6 @@ public class PanelGame extends JPanel implements Runnable{
 		else if( tipoIA == null){
 			r.jugadorVsJugador();
 			J2=r.getJ2();
-			
 			isIA=false;
 		}
 		
@@ -52,22 +51,7 @@ public class PanelGame extends JPanel implements Runnable{
 		
 		iniciar();
 	}
-	
-	/*
-	 * Crea un Sprite (Dibujo) que serÃƒÂ¡ recreado en pantalla.
-	 
-	public void createSprite(String name,int num) {
-		Base b= r.getBase(num);
-		try {
-			r.ponerUnidad(b, "@");
-		} catch (PAOWException e) {
-			e.printStackTrace();
-		}
-		repaint();
-	}
-	*/
-	
-	
+		
 	public void crearSoldadoMelee(int Jugador)  {
 		if (Jugador == 1) {Unidad u =J1.crearSoldadoMelee();
 		Base b=J1.getBase();
@@ -82,27 +66,26 @@ public class PanelGame extends JPanel implements Runnable{
 		else if(Jugador ==2 ){Unidad u =J2.crearSoldadoTanque();Base b=J2.getBase();r.ponerUnidad(b, u);}
 	}
 	
-	public void avanzarEra(int Jugador ) {
+	public void avanzarEra(int Jugador ) throws PAOWException{
 		if (Jugador == 1) {J1.avanzarEra();}
 		else if(Jugador ==2 ){J2.avanzarEra();}
 	}
+	
 	public int getEra(int jugador){
 		return r.getBase(jugador).getEra();
 	}
 	
-	/*
-	 * la funcion aumenta la era de la base en especifico
-	 * @param num: numero de la base que recibira la mejora
-	 * */
-	public void mejora(int num) {
-		Base b = r.getBase(num);
-		r.aumentarEdad(b);
-	}
 	public  void obtenerDinero(){
 		int d1=r.obtDinero(1);
 		System.out.println(d1);
-		int d2=r.obtDinero(2);
-		Juego.actualizLabels(d1, d2);
+		
+		if (!isIA) {
+			int d2=r.obtDinero(2);
+			Juego.actualizLabels(d1,d2 );
+		}
+		else {
+		
+		Juego.actualizLabels(d1);}
 		
 	}
 	
@@ -150,7 +133,7 @@ public class PanelGame extends JPanel implements Runnable{
 	}
 	
 	/*
-	 * Crea una Ãºnica instancia de PanelGame.
+	 * Crea una única instancia de PanelGame.
 	 */
 	public static PanelGame getPanelGame(String tipoIA) {
 		if (pg==null) {
@@ -165,22 +148,20 @@ public class PanelGame extends JPanel implements Runnable{
 	private void prepareArena(){
 		r= Arena.creeArena();
 		u = r.getArena();
-		//r.enemyIAIngenuo();
 		iniciar();
 	}
 	
 	/*
-	 * Inicia el hilo de actualizaciÃ³n de la pantalla
+	 * Inicia el hilo de actualización de la pantalla
 	 */
 	private void iniciar(){
 		enEjecucion =true;
-		
 		thread=new Thread(this,"actualiz");
 		thread.start();
 	}
 	
 	/*
-	 * Detiene el hilo de actualizaciÃ³n
+	 * Detiene el hilo de actualización
 	 */
 	public void parar() {
 		try {

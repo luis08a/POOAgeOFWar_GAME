@@ -71,12 +71,12 @@ public class Base extends Unidad {
 		
 		if (tipo=="@"){
 			s= new Melee(dir,spawn,eraAc);
-			
+			if (s.getCosto()>oro) {s=null;}
 		}
 		if (tipo=="#"){
 			
 			s= new Tanque(dir,spawn, eraAc);
-			
+			if (s.getCosto()>oro) {s=null;}
 		}
 		
 		s.setEra(eraAc);
