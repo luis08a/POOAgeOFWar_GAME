@@ -17,8 +17,12 @@ public class Melee extends Soldado {
 		else if (era ==2){
 			meleeE2();
 		}
-		
-		
+		else if (era ==3){
+			meleeE3();
+		}
+		else if (era ==4){
+			meleeE3();
+		}
 	}
 	
 	public void meleeE1(){
@@ -37,5 +41,24 @@ public class Melee extends Soldado {
 		this.setDefensa(5);			
 		this.setDevuelve(1);
 		this.setCosto(15);	
+	}
+	
+	public void meleeE3(){
+			
+			this.setVida(10);
+			this.setAtaque(15);
+			this.setDefensa(5);		
+			this.setDevuelve(2);
+			this.setCosto(20);
+			
+		}
+	public void meleeE4(){
+		
+		this.setVida(20);
+		this.setAtaque(35);
+		this.setDefensa(5);		
+		this.setDevuelve(3);
+		this.setCosto(40);
+		
 	}
 }

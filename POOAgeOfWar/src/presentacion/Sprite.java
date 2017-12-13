@@ -13,7 +13,7 @@ public class Sprite {
 	private int width;
 	private Image imagen;
 	private final String[] SoldadosMelee = {"/recursos visuales/0.png","/recursos visuales/walk_1.png","/recursos visuales/EnemyGuy/_02/01-Idle/__Bandit02_Idle_000.png","/recursos visuales/Idle (1).png"};
-	private final String[] SoldadosTanque = {"/recursos visuales\\dragon_1.png","/recursos visuales/American_sherman_move_forward_1.png"};
+	private final String[] SoldadosTanque = {"/recursos visuales/mini-tyranausor-1.png","/recursos visuales\\dragon_1.png","/recursos visuales/Blaster.png","/recursos visuales/American_sherman_move_forward_1.png"};
 	private final String[] torres = {"/recursos visuales/Tower1.png","/recursos visuales/tower-drawing/Tower.png","/recursos visuales/Tower2.png","/recursos visuales/Tower3.png"};
 	
 	public Sprite(Unidad u){

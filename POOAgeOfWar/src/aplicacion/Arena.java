@@ -68,7 +68,7 @@ public class Arena {
 	public void actualizar(){
 		time+=1;
 		switch(time){
-		case 15:b1.ganaOro(15);b2.ganaOro(15);
+		case 15:b1.ganaOro(15);b2.ganaOro(15);time = 0;
 		break;
 		}
 		
