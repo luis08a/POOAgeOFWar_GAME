@@ -24,6 +24,7 @@ public class PanelGame extends JPanel implements Runnable{
 	private boolean isIA;
 	private Jugador J1;
 	private Jugador J2;
+	private int dineroJ1;
 	
 	/*
 	 * Constructor
@@ -53,7 +54,7 @@ public class PanelGame extends JPanel implements Runnable{
 	}
 	
 	/*
-	 * Crea un Sprite (Dibujo) que será recreado en pantalla.
+	 * Crea un Sprite (Dibujo) que serÃ¡ recreado en pantalla.
 	 
 	public void createSprite(String name,int num) {
 		Base b= r.getBase(num);
@@ -81,9 +82,28 @@ public class PanelGame extends JPanel implements Runnable{
 		else if(Jugador ==2 ){Unidad u =J2.crearSoldadoTanque();Base b=J2.getBase();r.ponerUnidad(b, u);}
 	}
 	
-	public void avanzarEra(int Jugador ) throws PAOWException{
+	public void avanzarEra(int Jugador ) {
 		if (Jugador == 1) {J1.avanzarEra();}
 		else if(Jugador ==2 ){J2.avanzarEra();}
+	}
+	public int getEra(int jugador){
+		return r.getBase(jugador).getEra();
+	}
+	
+	/*
+	 * la funcion aumenta la era de la base en especifico
+	 * @param num: numero de la base que recibira la mejora
+	 * */
+	public void mejora(int num) {
+		Base b = r.getBase(num);
+		r.aumentarEdad(b);
+	}
+	public  void obtenerDinero(){
+		int d1=r.obtDinero(1);
+		System.out.println(d1);
+		int d2=r.obtDinero(2);
+		Juego.actualizLabels(d1, d2);
+		
 	}
 	
 	/*
@@ -130,7 +150,7 @@ public class PanelGame extends JPanel implements Runnable{
 	}
 	
 	/*
-	 * Crea una �nica instancia de PanelGame.
+	 * Crea una única instancia de PanelGame.
 	 */
 	public static PanelGame getPanelGame(String tipoIA) {
 		if (pg==null) {
@@ -150,7 +170,7 @@ public class PanelGame extends JPanel implements Runnable{
 	}
 	
 	/*
-	 * Inicia el hilo de actualizaci�n de la pantalla
+	 * Inicia el hilo de actualización de la pantalla
 	 */
 	private void iniciar(){
 		enEjecucion =true;
@@ -160,7 +180,7 @@ public class PanelGame extends JPanel implements Runnable{
 	}
 	
 	/*
-	 * Detiene el hilo de actualizaci�n
+	 * Detiene el hilo de actualización
 	 */
 	public void parar() {
 		try {
@@ -177,6 +197,7 @@ public class PanelGame extends JPanel implements Runnable{
 	private synchronized void actualizar(){
 		if (isIA==true)J2.desicion(r);
 		r.actualizar();
+		obtenerDinero();
 		repaint();
 	}
 	
@@ -189,7 +210,6 @@ public class PanelGame extends JPanel implements Runnable{
 			try {
 				Thread.sleep(1000);
 				actualizar();
-				
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
