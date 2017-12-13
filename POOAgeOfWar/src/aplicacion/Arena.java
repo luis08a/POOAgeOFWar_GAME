@@ -54,6 +54,12 @@ public class Arena {
 		case "Ingenuo": j2=new Ingenuo(b2);
 		break;
 	}
+	
+	public int obtDinero(int jugador){
+		
+		int din = r.getBase(jugador).getOro();
+		return din;
+	}
 		
 	}
 	/*
@@ -132,7 +138,7 @@ public class Arena {
 	}
 	
 	/*
-	 * @param Número de la base. Sólo hay dos en la arena.
+	 * @param NÃºmero de la base. SÃ³lo hay dos en la arena.
 	 * 1: base izquierda. 2: base derecha.
 	 * @return Un elemento de tipo Base.	
 	 */
@@ -152,7 +158,7 @@ public class Arena {
 	
 	/*
 	 * Agrega una unidad a la arena;
-	 * Más especificamente al arreglo de unidades que contiene la información del estado de la arena.
+	 * MÃ¡s especificamente al arreglo de unidades que contiene la informaciÃ³n del estado de la arena.
 	 */
 	public void ponerUnidad(Base base, Unidad u) {
 		//Unidad uni = base.crearUnidad(tipo);
@@ -161,8 +167,9 @@ public class Arena {
 		 
 		if (base.getOro()>= uni.getCosto()){
 			System.out.println(base.getOro()+" >= "+uni.getCosto());
-			base.compraUnidad(uni);
+			
 		*/	
+		base.compraUnidad(uni);
 		if (spawn==1){arena[spawn][0]=u;}
 		else if (spawn==18){arena[spawn][1]=u;}
 		//}
@@ -187,8 +194,8 @@ public class Arena {
 	}
 	
 	/*
-	 * Crea una única instancia de Arena.
-	 * @return La única instancia de Arena existente.
+	 * Crea una Ãºnica instancia de Arena.
+	 * @return La Ãºnica instancia de Arena existente.
 	 */
 	public static Arena creeArena(){
 		if (r==null){
