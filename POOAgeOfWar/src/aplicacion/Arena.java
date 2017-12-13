@@ -111,7 +111,7 @@ public class Arena implements Serializable{
 			
 			if (arena[i][1]==null) continue;
 			
-			if (i==1&&arena[i][0]!=null){
+			if (i==1&&arena[i][1]!=null){
 				arena[i][1].ataque(b1);
 				 if (b1.estaMuerto()==true){
 						System.out.println("gana maquina");System.exit(0);}
@@ -145,7 +145,7 @@ public class Arena implements Serializable{
 	}
 	
 	/*
-	 * @param Número de la base. Sólo hay dos en la arena.
+	 * @param NÃºmero de la base. SÃ³lo hay dos en la arena.
 	 * 1: base izquierda. 2: base derecha.
 	 * @return Un elemento de tipo Base.	
 	 */
@@ -165,7 +165,7 @@ public class Arena implements Serializable{
 	
 	/*
 	 * Agrega una unidad a la arena;
-	 * Más especificamente al arreglo de unidades que contiene la información del estado de la arena.
+	 * MÃ¡s especificamente al arreglo de unidades que contiene la informaciÃ³n del estado de la arena.
 	 */
 	public void ponerUnidad(Base base, Unidad u) {
 		//Unidad uni = base.crearUnidad(tipo);
@@ -201,8 +201,8 @@ public class Arena implements Serializable{
 	}
 	
 	/*
-	 * Crea una única instancia de Arena.
-	 * @return La única instancia de Arena existente.
+	 * Crea una Ãºnica instancia de Arena.
+	 * @return La Ãºnica instancia de Arena existente.
 	 */
 	public static Arena creeArena(){
 		if (r==null){
