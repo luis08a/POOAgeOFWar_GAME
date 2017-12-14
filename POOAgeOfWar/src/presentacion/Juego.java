@@ -40,6 +40,7 @@ public class Juego extends JFrame {
 	private JTextField eraNumJ2;
 	private static JTextField cantOroJ2;
 	private static JTextField cantvidaJ1;
+	private static JTextField cantvidaJ2;
 	
 	/*
 	 * Constructor
