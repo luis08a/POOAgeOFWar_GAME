@@ -85,11 +85,12 @@ public class PanelGame extends JPanel implements Runnable{
 		
 		if (!isIA) {
 			int d2=r.obtDinero(2);
-			Juego.actualizLabels(d1,d2,v1);
+			int v2=r.getBase(2).getVida();
+			Juego.actualizLabels(d1,d2,v1,v2);
 		}
 		else {
 		
-		Juego.actualizLabels(d1);}
+		Juego.actualizLabels(d1,v1);}
 		
 	}
 	/*
