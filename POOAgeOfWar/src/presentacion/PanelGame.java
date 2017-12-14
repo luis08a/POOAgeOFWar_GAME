@@ -181,7 +181,7 @@ public class PanelGame extends JPanel implements Runnable{
 	public void  run(){
 		while(enEjecucion) {
 			try {
-				Thread.sleep(1000);
+				Thread.sleep(200);
 				actualizar();
 			} catch (InterruptedException e) {
 				e.printStackTrace();
