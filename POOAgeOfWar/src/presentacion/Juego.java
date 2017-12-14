@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class Juego extends JFrame {
 	private boolean jcj;
-	//Elementos Menú barra
+	//Elementos MenÃº barra
 	private JPanel panelOpciones;
 	private JMenuBar bar;
 	private JMenu menu;
@@ -200,7 +200,7 @@ public class Juego extends JFrame {
 	}
 	
 	/*
-	 * Prepara los elementos necesarios para crear el menú barra con opciones.
+	 * Prepara los elementos necesarios para crear el menÃº barra con opciones.
 	 */
 	private void prepareElementosMenu() {
 		bar = new JMenuBar();
@@ -217,7 +217,7 @@ public class Juego extends JFrame {
 	}
 	
 	/*
-	 * Prepara el "tablero" en el cual se animará el juego 
+	 * Prepara el "tablero" en el cual se animarÃ¡ el juego 
 	 */
 	private void prepareTableroJuego() {
 		PanelGame.pg=null;
@@ -433,23 +433,25 @@ private void prepareAccionesJ1() {
 	}
 
 	/*
-	 * Actualiza la información del oro de cada jugador
+	 * Actualiza la informaciÃ³n del oro de cada jugador
 	 */
-	public static void actualizLabels(int oroJ1,int oroJ2,int v1){
+	public static void actualizLabels(int oroJ1,int oroJ2,int v1,int v2){
 		cantOroJ1.setText(Integer.toString(oroJ1));	
 		cantOroJ2.setText(Integer.toString(oroJ2));
 		cantvidaJ1.setText(Integer.toString(v1));
+		cantvidaJ2.setText(Integer.toString(v2));
 	}
 	
-	public static void actualizLabels(int oroJ1){
-		cantOroJ1.setText(Integer.toString(oroJ1));		
+	public static void actualizLabels(int oroJ1,int v1){
+		cantOroJ1.setText(Integer.toString(oroJ1));	
+		cantvidaJ1.setText(Integer.toString(v1));
 	}
 	
 	/*
-	 * Da fin al programa, terminando con la ejecución de la máquina virtual.
+	 * Da fin al programa, terminando con la ejecuciÃ³n de la mÃ¡quina virtual.
 	 */
 	private void salir(){
-		int choose = JOptionPane.showConfirmDialog(null, "¿ Desea salir ?");
+		int choose = JOptionPane.showConfirmDialog(null, "Â¿ Desea salir ?");
 		if(choose == JOptionPane.YES_OPTION){
 			System.exit(0);
 		}
