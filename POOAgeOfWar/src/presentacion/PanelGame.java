@@ -56,7 +56,7 @@ public class PanelGame extends JPanel implements Runnable{
 		iniciar();
 	}
 		
-	public void crearSoldadoMelee(int Jugador)  {
+	public void crearSoldadoMelee(int Jugador) throws PAOWException  {
 		if (Jugador == 1) {Unidad u =J1.crearSoldadoMelee();
 		Base b=J1.getBase();
 		r.ponerUnidad(b, u);
@@ -64,7 +64,7 @@ public class PanelGame extends JPanel implements Runnable{
 		else if(Jugador ==2 ){Unidad u = J2.crearSoldadoMelee();Base b=J2.getBase();r.ponerUnidad(b, u);}
 	}
 	
-	public void crearSoldadoTanque(int Jugador ) {
+	public void crearSoldadoTanque(int Jugador ) throws PAOWException {
 		if (Jugador == 1) {Unidad u =J1.crearSoldadoTanque();Base b=J1.getBase();r.ponerUnidad(b, u);}
 		else if(Jugador ==2 ){Unidad u =J2.crearSoldadoTanque();Base b=J2.getBase();r.ponerUnidad(b, u);}
 	}
@@ -180,7 +180,7 @@ public class PanelGame extends JPanel implements Runnable{
 	public void  run(){
 		while(enEjecucion) {
 			try {
-				Thread.sleep(200);
+				Thread.sleep(1000);
 				actualizar();
 			} catch (InterruptedException e) {
 				e.printStackTrace();

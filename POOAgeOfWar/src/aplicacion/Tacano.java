@@ -16,7 +16,11 @@ public class Tacano extends Maquina implements Serializable{
 		try {
 			avanzarEra();
 		}catch(PAOWException e){
-			Unidad u = crearSoldadoMelee(); a.ponerUnidad(b, u);
+			Unidad u;
+			try {
+				u = crearSoldadoMelee();
+				a.ponerUnidad(b, u);
+			} catch (PAOWException e1) {}
 		}
 	}
 	

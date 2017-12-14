@@ -33,6 +33,7 @@ public class Arena implements Serializable{
 			}
 		}
 	}
+	
 	public Jugador getJ1(){
 		return j1;
 	}
@@ -168,29 +169,10 @@ public class Arena implements Serializable{
 	 * Más especificamente al arreglo de unidades que contiene la información del estado de la arena.
 	 */
 	public void ponerUnidad(Base base, Unidad u) {
-		//Unidad uni = base.crearUnidad(tipo);
 		int spawn=base.getSpawn();
-		/*
-		 
-		if (base.getOro()>= uni.getCosto()){
-			System.out.println(base.getOro()+" >= "+uni.getCosto());
-			
-		*/	
 		base.compraUnidad(u);
 		if (spawn==1){arena[spawn][0]=u;}
-		else if (spawn==98){arena[spawn][1]=u;}
-		//}
-		
-		//else{
-			//throw new PAOWException("no hay  dinerodsfsdfsfsfsdf?????????????????????");}
-		
-	}
-	
-	public void enemyIAIngenuo() {
-		Ingenuo i = Ingenuo.getIA(b2);
-		//i.start(this);
-		i.desicion(this);
-		
+		else if (spawn==98){arena[spawn][1]=u;}		
 	}
 	
 	/*

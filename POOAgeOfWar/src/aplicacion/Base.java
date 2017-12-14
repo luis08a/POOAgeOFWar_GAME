@@ -16,7 +16,7 @@ public class Base extends Unidad implements Serializable{
 	
 	/*
 	 * Constructor
-	 * @param dir, dierecciÃ³n en la cual se moveran las unidades asociadas a esta base.
+	 * @param dir, dierección en la cual se moveran las unidades asociadas a esta base.
 	 */
 	public Base(int dir,int base){
 		super(dir,0);
@@ -55,7 +55,10 @@ public class Base extends Unidad implements Serializable{
 	public void aumentarEra() throws PAOWException{
 		int c= e.getCosto();
 		if (oro<c) {
-			throw new PAOWException("No hay suiciente oro");
+			throw new PAOWException("Oro insufuciente");
+		}
+		else if ( e.eraActual()==Era.MAX_ERA) {
+			throw new PAOWException("Era máxima alcanzada");
 		}
 		else {e.aumentarEra();oro-=c;}
 	}
@@ -64,7 +67,7 @@ public class Base extends Unidad implements Serializable{
 		return e.eraActual();
 	}
 	
-	public  Unidad crearUnidad(String tipo){
+	public  Unidad crearUnidad(String tipo) throws PAOWException{
 		
 		int dir = this.getDirec();
 		int eraAc=e.eraActual();
@@ -72,12 +75,11 @@ public class Base extends Unidad implements Serializable{
 		
 		if (tipo=="@"){
 			s= new Melee(dir,spawn,eraAc);
-			if (s.getCosto()>oro) {s=null;}
+			if (s.getCosto()>oro) {s=null;throw new PAOWException("Oro insuficiente");}
 		}
 		if (tipo=="#"){
-			
 			s= new Tanque(dir,spawn, eraAc);
-			if (s.getCosto()>oro) {s=null;}
+			if (s.getCosto()>oro) {s=null;throw new PAOWException("Oro insuficiente");}
 		}
 		
 		s.setEra(eraAc);

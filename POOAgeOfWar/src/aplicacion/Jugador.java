@@ -20,12 +20,12 @@ public abstract class Jugador implements Inteligencia,Serializable{
 	public void desicion(Arena a) {
 	}
 	
-	public Unidad crearSoldadoMelee() {
+	public Unidad crearSoldadoMelee() throws PAOWException {
 		Unidad m=b.crearUnidad("@");
 		return m;
 	}
 
-	public Unidad crearSoldadoTanque() {
+	public Unidad crearSoldadoTanque() throws PAOWException {
 		Unidad m=b.crearUnidad("#");
 		return m;
 	}

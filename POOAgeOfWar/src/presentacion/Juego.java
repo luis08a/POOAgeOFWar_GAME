@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class Juego extends JFrame {
 	private boolean jcj;
-	//Elementos MenÃº barra
+	//Elementos Menú barra
 	private JPanel panelOpciones;
 	private JMenuBar bar;
 	private JMenu menu;
@@ -200,7 +200,7 @@ public class Juego extends JFrame {
 	}
 	
 	/*
-	 * Prepara los elementos necesarios para crear el menÃº barra con opciones.
+	 * Prepara los elementos necesarios para crear el menú barra con opciones.
 	 */
 	private void prepareElementosMenu() {
 		bar = new JMenuBar();
@@ -217,7 +217,7 @@ public class Juego extends JFrame {
 	}
 	
 	/*
-	 * Prepara el "tablero" en el cual se animarÃ¡ el juego 
+	 * Prepara el "tablero" en el cual se animará el juego 
 	 */
 	private void prepareTableroJuego() {
 		PanelGame.pg=null;
@@ -289,16 +289,27 @@ public class Juego extends JFrame {
 	/*
 	 * Prepara las acciones del panel para el primer jugador
 	 */
-	private void prepareAccionesJ1() {
+private void prepareAccionesJ1() {
 		
 		ActionListener oyenteBotonA = new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
-					tablero.crearSoldadoMelee(1);}
+					try {
+						tablero.crearSoldadoMelee(1);
+					} catch (PAOWException e1) {
+						JOptionPane.showMessageDialog(null, e1.getMessage());
+					}
+				}
 		};
 		botonA.addActionListener(oyenteBotonA);
 				
 		ActionListener oyenteBotonS = new ActionListener(){
-			public void actionPerformed(ActionEvent e) {tablero.crearSoldadoTanque(1);}
+			public void actionPerformed(ActionEvent e) {
+				try {
+					tablero.crearSoldadoTanque(1);
+				} catch (PAOWException e1) {
+					JOptionPane.showMessageDialog(null, e1.getMessage());
+				}
+			}
 		};
 		botonS.addActionListener(oyenteBotonS);
 				
@@ -314,15 +325,27 @@ public class Juego extends JFrame {
 		addKeyListener(new KeyListener() {
 			@Override
 			public void keyPressed(KeyEvent e) {
-				if (e.getKeyCode()==e.VK_A){tablero.crearSoldadoMelee(1);}
-				if (e.getKeyCode()==e.VK_S){tablero.crearSoldadoTanque(1);}
+				if (e.getKeyCode()==e.VK_A){
+					try {
+						tablero.crearSoldadoMelee(1);
+					} catch (PAOWException e1) {
+						JOptionPane.showMessageDialog(null, e1.getMessage());
+					}
+				}
+				if (e.getKeyCode()==e.VK_S){
+					try {
+						tablero.crearSoldadoTanque(1);
+					} catch (PAOWException e1) {
+						JOptionPane.showMessageDialog(null, e1.getMessage());
+					}
+				}
 				if (e.getKeyCode()==e.VK_E){
 					try {
 					tablero.avanzarEra(1);
 					int er=tablero.getEra(1);
 					eraNumJ1.setText(Integer.toString(er));
 					} catch (PAOWException e1) { 
-						JOptionPane.showMessageDialog(null, "NO se puede mejorar");}
+						JOptionPane.showMessageDialog(null, e1.getMessage());}
 				}
 			}
 			@Override
@@ -336,7 +359,81 @@ public class Juego extends JFrame {
 	}
 	
 	/*
-	 * Actualiza la informaciÃ³n del oro de cada jugador
+	 * Prepara las acciones para el panel del segundo jugador
+	 */
+	private void prepareAccionesJ2() {
+		
+		ActionListener oyenteBotonJ = new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				try {
+					tablero.crearSoldadoMelee(2);
+				} catch (PAOWException e1) {
+					JOptionPane.showMessageDialog(null, e1.getMessage());
+				}
+			}
+		};
+		botonJ.addActionListener(oyenteBotonJ);
+		
+		ActionListener oyenteBotonK = new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				try {
+					tablero.crearSoldadoTanque(2);
+				} catch (PAOWException e1) {
+					JOptionPane.showMessageDialog(null, e1.getMessage());
+				}
+			}
+		};
+		botonK.addActionListener(oyenteBotonK);
+		
+		ActionListener oyenteBotonEvolve2 = new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				try {
+					tablero.avanzarEra(2);
+					int er=tablero.getEra(2);
+					eraNumJ2.setText(Integer.toString(er));
+				} catch (PAOWException e1) {JOptionPane.showMessageDialog(null, e1.getMessage());}
+			}
+		};
+		botonEvolve2.addActionListener(oyenteBotonEvolve2);
+		
+		addKeyListener(new KeyListener() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode()==e.VK_J){
+					try {
+						tablero.crearSoldadoMelee(2);
+					} catch (PAOWException e1) {
+						JOptionPane.showMessageDialog(null, e1.getMessage());
+					}
+				}
+				if (e.getKeyCode()==e.VK_K){
+					try {
+						tablero.crearSoldadoTanque(2);
+					} catch (PAOWException e1) {
+						JOptionPane.showMessageDialog(null, e1.getMessage());
+					}
+				}
+				if (e.getKeyCode()==e.VK_U){
+					try {
+						tablero.avanzarEra(2);
+						int er=tablero.getEra(2);
+						eraNumJ2.setText(Integer.toString(er));
+					} catch (PAOWException e1) { JOptionPane.showMessageDialog(null, e1.getMessage());}
+				}
+			}
+			@Override
+			public void keyReleased(KeyEvent e) {
+				
+				
+			}
+			@Override
+			public void keyTyped(KeyEvent e) {
+			}			
+		});
+	}
+
+	/*
+	 * Actualiza la información del oro de cada jugador
 	 */
 	public static void actualizLabels(int oroJ1,int oroJ2,int v1){
 		cantOroJ1.setText(Integer.toString(oroJ1));	
@@ -349,57 +446,10 @@ public class Juego extends JFrame {
 	}
 	
 	/*
-	 * Prepara las acciones para el panel del segundo jugador
-	 */
-	private void prepareAccionesJ2() {
-		
-		ActionListener oyenteBotonJ = new ActionListener(){
-			public void actionPerformed(ActionEvent e) {tablero.crearSoldadoMelee(2);}
-		};
-		botonJ.addActionListener(oyenteBotonJ);
-		
-		ActionListener oyenteBotonK = new ActionListener(){
-			public void actionPerformed(ActionEvent e) {tablero.crearSoldadoTanque(2);}
-		};
-		botonK.addActionListener(oyenteBotonK);
-		
-		ActionListener oyenteBotonEvolve2 = new ActionListener(){
-			public void actionPerformed(ActionEvent e) {try {
-				tablero.avanzarEra(2);
-			} catch (PAOWException e1) { }
-			int er=tablero.getEra(2);
-			eraNumJ2.setText(Integer.toString(er));}
-		};
-		botonEvolve2.addActionListener(oyenteBotonEvolve2);
-		
-		addKeyListener(new KeyListener() {
-			@Override
-			public void keyPressed(KeyEvent e) {
-				if (e.getKeyCode()==e.VK_J){tablero.crearSoldadoMelee(2);}
-				if (e.getKeyCode()==e.VK_K){tablero.crearSoldadoTanque(2);}
-				if (e.getKeyCode()==e.VK_U){{try {
-					tablero.avanzarEra(2);
-					int er=tablero.getEra(2);
-					eraNumJ2.setText(Integer.toString(er));
-				} catch (PAOWException e1) { }
-				}}
-			}
-			@Override
-			public void keyReleased(KeyEvent e) {
-				
-				
-			}
-			@Override
-			public void keyTyped(KeyEvent e) {
-			}			
-		});
-	}
-	
-	/*
-	 * Da fin al programa, terminando con la ejecuciÃ³n de la mÃ¡quina virtual.
+	 * Da fin al programa, terminando con la ejecución de la máquina virtual.
 	 */
 	private void salir(){
-		int choose = JOptionPane.showConfirmDialog(null, "Â¿ Desea salir ?");
+		int choose = JOptionPane.showConfirmDialog(null, "¿ Desea salir ?");
 		if(choose == JOptionPane.YES_OPTION){
 			System.exit(0);
 		}
