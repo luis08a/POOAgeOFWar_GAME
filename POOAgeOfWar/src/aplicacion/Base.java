@@ -16,14 +16,14 @@ public class Base extends Unidad implements Serializable{
 	
 	/*
 	 * Constructor
-	 * @param dir, dierección en la cual se moveran las unidades asociadas a esta base.
+	 * @param dir, dierecciÃ³n en la cual se moveran las unidades asociadas a esta base.
 	 */
 	public Base(int dir,int base){
 		super(dir,0);
 		numero =base;
 		e = new Era();
 		if (base==0){spawn=1;}
-		else if (base==1) {spawn=18;}
+		else if (base==1) {spawn=98;}
 		oro=160;
 		this.setVida(100);
 		
