@@ -11,10 +11,8 @@ public class Base extends Unidad implements Serializable{
 	//si la base es la numero 1 la direccion es
 	//hacia la derecha, si no, la direccion es
 	//hacia la izquierda(multiplicando -1)
-	
 	private  int spawn;
 	private Era e;
-	
 	
 	/*
 	 * Constructor
@@ -83,7 +81,6 @@ public class Base extends Unidad implements Serializable{
 		
 		s.setEra(eraAc);
 		return s;
-		
 	}
 		
 }

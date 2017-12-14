@@ -3,6 +3,9 @@ package aplicacion;
 import java.io.Serializable;
 
 public class Tanque extends Soldado implements Serializable{
+	/*
+	 * Constructor
+	 */
 	public Tanque(int dir,int spawn, int era){
 		super(dir,spawn);
 		this.setRangoAtaque(0);
@@ -23,7 +26,7 @@ public class Tanque extends Soldado implements Serializable{
 		}
 	}
 	
-	public void tankE1(){
+	private void tankE1(){
 		this.setVida(15);
 		this.setAtaque(2);
 		this.setDefensa(3);				
@@ -32,7 +35,7 @@ public class Tanque extends Soldado implements Serializable{
 		
 	}
 	
-	public void tankE2(){
+	private void tankE2(){
 		this.setVida(15);
 		this.setAtaque(7);
 		this.setDefensa(10);	
@@ -40,7 +43,7 @@ public class Tanque extends Soldado implements Serializable{
 		this.setCosto(25);	
 	}
 	
-	public void tankE3(){
+	private void tankE3(){
 		this.setVida(1);
 		this.setAtaque(30);
 		this.setDefensa(10);	
@@ -48,7 +51,7 @@ public class Tanque extends Soldado implements Serializable{
 		this.setCosto(20);	
 	}
 	
-	public void tankE4(){
+	private void tankE4(){
 		this.setVida(100);
 		this.setAtaque(50);
 		this.setDefensa(50);	

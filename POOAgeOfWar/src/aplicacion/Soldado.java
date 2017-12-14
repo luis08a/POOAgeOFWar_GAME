@@ -5,7 +5,6 @@ public abstract class Soldado extends Unidad {
 	
 	public Soldado(int dir,int spawn){
 		super(dir,spawn);
-		
 	}
 	
 	public int getRangoAtaque() {

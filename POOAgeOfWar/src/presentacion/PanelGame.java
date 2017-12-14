@@ -23,15 +23,13 @@ public class PanelGame extends JPanel implements Runnable{
 	private Arena r;
 	private final int HEIGHT=Juego.ALTO*4/5;
 	private final int WIDTH=Juego.ANCHO;
-	private Image fondo = new ImageIcon(getClass().getResource("/recursos visuales/1.png")).getImage();
+	private final Image fondo = new ImageIcon(getClass().getResource("/recursos visuales/1.png")).getImage();
 	private Thread thread;
 	private Unidad[][] u ;
 	private volatile boolean enEjecucion;
 	private boolean isIA;
 	private Jugador J1;
 	private Jugador J2;
-	private int dineroJ1;
-	
 	/*
 	 * Constructor
 	 */
@@ -64,7 +62,6 @@ public class PanelGame extends JPanel implements Runnable{
 		r.ponerUnidad(b, u);
 		}
 		else if(Jugador ==2 ){Unidad u = J2.crearSoldadoMelee();Base b=J2.getBase();r.ponerUnidad(b, u);}
-		
 	}
 	
 	public void crearSoldadoTanque(int Jugador ) {
@@ -108,7 +105,7 @@ public class PanelGame extends JPanel implements Runnable{
 		g.drawImage(torre1.getImage(), 0, 350, 80, 120, this);
 		
 		Sprite torre2 = new Sprite(r.getBase(2));
-		g.drawImage(torre2.getImage(), WIDTH - 80, 350, 80, 120, null);
+		g.drawImage(Sprite.flip(torre2.getImage()), WIDTH - 80, 350, 80, 120, null);
 		
 		//Crear unidad
         Graphics2D g2d = (Graphics2D) g;
@@ -118,24 +115,12 @@ public class PanelGame extends JPanel implements Runnable{
         		Sprite m = new Sprite(u[i][0]); 
 	            g2d.drawImage(m.getImage(), m.getX(),m.getY(),80,80, this);
         	}
-        	
         	if (u[i][1]!=null ) {
         		Sprite n = new Sprite(u[i][1]);
-        		Image im = n.getImage();
-        		
-        		AffineTransform tx = AffineTransform.getScaleInstance(-1, 1);
-        		tx.translate(-im.getWidth(null), 0);
-        		AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
-        		
-        		BufferedImage ima = Sprite.toBufferedImage(im);
-        		Image image = op.filter(ima, null);
-	            g2d.drawImage(image, n.getX(),n.getY(),80,80, this);
+	            g2d.drawImage(Sprite.flip(n.getImage()), n.getX(),n.getY(),80,80, this);
         	}
-        	
-        } 
-        
+        }
         Toolkit.getDefaultToolkit().sync();
-        
 	}
 	
 	/*
@@ -210,7 +195,6 @@ public class PanelGame extends JPanel implements Runnable{
 		out.writeObject(r);
 		out.writeObject(u);
 		out.close();
-		
 	}
 	
 	public void abrir(File f) throws FileNotFoundException, IOException, ClassNotFoundException {
@@ -221,5 +205,4 @@ public class PanelGame extends JPanel implements Runnable{
 		u = (Unidad[][]) in.readObject();
 		in.close();
 	}
-	
 }

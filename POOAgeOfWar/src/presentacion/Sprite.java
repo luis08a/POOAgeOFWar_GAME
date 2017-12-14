@@ -1,6 +1,6 @@
 package presentacion;
 import java.awt.*;
-
+import java.awt.geom.AffineTransform;
 import java.awt.image.*;
 import javax.swing.*;
 
@@ -42,11 +42,19 @@ public class Sprite {
 		return yPosition;
 	}
 	
-	public static BufferedImage toBufferedImage(Image img){
+	private static BufferedImage toBufferedImage(Image img){
 	    BufferedImage bimage = new BufferedImage(img.getWidth(null), img.getHeight(null), BufferedImage.TYPE_INT_ARGB);
 	    Graphics2D bGr = bimage.createGraphics();
 	    bGr.drawImage(img, 0, 0, null);
 	    bGr.dispose();
 	    return bimage;
+	}
+	
+	public static Image flip(Image i) {
+		AffineTransform tx = AffineTransform.getScaleInstance(-1, 1);
+		tx.translate(-i.getWidth(null), 0);
+		AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
+		BufferedImage ima = Sprite.toBufferedImage(i);
+		return op.filter(ima, null);
 	}
 }

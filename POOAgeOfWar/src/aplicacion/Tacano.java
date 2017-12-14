@@ -3,7 +3,10 @@ package aplicacion;
 import java.io.Serializable;
 
 public class Tacano extends Maquina implements Serializable{
-
+	
+	/*
+	 * Constructor
+	 */
 	public Tacano(Base n) {
 		super(n);
 	}

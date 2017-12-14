@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class Juego extends JFrame {
 	private boolean jcj;
-	//Elementos MenÃº barra
+	//Elementos Menú barra
 	private JPanel panelOpciones;
 	private JMenuBar bar;
 	private JMenu menu;
@@ -30,7 +30,6 @@ public class Juego extends JFrame {
 	private JButton botonEvolve2;
 	private JButton botonJ;
 	private JButton botonK;
-	private JButton botonL;
 	//Elementos Tablero de Juego
 	private PanelGame tablero;
 	public static final int ALTO=700;
@@ -54,6 +53,9 @@ public class Juego extends JFrame {
 		setFocusable(true);
 	}
 	
+	/*
+	 * Constructor
+	 */
 	public Juego (){
 		jcj =true;
 		prepareElementos();
@@ -90,17 +92,17 @@ public class Juego extends JFrame {
 		panelJ1();
 		prepareAccionesJ1();
 		panelOpciones.add(J1);
-		
-		//panelOpciones.add(new JPanel());
 		if(jcj==true) {
 			panelJ2();
 			prepareAccionesJ2();
 			panelOpciones.add(J2);
 		}
-		
 		add(panelOpciones, BorderLayout.SOUTH);
 	}
 	
+	/*
+	 * Prepara los elementos del panel de acciones para el primer Jugador
+	 */
 	private void panelJ1() {
 		J1 = new JPanel();
 		J1.setLayout(new GridLayout(1,2));
@@ -112,10 +114,10 @@ public class Juego extends JFrame {
 		JPanel state1 = new JPanel();
 		state1.setLayout(new GridLayout(2,2));
 		JLabel labelOro = new JLabel("Oro:");
-		 cantOroJ1=new JTextField( "100");
-		 cantOroJ1.setFocusable(false);
-		 eraNumJ1=new JTextField("1");
-		 eraNumJ1.setFocusable(false);
+		cantOroJ1=new JTextField( "100");
+		cantOroJ1.setFocusable(false);
+		eraNumJ1=new JTextField("1");
+		eraNumJ1.setFocusable(false);
 		JLabel labelDesarrollo = new JLabel("Nivel de desarrollo:");
 		state1.add(labelOro);
 		state1.add(cantOroJ1);
@@ -153,6 +155,9 @@ public class Juego extends JFrame {
 		J1.add(action);
 	}
 	
+	/*
+	 * Prepara los elementos del panel de acciones del segundo jugador
+	 */
 	private void panelJ2() {
 		J2 = new JPanel();
 		J2.setLayout(new GridLayout(1,2));
@@ -195,7 +200,7 @@ public class Juego extends JFrame {
 	}
 	
 	/*
-	 * Prepara los elementos necesarios para crear el menÃº barra con opciones.
+	 * Prepara los elementos necesarios para crear el menú barra con opciones.
 	 */
 	private void prepareElementosMenu() {
 		bar = new JMenuBar();
@@ -212,12 +217,17 @@ public class Juego extends JFrame {
 	}
 	
 	/*
-	 * Prepara el "tablero" en el cual se animarÃ¡ el juego 
+	 * Prepara el "tablero" en el cual se animará el juego 
 	 */
 	private void prepareTableroJuego() {
 		PanelGame.pg=null;
 		tablero = PanelGame.getPanelGame(tipoIA);
 		add(tablero, BorderLayout.CENTER);
+		tablero.setLayout(null);
+		botonBack = new JButton("Volver");
+		tablero.add(botonBack);
+		botonBack.setBounds(0, ANCHO/2, 200, 50);
+		
 	}
 	
 	/*
@@ -234,7 +244,6 @@ public class Juego extends JFrame {
 			public void actionPerformed(ActionEvent e) {try {
 				opcionAbrir();
 			} catch (ClassNotFoundException | IOException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}}
 		};
@@ -244,12 +253,9 @@ public class Juego extends JFrame {
 				try {
 					opcionGuardar();
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}};
-		
-		
 		
 		ActionListener oyenteBotonBack = new ActionListener(){
 			public void actionPerformed(ActionEvent e) {tablero.parar();POOAgeOfWarGUI.cargarMenu();}
@@ -258,67 +264,44 @@ public class Juego extends JFrame {
 		menuSalir.addActionListener(oyenteMenuSalir);
 		abrir.addActionListener(oyenteAbrir);
 		guardar.addActionListener(oyenteGuardar);
-		//botonSpawn.addActionListener(oyenteBotonSpawn);
-		//botonBack.addActionListener(oyenteBotonBack);
+		botonBack.addActionListener(oyenteBotonBack);
 	}
 	
-	public void opcionGuardar() throws FileNotFoundException, IOException {
+	/*
+	 * Permite guardar el estado actual del juego.
+	 */
+	private void opcionGuardar() throws FileNotFoundException, IOException {
 		
             JFileChooser fc = new JFileChooser();
             int r = fc.showSaveDialog(this);
             if(r == JFileChooser.APPROVE_OPTION){ tablero.guardar(fc.getSelectedFile());}
 	}
 	
+	/*
+	 * permita abrir recrear un estado del juego a partir de un archivo
+	 */
 	private void opcionAbrir() throws FileNotFoundException, ClassNotFoundException, IOException {
 		JFileChooser fc = new JFileChooser();
         int r = fc.showSaveDialog(this);
         if(r == JFileChooser.APPROVE_OPTION){ tablero.abrir(fc.getSelectedFile());}
 	}
 	
+	/*
+	 * Prepara las acciones del panel para el primer jugador
+	 */
 	private void prepareAccionesJ1() {
 		
 		ActionListener oyenteBotonA = new ActionListener(){
-			
 			public void actionPerformed(ActionEvent e) {
-				
 					tablero.crearSoldadoMelee(1);}
 		};
 		botonA.addActionListener(oyenteBotonA);
-		
-		addKeyListener(new KeyListener() {
-			@Override
-			public void keyPressed(KeyEvent e) {
-				if (e.getKeyCode()==e.VK_A){tablero.crearSoldadoMelee(1);}
-			}
-			@Override
-			public void keyReleased(KeyEvent e) {
-				if (e.VK_A==e.getKeyCode()){tablero.crearSoldadoMelee(1);}
-			}
-			@Override
-			public void keyTyped(KeyEvent e) {
-			}			
-		});
-	
-		
+				
 		ActionListener oyenteBotonS = new ActionListener(){
 			public void actionPerformed(ActionEvent e) {tablero.crearSoldadoTanque(1);}
 		};
 		botonS.addActionListener(oyenteBotonS);
-		
-		addKeyListener(new KeyListener() {
-			@Override
-			public void keyPressed(KeyEvent e) {
-				if (e.getKeyCode()==e.VK_S){tablero.crearSoldadoTanque(1);}
-			}
-			@Override
-			public void keyReleased(KeyEvent e) {
-				if (e.VK_S==e.getKeyCode()){tablero.crearSoldadoTanque(1);}
-			}
-			@Override
-			public void keyTyped(KeyEvent e) {
-			}			
-		});
-		
+				
 		ActionListener oyenteBotonEvolve1 = new ActionListener(){
 			public void actionPerformed(ActionEvent e) {try {
 				tablero.avanzarEra(1);
@@ -327,76 +310,61 @@ public class Juego extends JFrame {
 			eraNumJ1.setText(Integer.toString(er));}
 		};
 		botonEvolve1.addActionListener(oyenteBotonEvolve1);
+		
 		addKeyListener(new KeyListener() {
 			@Override
 			public void keyPressed(KeyEvent e) {
-				if (e.getKeyCode()==e.VK_E){try {
+				if (e.getKeyCode()==e.VK_A){tablero.crearSoldadoMelee(1);}
+				if (e.getKeyCode()==e.VK_S){tablero.crearSoldadoTanque(1);}
+				if (e.getKeyCode()==e.VK_E){
+					try {
 					tablero.avanzarEra(1);
-				} catch (PAOWException e1) {	}
+					} catch (PAOWException e1) { 
+						JOptionPane.showMessageDialog(null, "NO se puede mejorar");}
 				}
 			}
 			@Override
 			public void keyReleased(KeyEvent e) {
-				if (e.getKeyCode()==e.VK_E){try {
+				if (e.VK_S==e.getKeyCode()){tablero.crearSoldadoTanque(1);}
+				if (e.VK_A==e.getKeyCode()){tablero.crearSoldadoMelee(1);}
+				if (e.getKeyCode()==e.VK_E){
+					try {
 					tablero.avanzarEra(1);
-				} catch (PAOWException e1) {	}
-				}
-
+					} catch (PAOWException e1) {	}}
 			}
 			@Override
 			public void keyTyped(KeyEvent e) {
 			}			
 		});
-		
 	}
-public static void actualizLabels(int oroJ1,int oroJ2,int v1){
-	cantOroJ1.setText(Integer.toString(oroJ1));	
-	cantOroJ2.setText(Integer.toString(oroJ2));
-	cantvidaJ1.setText(Integer.toString(v1));
-}
-}
-public static void actualizLabels(int oroJ1){
-	cantOroJ1.setText(Integer.toString(oroJ1));	
 	
-}
+	/*
+	 * Actualiza la información del oro de cada jugador
+	 */
+	public static void actualizLabels(int oroJ1,int oroJ2,int v1){
+		cantOroJ1.setText(Integer.toString(oroJ1));	
+		cantOroJ2.setText(Integer.toString(oroJ2));
+		cantvidaJ1.setText(Integer.toString(v1));
+	}
 	
-private void prepareAccionesJ2() {
+	public static void actualizLabels(int oroJ1){
+		cantOroJ1.setText(Integer.toString(oroJ1));		
+	}
+	
+	/*
+	 * Prepara las acciones para el panel del segundo jugador
+	 */
+	private void prepareAccionesJ2() {
 		
 		ActionListener oyenteBotonJ = new ActionListener(){
 			public void actionPerformed(ActionEvent e) {tablero.crearSoldadoMelee(2);}
 		};
 		botonJ.addActionListener(oyenteBotonJ);
-		addKeyListener(new KeyListener() {
-			@Override
-			public void keyPressed(KeyEvent e) {
-				if (e.getKeyCode()==e.VK_J){tablero.crearSoldadoMelee(2);}
-			}
-			@Override
-			public void keyReleased(KeyEvent e) {
-				if (e.VK_J==e.getKeyCode()){tablero.crearSoldadoMelee(2);}
-			}
-			@Override
-			public void keyTyped(KeyEvent e) {
-			}			
-		});
 		
 		ActionListener oyenteBotonK = new ActionListener(){
 			public void actionPerformed(ActionEvent e) {tablero.crearSoldadoTanque(2);}
 		};
 		botonK.addActionListener(oyenteBotonK);
-		addKeyListener(new KeyListener() {
-			@Override
-			public void keyPressed(KeyEvent e) {
-				if (e.getKeyCode()==e.VK_K){tablero.crearSoldadoTanque(2);}
-			}
-			@Override
-			public void keyReleased(KeyEvent e) {
-				if (e.VK_K==e.getKeyCode()){tablero.crearSoldadoTanque(2);}
-			}
-			@Override
-			public void keyTyped(KeyEvent e) {
-			}			
-		});
 		
 		ActionListener oyenteBotonEvolve2 = new ActionListener(){
 			public void actionPerformed(ActionEvent e) {try {
@@ -406,9 +374,12 @@ private void prepareAccionesJ2() {
 			eraNumJ2.setText(Integer.toString(er));}
 		};
 		botonEvolve2.addActionListener(oyenteBotonEvolve2);
+		
 		addKeyListener(new KeyListener() {
 			@Override
 			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode()==e.VK_J){tablero.crearSoldadoMelee(2);}
+				if (e.getKeyCode()==e.VK_K){tablero.crearSoldadoTanque(2);}
 				if (e.getKeyCode()==e.VK_U){{try {
 					tablero.avanzarEra(2);
 				} catch (PAOWException e1) { }
@@ -417,12 +388,14 @@ private void prepareAccionesJ2() {
 			}
 			@Override
 			public void keyReleased(KeyEvent e) {
+				if (e.VK_J==e.getKeyCode()){tablero.crearSoldadoMelee(2);}
+				if (e.VK_K==e.getKeyCode()){tablero.crearSoldadoTanque(2);}
 				if (e.getKeyCode()==e.VK_U){{try {
 					tablero.avanzarEra(2);
 				} catch (PAOWException e1) { }
 				int er=tablero.getEra(2);
 				eraNumJ2.setText(Integer.toString(er));}}
-
+				
 			}
 			@Override
 			public void keyTyped(KeyEvent e) {
@@ -431,10 +404,10 @@ private void prepareAccionesJ2() {
 	}
 	
 	/*
-	 * Da fin al programa, terminando con la ejecuciÃ³n de la mÃ¡quina virtual.
+	 * Da fin al programa, terminando con la ejecución de la máquina virtual.
 	 */
 	private void salir(){
-		int choose = JOptionPane.showConfirmDialog(null, "Â¿ Desea salir ?");
+		int choose = JOptionPane.showConfirmDialog(null, "¿ Desea salir ?");
 		if(choose == JOptionPane.YES_OPTION){
 			System.exit(0);
 		}

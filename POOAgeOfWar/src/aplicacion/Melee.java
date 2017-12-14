@@ -23,11 +23,11 @@ public class Melee extends Soldado implements Serializable{
 			meleeE3();
 		}
 		else if (era ==4){
-			meleeE3();
+			meleeE4();
 		}
 	}
 	
-	public void meleeE1(){
+	private void meleeE1(){
 		
 		this.setVida(10);
 		this.setAtaque(1);
@@ -36,7 +36,7 @@ public class Melee extends Soldado implements Serializable{
 		this.setCosto(5);
 		
 	}
-	public void meleeE2(){
+	private void meleeE2(){
 		
 		this.setVida(10);
 		this.setAtaque(5);
@@ -45,7 +45,7 @@ public class Melee extends Soldado implements Serializable{
 		this.setCosto(15);	
 	}
 	
-	public void meleeE3(){
+	private void meleeE3(){
 			
 			this.setVida(10);
 			this.setAtaque(15);
@@ -54,7 +54,7 @@ public class Melee extends Soldado implements Serializable{
 			this.setCosto(20);
 			
 		}
-	public void meleeE4(){
+	private void meleeE4(){
 		
 		this.setVida(20);
 		this.setAtaque(35);

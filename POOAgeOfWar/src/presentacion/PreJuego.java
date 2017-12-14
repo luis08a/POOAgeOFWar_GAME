@@ -31,12 +31,18 @@ public class PreJuego extends JDialog {
 		setVisible(true);
 	}
 	
+	/*
+	 * Prepara los elemntos visuales de la ventana.
+	 */
 	private void prepareElementos() {
 		panelNombre();
 		panelOpciones();
 		
 	}
 	
+	/*
+	 * 
+	 */
 	private void panelNombre() {
 		panelNombre =  new JPanel();
 		panelNombre.setBounds(125, 50, 100, 50);
@@ -51,6 +57,9 @@ public class PreJuego extends JDialog {
 		add(panelNombre);
 	}
 	
+	/*
+	 * 
+	 */
 	private void panelOpciones() {
 		
 		panelOpciones = new JPanel();
@@ -71,6 +80,9 @@ public class PreJuego extends JDialog {
 		add(panelOpciones);
 	}
 	
+	/*
+	 * 
+	 */
 	private void prepareAcciones() {
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		ItemListener oyenteCombo=new ItemListener(){
