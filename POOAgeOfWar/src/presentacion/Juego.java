@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class Juego extends JFrame {
 	private boolean jcj;
-	//Elementos Menú barra
+	//Elementos MenÃº barra
 	private JPanel panelOpciones;
 	private JMenuBar bar;
 	private JMenu menu;
@@ -200,7 +200,7 @@ public class Juego extends JFrame {
 	}
 	
 	/*
-	 * Prepara los elementos necesarios para crear el menú barra con opciones.
+	 * Prepara los elementos necesarios para crear el menÃº barra con opciones.
 	 */
 	private void prepareElementosMenu() {
 		bar = new JMenuBar();
@@ -217,7 +217,7 @@ public class Juego extends JFrame {
 	}
 	
 	/*
-	 * Prepara el "tablero" en el cual se animará el juego 
+	 * Prepara el "tablero" en el cual se animarÃ¡ el juego 
 	 */
 	private void prepareTableroJuego() {
 		PanelGame.pg=null;
@@ -325,12 +325,7 @@ public class Juego extends JFrame {
 			}
 			@Override
 			public void keyReleased(KeyEvent e) {
-				if (e.VK_S==e.getKeyCode()){tablero.crearSoldadoTanque(1);}
-				if (e.VK_A==e.getKeyCode()){tablero.crearSoldadoMelee(1);}
-				if (e.getKeyCode()==e.VK_E){
-					try {
-					tablero.avanzarEra(1);
-					} catch (PAOWException e1) {	}}
+				
 			}
 			@Override
 			public void keyTyped(KeyEvent e) {
@@ -339,7 +334,7 @@ public class Juego extends JFrame {
 	}
 	
 	/*
-	 * Actualiza la información del oro de cada jugador
+	 * Actualiza la informaciÃ³n del oro de cada jugador
 	 */
 	public static void actualizLabels(int oroJ1,int oroJ2,int v1){
 		cantOroJ1.setText(Integer.toString(oroJ1));	
@@ -388,13 +383,7 @@ public class Juego extends JFrame {
 			}
 			@Override
 			public void keyReleased(KeyEvent e) {
-				if (e.VK_J==e.getKeyCode()){tablero.crearSoldadoMelee(2);}
-				if (e.VK_K==e.getKeyCode()){tablero.crearSoldadoTanque(2);}
-				if (e.getKeyCode()==e.VK_U){{try {
-					tablero.avanzarEra(2);
-				} catch (PAOWException e1) { }
-				int er=tablero.getEra(2);
-				eraNumJ2.setText(Integer.toString(er));}}
+				
 				
 			}
 			@Override
@@ -404,10 +393,10 @@ public class Juego extends JFrame {
 	}
 	
 	/*
-	 * Da fin al programa, terminando con la ejecución de la máquina virtual.
+	 * Da fin al programa, terminando con la ejecuciÃ³n de la mÃ¡quina virtual.
 	 */
 	private void salir(){
-		int choose = JOptionPane.showConfirmDialog(null, "¿ Desea salir ?");
+		int choose = JOptionPane.showConfirmDialog(null, "Â¿ Desea salir ?");
 		if(choose == JOptionPane.YES_OPTION){
 			System.exit(0);
 		}
