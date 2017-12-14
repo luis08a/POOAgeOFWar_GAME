@@ -184,10 +184,12 @@ public class Juego extends JFrame {
 		botonEvolve2 = new JButton("Avanzar era (U)");
 		state.add(botonEvolve2);
 		
-		JPanel action = new JPanel();
+		JJPanel action = new JPanel();
 		action.setLayout(new GridLayout(2,1));
-		JLabel unidad = new JLabel(" Unidades ");
-		action.add(unidad);
+		JLabel vida = new JLabel(" vida: ");
+		 cantvidaJ2=new  JTextField (" ");
+		 cantvidaJ2.setFocusable(false);
+		
 		JPanel action1 = new JPanel();
 		action1.setLayout(new GridLayout(1,3));
 		botonJ = new JButton("Unidad 1(J)");
