@@ -6,7 +6,7 @@ public class Melee extends Soldado implements Serializable{
 	 
 	/*
 	 * Constructor
-	 * @param dir: dirección, referente a la arena, en la cual se moverá. spawn: base 
+	 * @param dir: dirección.spawn: base.
 	 */
 	public Melee(int dir,int spawn,int era){
 		super(dir,spawn);

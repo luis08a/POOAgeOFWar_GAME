@@ -26,9 +26,10 @@ public class Base extends Unidad implements Serializable{
 		else if (base==1) {spawn=18;}
 		oro=160;
 		this.setVida(100);
-		System.out.println(dir+"dir base instanciada, spawn "+spawn);
 		
 	}
+	
+	@Override
 	public int getBase(){
 		return numero;
 	}
