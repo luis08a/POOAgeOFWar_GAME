@@ -319,6 +319,8 @@ public class Juego extends JFrame {
 				if (e.getKeyCode()==e.VK_E){
 					try {
 					tablero.avanzarEra(1);
+					int er=tablero.getEra(1);
+					eraNumJ1.setText(Integer.toString(er));
 					} catch (PAOWException e1) { 
 						JOptionPane.showMessageDialog(null, "NO se puede mejorar");}
 				}
@@ -377,9 +379,10 @@ public class Juego extends JFrame {
 				if (e.getKeyCode()==e.VK_K){tablero.crearSoldadoTanque(2);}
 				if (e.getKeyCode()==e.VK_U){{try {
 					tablero.avanzarEra(2);
+					int er=tablero.getEra(2);
+					eraNumJ2.setText(Integer.toString(er));
 				} catch (PAOWException e1) { }
-				int er=tablero.getEra(2);
-				eraNumJ2.setText(Integer.toString(er));}}
+				}}
 			}
 			@Override
 			public void keyReleased(KeyEvent e) {
