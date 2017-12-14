@@ -14,11 +14,11 @@ public abstract class Unidad implements Serializable{
 	private String tipo;
 	private int devuelve;
 	protected int era=1;
-	protected int delta = 65;
+	protected int delta = 12;
 	
 	/*
 	 * Constructor
-	 * @param dir: direcciÛn en la cual se movera la unidad. spawn: psiciÛn inicial de cada unidad en la arena.
+	 * @param dir: direcci√≥n en la cual se movera la unidad. spawn: psici√≥n inicial de cada unidad en la arena.
 	 */
 	public Unidad(int dir,int spawn){
 		direc=dir;
@@ -27,12 +27,12 @@ public abstract class Unidad implements Serializable{
 	}
 	
 	/*
-	 * @return  direc: direcciÛn de la unidad.
+	 * @return  direc: direcci√≥n de la unidad.
 	 */
 	public int getDirec(){return direc;}
 	
 	/*
-	 * @param dir: nueva direcciÛn.
+	 * @param dir: nueva direcci√≥n.
 	 */
 	public void setDirec(int dir){direc=dir;}
 	
@@ -47,12 +47,12 @@ public abstract class Unidad implements Serializable{
 	public void setVida(int vida) {this.vida += vida;}
 	
 	/*
-	 * @return ataque: cantidad daÒo que realiza la unidad.
+	 * @return ataque: cantidad da√±o que realiza la unidad.
 	 */
 	public int getAtaque() {return ataque;}
 	
 	/*
-	 * @param  ataque: nueva cantidad de daÒo.
+	 * @param  ataque: nueva cantidad de da√±o.
 	 */
 	public void setAtaque(int ataque) {this.ataque =+ ataque;}
 	
@@ -62,12 +62,12 @@ public abstract class Unidad implements Serializable{
 	public void mover(){posx+=(delta*direc);}
 	
 	/*
-	 * @return posx: posiciÛn en el eje x.
+	 * @return posx: posici√≥n en el eje x.
 	 */
 	public int getPosx() {return posx;}
 	
 	/*
-	 *@return posy: posiciÛn en el eje y. 
+	 *@return posy: posici√≥n en el eje y. 
 	 */
 	public int getPosy() {return posy;}
 	
@@ -77,7 +77,7 @@ public abstract class Unidad implements Serializable{
 	public int getCosto() {return costo;}
 	
 	/*
-	 * @param costo: nuevo valor para la creaciÛn de la unidad.
+	 * @param costo: nuevo valor para la creaci√≥n de la unidad.
 	 */
 	public void setCosto(int costo) {this.costo =+ costo;	}
 	
@@ -117,7 +117,7 @@ public abstract class Unidad implements Serializable{
 	public int getDevuelve(){ return devuelve; }
 	
 	/*
-	 * @return r indica si est· vivo o no la unidad.
+	 * @return r indica si est√° vivo o no la unidad.
 	 */
 	public boolean estaMuerto(){
 		boolean r=false;
@@ -126,7 +126,7 @@ public abstract class Unidad implements Serializable{
 	}
 	
 	/*
-	 * @param dano cantidad de daÒo sufrido.
+	 * @param dano cantidad de da√±o sufrido.
 	 */
 	public void recibirDano(int dano) { vida-=dano;	}
 	
