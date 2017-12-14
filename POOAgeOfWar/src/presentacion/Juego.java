@@ -184,11 +184,16 @@ public class Juego extends JFrame {
 		botonEvolve2 = new JButton("Avanzar era (U)");
 		state.add(botonEvolve2);
 		
-		JJPanel action = new JPanel();
+		JPanel action = new JPanel();
 		action.setLayout(new GridLayout(2,1));
 		JLabel vida = new JLabel(" vida: ");
-		 cantvidaJ2=new  JTextField (" ");
-		 cantvidaJ2.setFocusable(false);
+		cantvidaJ2=new  JTextField (" ");
+		cantvidaJ2.setFocusable(false);
+		JPanel p=new JPanel();
+		p.setLayout(new GridLayout(2,1));
+		p.add(vida);
+		p.add(cantvidaJ2);
+		action.add(p);
 		
 		JPanel action1 = new JPanel();
 		action1.setLayout(new GridLayout(1,3));
@@ -197,6 +202,7 @@ public class Juego extends JFrame {
 		action1.add(botonJ);
 		action1.add(botonK);
 		action.add(action1);
+		
 		
 		J2.add(state);
 		J2.add(action);

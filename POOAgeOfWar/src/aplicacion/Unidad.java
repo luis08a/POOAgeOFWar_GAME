@@ -44,7 +44,7 @@ public abstract class Unidad implements Serializable{
 	/*
 	 *@param vida: nueva cantidad de vida. 
 	 */
-	public void setVida(int vida) {this.vida += vida;}
+	public void setVida(int vida) {this.vida += vida+defensa;}
 	
 	/*
 	 * @return ataque: cantidad daño que realiza la unidad.

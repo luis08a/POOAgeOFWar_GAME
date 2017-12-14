@@ -68,7 +68,7 @@ public class Arena implements Serializable{
 	/*
 	 * Actualiza el estado de Arena, para ello hace que las unidades se muevan.
 	 * */
-	public void actualizar(){
+	public void actualizar() throws PAOWException{
 		time+=1;
 		switch(time){
 		case 15:b1.ganaOro(15);b2.ganaOro(15);time = 0;
@@ -84,8 +84,8 @@ public class Arena implements Serializable{
 				arena[i][0].ataque(b2);
 				
 				if (b2.estaMuerto()==true){
-						System.out.println("gana jugador"); System.exit(0);
-						}
+					throw new PAOWException("Gana Jugador 1");
+				}
 			}
 			
 			else if (i<arena.length-1){
@@ -94,8 +94,7 @@ public class Arena implements Serializable{
 					if (arena[i][1].estaMuerto()==true){
 						Base base= this.getBase(1);
 						base.ganaOro(arena[i][1].getCosto());
-						
-						arena[i][1]=null;System.out.println("boolean True [p-1][1]");
+						arena[i][1]=null;
 					}
 				}
 				else if(arena[i+1][0]==null){
@@ -115,7 +114,7 @@ public class Arena implements Serializable{
 			if (i==1&&arena[i][1]!=null){
 				arena[i][1].ataque(b1);
 				 if (b1.estaMuerto()==true){
-						System.out.println("gana maquina");System.exit(0);}
+						throw new PAOWException("Gana Jugador 2");}
 			}
 			else if (i>1){
 				
@@ -124,8 +123,7 @@ public class Arena implements Serializable{
 					if (arena[i][0].estaMuerto()==true){
 						Base base= this.getBase(2);
 						base.ganaOro(arena[i][0].getCosto());
-						System.out.println(base.getOro()+" oro base 2");
-						arena[i][0]=null;System.out.println("boolean True jugador2");
+						arena[i][0]=null;
 					}
 				}
 				else if(arena[i-1][1]==null){
@@ -137,12 +135,6 @@ public class Arena implements Serializable{
 			}
 			
 		}
-		
-		for(int i = 0; i<arena.length; i++) {
-			System.out.print("[ "+arena[i][0]+", ");
-			System.out.print(arena[i][1]+"] ");
-		}
-		System.out.println("");
 	}
 	
 	/*
@@ -180,6 +172,10 @@ public class Arena implements Serializable{
 	 */
 	public Unidad[][] getArena( ){
 		return arena;
+	}
+	
+	public void reiniciarArena() {
+		r = new Arena();
 	}
 	
 	/*

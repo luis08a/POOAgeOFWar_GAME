@@ -1,9 +1,6 @@
 package presentacion;
 
 import java.awt.*;
-import java.awt.geom.AffineTransform;
-import java.awt.image.AffineTransformOp;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -11,7 +8,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.ArrayList;
 
 import javax.swing.*;
 
@@ -80,9 +76,7 @@ public class PanelGame extends JPanel implements Runnable{
 	
 	public  void obtenerDinero(){
 		int d1=r.obtDinero(1);
-		int v1=r.getBase(1).getVida();
-		System.out.println(d1);
-		
+		int v1=r.getBase(1).getVida();		
 		if (!isIA) {
 			int d2=r.obtDinero(2);
 			int v2=r.getBase(2).getVida();
@@ -168,9 +162,18 @@ public class PanelGame extends JPanel implements Runnable{
 	 * Actualiza la pantalla y la arena.
 	 */
 	private synchronized void actualizar(){
-		if (isIA==true)J2.desicion(r);
-		r.actualizar();
-		obtenerDinero();
+		
+		try {
+			if (isIA==true)J2.desicion(r);
+			r.actualizar();
+			obtenerDinero();
+		} catch (PAOWException e) {
+			JOptionPane.showMessageDialog(this, e.getMessage());
+			r.reiniciarArena();
+			POOAgeOfWarGUI.cargarMenu();
+			parar();
+			
+		}
 		repaint();
 	}
 	

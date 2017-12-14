@@ -114,7 +114,7 @@ public class PreJuego extends JDialog {
 	 * @return la única instancia de PreJuego 
 	 */
 	public static PreJuego getPreJuego() {
-		if (pj==null)pj= new PreJuego();
+		if (pj==null) {pj= new PreJuego();}
 		return pj;
 	}
 }

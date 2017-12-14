@@ -7,10 +7,6 @@ public class Base extends Unidad implements Serializable{
 	private int experiecia;
 	private String tipo="#";
 	private int numero;
-	//direccion de ataque de unidades = dir
-	//si la base es la numero 1 la direccion es
-	//hacia la derecha, si no, la direccion es
-	//hacia la izquierda(multiplicando -1)
 	private  int spawn;
 	private Era e;
 	

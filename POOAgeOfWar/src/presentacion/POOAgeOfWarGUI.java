@@ -20,9 +20,9 @@ public class POOAgeOfWarGUI{
 			inicio = null;
 		}
 		if (opcionesPJ!=null) {
-		opcionesPJ.dispose();
-		opcionesPJ=null;}
-		//System.out.println(jcj);
+			opcionesPJ.dispose();
+			PreJuego.pj=null;
+		}
 		if(jcj==null) {tablero = new Juego();}
 		else if ((jcj!=null)){
 		tablero = new Juego(jcj);}
@@ -39,8 +39,8 @@ public class POOAgeOfWarGUI{
 	public static void cargarPJ() {
 		opcionesPJ = PreJuego.getPreJuego();
 		if (tablero!=null) { tablero.dispose();tablero=null;}
-		inicio.dispose();
-		inicio=null;
+		if(inicio!=null) {inicio.dispose();inicio=null;}
+		
 	} 
 	
 	public static void main(String[] args) {
