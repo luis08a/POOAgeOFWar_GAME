@@ -22,10 +22,10 @@ public class Arena implements Serializable{
 		Unidad b1Ad[]={b1,null};
 		Unidad b2Ad[]={null,b2};
 		
-		arena=new Unidad[20][2];
-		for(int i=0; i<20;i++) {
+		arena=new Unidad[100][2];
+		for(int i=0; i<100;i++) {
 			if (i==1)arena[i]=b1Ad;
-			if(i==19)arena[i]=b2Ad;
+			if(i==99)arena[i]=b2Ad;
 			else {
 				for (int j=0; j<2; j++) {
 					arena[i][j]=null;
@@ -33,7 +33,6 @@ public class Arena implements Serializable{
 			}
 		}
 	}
-	
 	public Jugador getJ1(){
 		return j1;
 	}
@@ -79,7 +78,7 @@ public class Arena implements Serializable{
 			
 			if (arena[i][0]==null) continue;
 			
-			if (i==18 && arena[i][0]!=null){
+			if (i==98 && arena[i][0]!=null){
 				
 				arena[i][0].ataque(b2);
 				
@@ -169,10 +168,29 @@ public class Arena implements Serializable{
 	 * Más especificamente al arreglo de unidades que contiene la información del estado de la arena.
 	 */
 	public void ponerUnidad(Base base, Unidad u) {
+		//Unidad uni = base.crearUnidad(tipo);
 		int spawn=base.getSpawn();
+		/*
+		 
+		if (base.getOro()>= uni.getCosto()){
+			System.out.println(base.getOro()+" >= "+uni.getCosto());
+			
+		*/	
 		base.compraUnidad(u);
 		if (spawn==1){arena[spawn][0]=u;}
-		else if (spawn==18){arena[spawn][1]=u;}		
+		else if (spawn==98){arena[spawn][1]=u;}
+		//}
+		
+		//else{
+			//throw new PAOWException("no hay  dinerodsfsdfsfsfsdf?????????????????????");}
+		
+	}
+	
+	public void enemyIAIngenuo() {
+		Ingenuo i = Ingenuo.getIA(b2);
+		//i.start(this);
+		i.desicion(this);
+		
 	}
 	
 	/*
