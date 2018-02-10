@@ -4,7 +4,7 @@
 ## description
   the goal of the game is destroy the enemy base, you have ages, soldiers and you can move to the next age of to have more powerful soldiers
 this game is based on the original age-of-war web game.
-##if you want to colaborate
+## if you want to colaborate
   you can improve the game if you want, and make a pull request
-##this game has a lot of heart and dedication, enjoy
+##t his game has a lot of heart and dedication, enjoy
 enjoy
