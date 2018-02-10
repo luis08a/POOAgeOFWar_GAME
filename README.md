@@ -6,5 +6,5 @@
 this game is based on the original age-of-war web game.
 ## if you want to colaborate
   you can improve the game if you want, and make a pull request
-##t his game has a lot of heart and dedication, enjoy
+## this game has a lot of heart and dedication, enjoy
 enjoy
